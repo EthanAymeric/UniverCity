@@ -717,6 +717,11 @@ label_settings = SubResource("LabelSettings_1mf5u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Science" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=896183271]
+layout_mode = 2
+text = "test"
+horizontal_alignment = 1
+
 [node name="BarreBatiment" type="PanelContainer" parent="CanvasLayer" unique_id=2061337036]
 offset_left = 257.0
 offset_top = 551.0

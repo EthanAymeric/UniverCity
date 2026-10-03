@@ -6,6 +6,9 @@ extends Node2D
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 
+@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Argent
+@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Science
+
 ## Scène de bâtiment par défaut
 @export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
 
@@ -13,6 +16,10 @@ extends Node2D
 var is_placing: bool = false
 var current_scene_to_place: PackedScene = null
 var current_footprint: Vector2i = Vector2i(1, 1)
+
+# Variables de score
+var score_money = 0
+var score_science = 0
 
 ## Registre des cases occupées : clé = Vector2i, valeur = Building
 var occupied_cells: Dictionary = {}
@@ -24,8 +31,20 @@ func _ready() -> void:
 	
 	# Connexion du bouton de bâtiment
 	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
+	
+	# Affichage du score d'argent possédé
+	# TESTS
+	add_money(3)
+	show_money()
+	
+	show_science()
+	
 
 func _process(_delta: float) -> void:
+	# TESTS
+	space_add_money()
+	a_add_science()
+	
 	if not is_placing:
 		return
 	
@@ -43,6 +62,8 @@ func _process(_delta: float) -> void:
 		preview_sprite.modulate = Color(0.3, 1.0, 0.3, 0.7) # Vert : constructible
 	else:
 		preview_sprite.modulate = Color(1.0, 0.25, 0.25, 0.7) # Rouge : impossible
+		
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_placing:
@@ -133,3 +154,35 @@ func cancel_placement() -> void:
 ## Clic sur le bouton de la ferme dans l'interface
 func _on_batiment_1_pressed() -> void:
 	start_placement(farm_scene)
+
+
+### Gestion/Affichage de l'argent gagné
+
+# Affichage du score
+func show_money():
+	money.text = str(score_money) + " €"
+	
+
+# Ajout d'une somme 'score' choisi par le jeu d'argent
+func add_money(score):
+	score_money += score
+
+### Gestion/Affichage des points de science gagnés
+func show_science():
+	science.text = str(score_science) + " pts de science"
+	
+func add_science(score):
+	score_science += score
+
+## DEBUG TOOLS
+# Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
+# TESTS
+func space_add_money():
+	if Input.is_key_pressed(KEY_SPACE):
+		add_money(800)
+		show_money()
+		
+func a_add_science():
+	if Input.is_key_pressed(KEY_A):
+		add_science(1)
+		show_science()

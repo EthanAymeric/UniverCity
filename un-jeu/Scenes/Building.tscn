@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://csalvi63piyn0"]
+
+[ext_resource type="Script" uid="uid://dvl48uy3p3ple" path="res://Scripts/building.gd" id="1_bld_script"]
+[ext_resource type="Texture2D" uid="uid://mrpxqe3rcaa7" path="res://Assets/batiment.png" id="2_1q4et"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jki4h"]
+atlas = ExtResource("2_1q4et")
+region = Rect2(0, 0, 305, 186)
+
+[node name="Building" type="Node2D" unique_id=1001849790]
+script = ExtResource("1_bld_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=107816283]
+texture = SubResource("AtlasTexture_jki4h")
+region_enabled = true
+region_rect = Rect2(170, 0, 16, 16)

@@ -106,6 +106,10 @@ func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
 			if sol.get_cell_source_id(check_cell) == -1:
 				return false
 			
+			var tiledata = sol.get_cell_tile_data(check_cell)
+			if tiledata == null or tiledata.get_custom_data("interdit"):
+				return false
+			
 			# 2. La case ne doit pas être déjà occupée par un bâtiment
 			if occupied_cells.has(check_cell):
 				return false

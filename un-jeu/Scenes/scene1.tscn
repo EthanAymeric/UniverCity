@@ -720,14 +720,14 @@ vertical_alignment = 1
 [node name="BarreBatiment" type="PanelContainer" parent="CanvasLayer" unique_id=2061337036]
 offset_left = 257.0
 offset_top = 551.0
-offset_right = 1120.0
+offset_right = 1153.0
 offset_bottom = 638.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ixuc6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BarreBatiment" unique_id=874294949]
 layout_mode = 2
 
-[node name="Batiment1" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=987754146]
+[node name="delete" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1734748757]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -736,11 +736,10 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment2" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1734748757]
+[node name="Batiment1" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=987754146]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-disabled = true
 texture_normal = ExtResource("3_sdcb8")
 texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true

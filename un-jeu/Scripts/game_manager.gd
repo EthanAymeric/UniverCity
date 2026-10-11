@@ -2,13 +2,16 @@ extends Node2D
 
 ## Références aux nœuds de la scène
 @onready var sol: TileMapLayer = $Sol
+@onready var decoration: TileMapLayer = $Decoration
 @onready var buildings_container: Node2D = $Buildings
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
+@onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
 
 ## Scène de bâtiment par défaut
-@export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
+@export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
+@export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
 
 ## Variables d'état du placement
 var is_placing: bool = false
@@ -30,6 +33,7 @@ func _ready() -> void:
 	# Connexion du bouton de bâtiment
 	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
 	delete_btn.pressed.connect(_on_delete_pressed)
+	farm_btn.pressed.connect(_on_batiment_3_pressed)
 
 func _process(_delta: float) -> void:
 	if is_placing:
@@ -109,6 +113,11 @@ func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
 			var tiledata = sol.get_cell_tile_data(check_cell)
 			if tiledata == null or tiledata.get_custom_data("interdit"):
 				return false
+			
+			if decoration and decoration.get_cell_source_id(check_cell) != -1:
+				var tiledata_route = decoration.get_cell_tile_data(check_cell)
+				if tiledata_route and tiledata_route.get_custom_data("interdit"):
+					return false
 			
 			# 2. La case ne doit pas être déjà occupée par un bâtiment
 			if occupied_cells.has(check_cell):
@@ -209,6 +218,9 @@ func delete_building(building: Building) -> void:
 
 ## Clic sur le bouton de la ferme dans l'interface
 func _on_batiment_1_pressed() -> void:
+	start_placement(building_scene)
+	
+func _on_batiment_3_pressed()->void:
 	start_placement(farm_scene)
 	
 func _on_delete_pressed() -> void:

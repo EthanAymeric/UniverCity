@@ -9,9 +9,25 @@ extends Node2D
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
 
+## Ressources : argent et points de science
+@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
+@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
+
+## Timer
+# Label du timer qui affiche le temps à chaque fois
+@onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
+# WorldTimer
+@onready var world_timer: Timer = $WorldTimer
+# Compteur de secondes du jeu
+var game_seconds: int = 0
+var science_par_batiment: int = 10
+
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
 @export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
+
+## Coût de placement d'un bâtiment
+var building_cost: int = 100
 
 ## Variables d'état du placement
 var is_placing: bool = false
@@ -21,6 +37,10 @@ var current_footprint: Vector2i = Vector2i(1, 1)
 ## Variables d'état de la suppression
 var is_deleting: bool = false
 var current_hovered_building: Building = null
+
+# Variables de score
+var score_money = 0
+var score_science = 0
 
 ## Registre des cases occupées : clé = Vector2i, valeur = Building
 var occupied_cells: Dictionary = {}
@@ -32,14 +52,32 @@ func _ready() -> void:
 	
 	# Connexion du bouton de bâtiment
 	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
+
 	delete_btn.pressed.connect(_on_delete_pressed)
 	farm_btn.pressed.connect(_on_batiment_3_pressed)
+	
+	# Affichage du score d'argent possédé
+	# TESTS
+	show_money()
+	
+	show_science()
+	
+	# Connexion automatique du signal timeout du Timer
+	world_timer.timeout.connect(_on_worldtimer_timeout)
+	run_worldtimer()
 
 func _process(_delta: float) -> void:
 	if is_placing:
 		_process_placement()
 	elif is_deleting:
 		_process_deletion()
+		
+	# TESTS
+	## DEBUG : Ajouter/Perdre des ressources
+	a_add_money()
+	z_lose_money()
+	s_add_science()
+	d_lose_science()
 
 func _process_placement() -> void:
 	# 1. Récupérer la position de la souris sur la grille
@@ -56,6 +94,8 @@ func _process_placement() -> void:
 		preview_sprite.modulate = Color(0.3, 1.0, 0.3, 0.7) # Vert : constructible
 	else:
 		preview_sprite.modulate = Color(1.0, 0.25, 0.25, 0.7) # Rouge : impossible
+		
+	
 
 func _process_deletion() -> void:
 	var mouse_pos: Vector2 = sol.get_local_mouse_position()
@@ -102,6 +142,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## Vérifie si toutes les cases requises sont sur le sol et non occupées
 func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
+	# Vérification de l'argent disponible : on ne peut pas placer le batiment si on n'a pas assez de sous :
+	if score_money < building_cost:
+		return false
+	
 	for x in range(footprint.x):
 		for y in range(footprint.y):
 			var check_cell = top_left + Vector2i(x, y)
@@ -149,6 +193,10 @@ func start_placement(scene: PackedScene) -> void:
 func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	if not current_scene_to_place:
 		return
+		
+	# Déduire l'argent et mettre à jour l'affichage
+	lose_money(building_cost)
+	show_money()
 		
 	var building: Building = current_scene_to_place.instantiate() as Building
 	buildings_container.add_child(building)
@@ -228,3 +276,93 @@ func _on_delete_pressed() -> void:
 		cancel_deletion()
 	else:
 		start_deletion()
+
+
+
+### Gestion/Affichage de l'argent gagné
+
+# Affichage du score
+func show_money():
+	money.text = str(score_money) + " €"
+	
+# Ajout d'une somme 'score' choisi par le jeu d'argent
+func add_money(score):
+	score_money += score
+	
+func lose_money(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_money <= 0:
+		score_money = 0
+	else:
+		score_money -= score
+
+### Gestion/Affichage des points de science gagnés
+func show_science():
+	science.text = str(score_science) + " pts"
+	
+func add_science(score):
+	score_science += score
+
+func lose_science(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_science <= 0:
+		score_science = 0
+	else:
+		score_science -= score
+
+## Gestion du WorldTimer
+func run_worldtimer():
+	update_timer_display()
+
+func _on_worldtimer_timeout() -> void:
+	game_seconds += 1
+	update_timer_display()
+
+	# Récupérer tous les bâtiments uniques placés sur la carte
+	var unique_buildings = []
+	for cell in occupied_cells:
+		var bld = occupied_cells[cell]
+		if not unique_buildings.has(bld):
+			unique_buildings.append(bld)
+
+	# Ajouter 'science_par_batiment' point de science par bâtiment unique
+	var science_gain = unique_buildings.size() * science_par_batiment
+	if science_gain > 0:
+		add_science(science_gain)
+		show_science()
+
+func update_timer_display():
+	var minutes = game_seconds / 60
+	var seconds = game_seconds % 60
+	# Formate automatiquement pour obtenir "MM:SS" (ex: 03:09 au lieu de 3:9)
+	timer_live.text = "%02d:%02d" % [minutes, seconds]
+	
+func pause_worldtimer():
+	print("stop")
+
+func resume_worldtimer():
+	print("go")
+
+
+## DEBUG TOOLS
+# Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
+# TESTS
+func a_add_money():
+	if Input.is_key_pressed(KEY_A):
+		add_money(200)
+		show_money()
+		
+func z_lose_money():
+	if Input.is_key_pressed(KEY_Z):
+		lose_money(200)
+		show_money()
+		
+func s_add_science():
+	if Input.is_key_pressed(KEY_S):
+		add_science(1)
+		show_science()
+		
+func d_lose_science():
+	if Input.is_key_pressed(KEY_D):
+		lose_science(1)
+		show_science()

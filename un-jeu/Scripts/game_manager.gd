@@ -10,11 +10,20 @@ extends Node2D
 @onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
 @onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
 
+## Timer
+# Label du timer qui affiche le temps à chaque fois
+@onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
+# WorldTimer
+@onready var world_timer: Timer = $WorldTimer
+# Compteur de secondes du jeu
+var game_seconds: int = 0
+var science_par_batiment: int = 10
+
 ## Scène de bâtiment par défaut
 @export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
 
 ## Coût de placement d'un bâtiment
-@export var building_cost: int = 100
+var building_cost: int = 100
 
 ## Variables d'état du placement
 var is_placing: bool = false
@@ -41,6 +50,10 @@ func _ready() -> void:
 	show_money()
 	
 	show_science()
+	
+	# Connexion automatique du signal timeout du Timer
+	world_timer.timeout.connect(_on_worldtimer_timeout)
+	run_worldtimer()
 	
 
 func _process(_delta: float) -> void:
@@ -189,7 +202,7 @@ func lose_money(score):
 
 ### Gestion/Affichage des points de science gagnés
 func show_science():
-	science.text = str(score_science) + " pts de science"
+	science.text = str(score_science) + " pts"
 	
 func add_science(score):
 	score_science += score
@@ -200,6 +213,40 @@ func lose_science(score):
 		score_science = 0
 	else:
 		score_science -= score
+
+## Gestion du WorldTimer
+func run_worldtimer():
+	update_timer_display()
+
+func _on_worldtimer_timeout() -> void:
+	game_seconds += 1
+	update_timer_display()
+
+	# Récupérer tous les bâtiments uniques placés sur la carte
+	var unique_buildings = []
+	for cell in occupied_cells:
+		var bld = occupied_cells[cell]
+		if not unique_buildings.has(bld):
+			unique_buildings.append(bld)
+
+	# Ajouter 'science_par_batiment' point de science par bâtiment unique
+	var science_gain = unique_buildings.size() * science_par_batiment
+	if science_gain > 0:
+		add_science(science_gain)
+		show_science()
+
+func update_timer_display():
+	var minutes = game_seconds / 60
+	var seconds = game_seconds % 60
+	# Formate automatiquement pour obtenir "MM:SS" (ex: 03:09 au lieu de 3:9)
+	timer_live.text = "%02d:%02d" % [minutes, seconds]
+	
+func pause_worldtimer():
+	print("stop")
+
+func resume_worldtimer():
+	print("go")
+
 
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche

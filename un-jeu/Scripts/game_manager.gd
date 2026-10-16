@@ -6,11 +6,15 @@ extends Node2D
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 
+## Ressources : argent et points de science
 @onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
 @onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
 
 ## Scène de bâtiment par défaut
 @export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
+
+## Coût de placement d'un bâtiment
+@export var building_cost: int = 100
 
 ## Variables d'état du placement
 var is_placing: bool = false
@@ -34,7 +38,6 @@ func _ready() -> void:
 	
 	# Affichage du score d'argent possédé
 	# TESTS
-	add_money(3)
 	show_money()
 	
 	show_science()
@@ -42,6 +45,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# TESTS
+	## DEBUG : Ajouter/Perdre des ressources
 	a_add_money()
 	z_lose_money()
 	s_add_science()
@@ -87,6 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## Vérifie si toutes les cases requises sont sur le sol et non occupées
 func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
+	# Vérification de l'argent disponible : on ne peut pas placer le batiment si on n'a pas assez de sous :
+	if score_money < building_cost:
+		return false
+	
 	for x in range(footprint.x):
 		for y in range(footprint.y):
 			var check_cell = top_left + Vector2i(x, y)
@@ -124,6 +132,10 @@ func start_placement(scene: PackedScene) -> void:
 func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	if not current_scene_to_place:
 		return
+		
+	# Déduire l'argent et mettre à jour l'affichage
+	lose_money(building_cost)
+	show_money()
 		
 	var building: Building = current_scene_to_place.instantiate() as Building
 	buildings_container.add_child(building)

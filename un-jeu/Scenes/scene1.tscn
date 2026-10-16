@@ -710,14 +710,27 @@ theme_override_styles/background = SubResource("StyleBoxFlat_xna76")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wu2rp")
 value = 50.0
 
-[node name="Argent" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=263076682]
+[node name="Ressources" type="VBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1114024703]
+layout_mode = 2
+
+[node name="DescArgent" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer/Ressources" unique_id=1276439392]
+layout_mode = 2
+text = "Argent :"
+horizontal_alignment = 1
+
+[node name="Argent" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer/Ressources" unique_id=263076682]
 layout_mode = 2
 text = "1 000 000 €"
 label_settings = SubResource("LabelSettings_1mf5u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Science" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=896183271]
+[node name="DescScience" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer/Ressources" unique_id=423598108]
+layout_mode = 2
+text = "Points de science :"
+horizontal_alignment = 1
+
+[node name="Science" type="Label" parent="CanvasLayer/PanneauGauche/VBoxContainer/Ressources" unique_id=896183271]
 layout_mode = 2
 text = "test"
 horizontal_alignment = 1
@@ -760,3 +773,9 @@ texture_normal = ExtResource("3_sdcb8")
 texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="PanneauTimer" type="PanelContainer" parent="." unique_id=14508089]
+offset_left = 179.33334
+offset_top = -0.6666667
+offset_right = 289.0
+offset_bottom = 39.333332

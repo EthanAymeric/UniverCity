@@ -6,8 +6,8 @@ extends Node2D
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 
-@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Argent
-@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Science
+@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
+@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
 
 ## Scène de bâtiment par défaut
 @export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
@@ -42,8 +42,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# TESTS
-	space_add_money()
-	a_add_science()
+	a_add_money()
+	z_lose_money()
+	s_add_science()
+	d_lose_science()
 	
 	if not is_placing:
 		return
@@ -162,10 +164,16 @@ func _on_batiment_1_pressed() -> void:
 func show_money():
 	money.text = str(score_money) + " €"
 	
-
 # Ajout d'une somme 'score' choisi par le jeu d'argent
 func add_money(score):
 	score_money += score
+	
+func lose_money(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_money <= 0:
+		score_money = 0
+	else:
+		score_money -= score
 
 ### Gestion/Affichage des points de science gagnés
 func show_science():
@@ -174,15 +182,32 @@ func show_science():
 func add_science(score):
 	score_science += score
 
+func lose_science(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_science <= 0:
+		score_science = 0
+	else:
+		score_science -= score
+
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS
-func space_add_money():
-	if Input.is_key_pressed(KEY_SPACE):
-		add_money(800)
+func a_add_money():
+	if Input.is_key_pressed(KEY_A):
+		add_money(200)
 		show_money()
 		
-func a_add_science():
-	if Input.is_key_pressed(KEY_A):
+func z_lose_money():
+	if Input.is_key_pressed(KEY_Z):
+		lose_money(200)
+		show_money()
+		
+func s_add_science():
+	if Input.is_key_pressed(KEY_S):
 		add_science(1)
+		show_science()
+		
+func d_lose_science():
+	if Input.is_key_pressed(KEY_D):
+		lose_science(1)
 		show_science()

@@ -5,7 +5,7 @@ extends Node2D
 @export var footprint: Vector2i = Vector2i(1, 1)
 
 ## Attributs propres au bâtiment
-@export var building_cost: int = 1000
+@export var building_cost: int = 100
 @export var science_production: int = 10
 
 @onready var sprite: Sprite2D = $Sprite2D

@@ -18,9 +18,6 @@ extends Node2D
 @onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
 # WorldTimer
 @onready var world_timer: Timer = $WorldTimer
-# Compteur de secondes du jeu
-var game_seconds: int = 0
-var science_par_batiment: int = 10
 
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
@@ -62,9 +59,8 @@ func _ready() -> void:
 	
 	show_science()
 	
-	# Connexion automatique du signal timeout du Timer
-	world_timer.timeout.connect(_on_worldtimer_timeout)
-	run_worldtimer()
+	# Lancement du Timer
+	world_timer.second_tick.connect(_on_timer_tick)
 
 func _process(_delta: float) -> void:
 	if is_placing:
@@ -312,38 +308,24 @@ func lose_science(score):
 		score_science -= score
 
 ## Gestion du WorldTimer
-func run_worldtimer():
-	update_timer_display()
 
-func _on_worldtimer_timeout() -> void:
-	game_seconds += 1
-	update_timer_display()
+func _on_timer_tick(formatted_time: String) -> void:
+	# 1. Met à jour l'affichage du timer reçu du script séparé
+	timer_live.text = formatted_time
 
-	# Récupérer tous les bâtiments uniques placés sur la carte
+	# 2. Calcule la science en interrogeant chaque bâtiment unique
 	var unique_buildings = []
+	var science_gain = 0
+	
 	for cell in occupied_cells:
 		var bld = occupied_cells[cell]
-		if not unique_buildings.has(bld):
+		if is_instance_valid(bld) and not unique_buildings.has(bld):
 			unique_buildings.append(bld)
+			science_gain += bld.science_production # Utilise la production propre du bâtiment
 
-	# Ajouter 'science_par_batiment' point de science par bâtiment unique
-	var science_gain = unique_buildings.size() * science_par_batiment
 	if science_gain > 0:
 		add_science(science_gain)
 		show_science()
-
-func update_timer_display():
-	var minutes = game_seconds / 60
-	var seconds = game_seconds % 60
-	# Formate automatiquement pour obtenir "MM:SS" (ex: 03:09 au lieu de 3:9)
-	timer_live.text = "%02d:%02d" % [minutes, seconds]
-	
-func pause_worldtimer():
-	print("stop")
-
-func resume_worldtimer():
-	print("go")
-
 
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche

@@ -27,7 +27,7 @@ var science_par_batiment: int = 10
 @export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
 
 ## Coût de placement d'un bâtiment
-var building_cost: int = 100
+var current_building_cost: int = 100
 
 ## Variables d'état du placement
 var is_placing: bool = false
@@ -143,7 +143,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Vérifie si toutes les cases requises sont sur le sol et non occupées
 func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
 	# Vérification de l'argent disponible : on ne peut pas placer le batiment si on n'a pas assez de sous :
-	if score_money < building_cost:
+	if score_money < current_building_cost:
 		return false
 	
 	for x in range(footprint.x):
@@ -179,6 +179,7 @@ func start_placement(scene: PackedScene) -> void:
 	var temp_bld = scene.instantiate() as Building
 	if temp_bld:
 		current_footprint = temp_bld.footprint
+		current_building_cost = temp_bld.building_cost # Récupère le coût depuis le bâtiment
 		var bld_sprite = temp_bld.get_node_or_null("Sprite2D")
 		if bld_sprite:
 			preview_sprite.texture = bld_sprite.texture
@@ -195,7 +196,7 @@ func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 		return
 		
 	# Déduire l'argent et mettre à jour l'affichage
-	lose_money(building_cost)
+	lose_money(current_building_cost)
 	show_money()
 		
 	var building: Building = current_scene_to_place.instantiate() as Building

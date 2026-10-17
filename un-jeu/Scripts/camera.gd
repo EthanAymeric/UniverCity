@@ -1,12 +1,11 @@
 extends Camera2D
 
-## Vitesse de déplacement adaptée à l'échelle x3
 @export var speed: float = 250.0
 
 ## Marge sur les bords de l'écran (en pixels)
 @export var edge_margin: float = 8.0
 
-## Référence au sol pour calculer les limites automatiquement
+
 @onready var sol: TileMapLayer = $"../Sol"
 
 var min_cam_pos: Vector2 = Vector2.ZERO

@@ -8,6 +8,7 @@ extends Node2D
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+@onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ZoominRoute
 
 ## Ressources : argent et points de science
 @onready var money: Label = $CanvasLayer/PanelArgent/BoxArgent/Argent
@@ -18,6 +19,9 @@ extends Node2D
 @onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
 # WorldTimer
 @onready var world_timer: Timer = $WorldTimer
+
+# Route des innovations
+@onready var popup = $InnovationsZoom
 
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
@@ -58,6 +62,10 @@ func _ready() -> void:
 	show_money()
 	
 	show_science()
+	
+	# Prépare le bouton pour l'affichage de la fenêtre et cache cette dernière comme elle n'est pas encore appelée
+	zoomin_route_btn.pressed.connect(_on_zoomin_route_pressed)
+	popup.hide()
 	
 	# Lancement du Timer
 	world_timer.second_tick.connect(_on_timer_tick)
@@ -349,3 +357,11 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
+
+# Fermeture de la fenêtre des routes des innovations quand on clique sur la croix
+func _on_innovations_zoom_close_requested():
+	popup.hide()
+
+
+func _on_zoomin_route_pressed() -> void:
+	popup.show()

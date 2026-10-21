@@ -1066,12 +1066,6 @@ offset_top = 18.0
 offset_right = 226.0
 offset_bottom = 74.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelScience" unique_id=1899331151]
-layout_mode = 2
-texture = ExtResource("7_2w676")
-expand_mode = 3
-stretch_mode = 4
-
 [node name="BoxScience" type="VBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1619316668]
 layout_mode = 2
 offset_transform_enabled = true
@@ -1085,6 +1079,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "10"
 horizontal_alignment = 1
+
+[node name="ZoominRoute" type="TextureButton" parent="CanvasLayer/PanelScience" unique_id=199756409]
+layout_mode = 2
+texture_normal = ExtResource("7_2w676")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="WorldTimer" type="Timer" parent="." unique_id=573023174]
 autostart = true
@@ -1103,3 +1103,6 @@ size = Vector2i(400, 100)
 [node name="CameraInnovations" type="Camera2D" parent="InnovationsZoom" unique_id=1119648779]
 
 [node name="Sprite2D" type="Sprite2D" parent="InnovationsZoom/CameraInnovations" unique_id=934495593]
+
+[connection signal="pressed" from="CanvasLayer/PanelScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
+[connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]

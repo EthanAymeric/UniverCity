@@ -10,8 +10,8 @@ extends Node2D
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
 
 ## Ressources : argent et points de science
-@onready var money: Label = $CanvasLayer/PanelArgent/Argent
-@onready var science: Label = $CanvasLayer/PanelScience/Science
+@onready var money: Label = $CanvasLayer/PanelArgent/BoxArgent/Argent
+@onready var science: Label = $CanvasLayer/PanelScience/BoxScience/Science
 
 ## Timer
 # Label du timer qui affiche le temps à chaque fois

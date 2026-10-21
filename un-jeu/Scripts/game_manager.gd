@@ -2,17 +2,42 @@ extends Node2D
 
 ## Références aux nœuds de la scène
 @onready var sol: TileMapLayer = $Sol
+@onready var decoration: TileMapLayer = $Decoration
 @onready var buildings_container: Node2D = $Buildings
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
+@onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
+@onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+
+## Ressources : argent et points de science
+@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
+@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
+
+## Timer
+# Label du timer qui affiche le temps à chaque fois
+@onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
+# WorldTimer
+@onready var world_timer: Timer = $WorldTimer
 
 ## Scène de bâtiment par défaut
-@export var farm_scene: PackedScene = preload("res://Scenes/Building.tscn")
+@export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
+@export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
+
+## Coût de placement d'un bâtiment
+var current_building_cost: int = 100
 
 ## Variables d'état du placement
 var is_placing: bool = false
 var current_scene_to_place: PackedScene = null
 var current_footprint: Vector2i = Vector2i(1, 1)
+
+## Variables d'état de la suppression
+var is_deleting: bool = false
+var current_hovered_building: Building = null
+
+# Variables de score
+var score_money = 0
+var score_science = 0
 
 ## Registre des cases occupées : clé = Vector2i, valeur = Building
 var occupied_cells: Dictionary = {}
@@ -25,10 +50,32 @@ func _ready() -> void:
 	# Connexion du bouton de bâtiment
 	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
 
-func _process(_delta: float) -> void:
-	if not is_placing:
-		return
+	delete_btn.pressed.connect(_on_delete_pressed)
+	farm_btn.pressed.connect(_on_batiment_3_pressed)
 	
+	# Affichage du score d'argent possédé
+	# TESTS
+	show_money()
+	
+	show_science()
+	
+	# Lancement du Timer
+	world_timer.second_tick.connect(_on_timer_tick)
+
+func _process(_delta: float) -> void:
+	if is_placing:
+		_process_placement()
+	elif is_deleting:
+		_process_deletion()
+		
+	# TESTS
+	## DEBUG : Ajouter/Perdre des ressources
+	a_add_money()
+	z_lose_money()
+	s_add_science()
+	d_lose_science()
+
+func _process_placement() -> void:
 	# 1. Récupérer la position de la souris sur la grille
 	var mouse_pos: Vector2 = sol.get_local_mouse_position()
 	var cell: Vector2i = sol.local_to_map(mouse_pos)
@@ -43,27 +90,58 @@ func _process(_delta: float) -> void:
 		preview_sprite.modulate = Color(0.3, 1.0, 0.3, 0.7) # Vert : constructible
 	else:
 		preview_sprite.modulate = Color(1.0, 0.25, 0.25, 0.7) # Rouge : impossible
+		
+	
+
+func _process_deletion() -> void:
+	var mouse_pos: Vector2 = sol.get_local_mouse_position()
+	var cell: Vector2i = sol.local_to_map(mouse_pos)
+	var building: Building = occupied_cells.get(cell, null)
+	
+	# Met en surbrillance rouge le bâtiment sous le curseur
+	if building != current_hovered_building:
+		if is_instance_valid(current_hovered_building):
+			current_hovered_building.modulate = Color.WHITE
+		current_hovered_building = building
+		if is_instance_valid(current_hovered_building):
+			current_hovered_building.modulate = Color(1.0, 0.35, 0.35, 0.8)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_placing:
-		return
-	
-	# Clics de souris
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			var mouse_pos: Vector2 = sol.get_local_mouse_position()
-			var cell: Vector2i = sol.local_to_map(mouse_pos)
-			if can_place(cell, current_footprint):
-				place_building(cell, current_footprint)
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
+	if is_placing:
+		# Clics de souris pour le placement
+		if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				var mouse_pos: Vector2 = sol.get_local_mouse_position()
+				var cell: Vector2i = sol.local_to_map(mouse_pos)
+				if can_place(cell, current_footprint):
+					place_building(cell, current_footprint)
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				cancel_placement()
+		
+		# Touche Échap pour annuler
+		elif event.is_action_pressed("ui_cancel"):
 			cancel_placement()
-	
-	# Touche Échap pour annuler
-	elif event.is_action_pressed("ui_cancel"):
-		cancel_placement()
+			
+	elif is_deleting:
+		# Clics de souris pour la suppression
+		if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				var mouse_pos: Vector2 = sol.get_local_mouse_position()
+				var cell: Vector2i = sol.local_to_map(mouse_pos)
+				delete_building_at(cell)
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				cancel_deletion()
+		
+		# Touche Échap pour annuler
+		elif event.is_action_pressed("ui_cancel"):
+			cancel_deletion()
 
 ## Vérifie si toutes les cases requises sont sur le sol et non occupées
 func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
+	# Vérification de l'argent disponible : on ne peut pas placer le batiment si on n'a pas assez de sous :
+	if score_money < current_building_cost:
+		return false
+	
 	for x in range(footprint.x):
 		for y in range(footprint.y):
 			var check_cell = top_left + Vector2i(x, y)
@@ -71,6 +149,15 @@ func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
 			# 1. La case doit exister sur le sol (pas dans le vide)
 			if sol.get_cell_source_id(check_cell) == -1:
 				return false
+			
+			var tiledata = sol.get_cell_tile_data(check_cell)
+			if tiledata == null or tiledata.get_custom_data("interdit"):
+				return false
+			
+			if decoration and decoration.get_cell_source_id(check_cell) != -1:
+				var tiledata_route = decoration.get_cell_tile_data(check_cell)
+				if tiledata_route and tiledata_route.get_custom_data("interdit"):
+					return false
 			
 			# 2. La case ne doit pas être déjà occupée par un bâtiment
 			if occupied_cells.has(check_cell):
@@ -80,6 +167,7 @@ func can_place(top_left: Vector2i, footprint: Vector2i) -> bool:
 
 ## Démarre le mode placement en copiant automatiquement le visuel et la taille de la scène
 func start_placement(scene: PackedScene) -> void:
+	cancel_deletion()
 	current_scene_to_place = scene
 	is_placing = true
 	
@@ -87,6 +175,7 @@ func start_placement(scene: PackedScene) -> void:
 	var temp_bld = scene.instantiate() as Building
 	if temp_bld:
 		current_footprint = temp_bld.footprint
+		current_building_cost = temp_bld.building_cost # Récupère le coût depuis le bâtiment
 		var bld_sprite = temp_bld.get_node_or_null("Sprite2D")
 		if bld_sprite:
 			preview_sprite.texture = bld_sprite.texture
@@ -101,6 +190,10 @@ func start_placement(scene: PackedScene) -> void:
 func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	if not current_scene_to_place:
 		return
+		
+	# Déduire l'argent et mettre à jour l'affichage
+	lose_money(current_building_cost)
+	show_money()
 		
 	var building: Building = current_scene_to_place.instantiate() as Building
 	buildings_container.add_child(building)
@@ -130,6 +223,129 @@ func cancel_placement() -> void:
 	current_scene_to_place = null
 	preview_sprite.visible = false
 
+## Active le mode suppression
+func start_deletion() -> void:
+	cancel_placement()
+	is_deleting = true
+	delete_btn.modulate = Color(1.0, 0.4, 0.4) # Indication visuelle que le mode suppression est activé
+
+## Désactive le mode suppression
+func cancel_deletion() -> void:
+	is_deleting = false
+	delete_btn.modulate = Color.WHITE
+	if is_instance_valid(current_hovered_building):
+		current_hovered_building.modulate = Color.WHITE
+	current_hovered_building = null
+
+## Supprime le bâtiment présent à la case donnée
+func delete_building_at(cell: Vector2i) -> void:
+	if occupied_cells.has(cell):
+		delete_building(occupied_cells[cell])
+
+## Supprime un bâtiment du monde et libère ses cases
+func delete_building(building: Building) -> void:
+	if not is_instance_valid(building):
+		return
+		
+	if current_hovered_building == building:
+		current_hovered_building = null
+		
+	# Libération de toutes les cases occupées par le bâtiment
+	for cell in building.occupied_cells:
+		occupied_cells.erase(cell)
+		
+	# Sécurité supplémentaire au cas où des cases feraient encore référence à ce bâtiment
+	for cell in occupied_cells.keys():
+		if occupied_cells[cell] == building:
+			occupied_cells.erase(cell)
+			
+	building.queue_free()
+
 ## Clic sur le bouton de la ferme dans l'interface
 func _on_batiment_1_pressed() -> void:
+	start_placement(building_scene)
+	
+func _on_batiment_3_pressed()->void:
 	start_placement(farm_scene)
+	
+func _on_delete_pressed() -> void:
+	if is_deleting:
+		cancel_deletion()
+	else:
+		start_deletion()
+
+
+
+### Gestion/Affichage de l'argent gagné
+
+# Affichage du score
+func show_money():
+	money.text = str(score_money) + " €"
+	
+# Ajout d'une somme 'score' choisi par le jeu d'argent
+func add_money(score):
+	score_money += score
+	
+func lose_money(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_money <= 0:
+		score_money = 0
+	else:
+		score_money -= score
+
+### Gestion/Affichage des points de science gagnés
+func show_science():
+	science.text = str(score_science) + " pts"
+	
+func add_science(score):
+	score_science += score
+
+func lose_science(score):
+	# Empêcher d'entrer en dette (pour l'instant)
+	if score_science <= 0:
+		score_science = 0
+	else:
+		score_science -= score
+
+## Gestion du WorldTimer
+
+func _on_timer_tick(formatted_time: String) -> void:
+	# 1. Met à jour l'affichage du timer reçu du script séparé
+	timer_live.text = formatted_time
+
+	# 2. Calcule la science en interrogeant chaque bâtiment unique
+	var unique_buildings = []
+	var science_gain = 0
+	
+	for cell in occupied_cells:
+		var bld = occupied_cells[cell]
+		if is_instance_valid(bld) and not unique_buildings.has(bld):
+			unique_buildings.append(bld)
+			science_gain += bld.science_production # Utilise la production propre du bâtiment
+
+	if science_gain > 0:
+		add_science(science_gain)
+		show_science()
+
+## DEBUG TOOLS
+# Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
+# TESTS
+func a_add_money():
+	if Input.is_key_pressed(KEY_A):
+		add_money(200)
+		show_money()
+		
+func z_lose_money():
+	if Input.is_key_pressed(KEY_Z):
+		lose_money(200)
+		show_money()
+		
+func s_add_science():
+	if Input.is_key_pressed(KEY_S):
+		add_science(1)
+		show_science()
+		
+func d_lose_science():
+	if Input.is_key_pressed(KEY_D):
+		lose_science(1)
+		show_science()

@@ -991,6 +991,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_wu2rp")
 value = 50.0
 
 [node name="BarreBatiment" type="PanelContainer" parent="CanvasLayer" unique_id=2061337036]
+anchors_preset = -1
 offset_left = 278.0
 offset_top = 604.0
 offset_right = 1153.0

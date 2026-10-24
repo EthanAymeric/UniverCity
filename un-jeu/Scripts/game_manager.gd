@@ -364,4 +364,7 @@ func _on_innovations_zoom_close_requested():
 
 
 func _on_zoomin_route_pressed() -> void:
-	popup.show()
+	if popup.visible:
+		popup.hide()
+	else:
+		popup.show()

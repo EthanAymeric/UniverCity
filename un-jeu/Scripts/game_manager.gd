@@ -12,7 +12,7 @@ extends Node2D
 @onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ContainerScience/ZoominRoute
 
 ## Ressources : argent et points de science
-@onready var money: Label = $CanvasLayer/PanelArgent/BoxArgent/Argent
+@onready var money: Label = $CanvasLayer/PanelArgent/HBoxContainer/BoxArgent/Argent
 @onready var progress_bar_science: ProgressBar = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience
 @onready var science: Label = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience/Science
 

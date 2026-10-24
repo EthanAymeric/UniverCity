@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://k0sqmoy377b1" path="res://Assets/Batiment/ferme.png" id="3_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://nqt2of0kisw" path="res://Assets/Batiment/fermeLock.png" id="4_2ni1t"]
 [ext_resource type="Texture2D" uid="uid://mrpxqe3rcaa7" path="res://Assets/batiment.png" id="4_2nq82"]
+[ext_resource type="Texture2D" uid="uid://bqvqhscacvjw8" path="res://Assets/Ressources/money.png" id="7_5dfij"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
 [ext_resource type="Texture2D" uid="uid://b8jrbslwgm4k4" path="res://Assets/Ressources/science.png" id="7_wplxe"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
@@ -1041,20 +1042,30 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="PanelArgent" type="PanelContainer" parent="CanvasLayer" unique_id=290735369]
-offset_left = 1013.0
-offset_top = 7.0
-offset_right = 1113.0
-offset_bottom = 57.0
+offset_left = 984.0
+offset_top = 2.0
+offset_right = 1140.0
+offset_bottom = 52.0
 
-[node name="BoxArgent" type="VBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=1854317214]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=532559040]
+layout_mode = 2
+alignment = 1
+
+[node name="TextArgent" type="TextureRect" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=2111833906]
+layout_mode = 2
+texture = ExtResource("7_5dfij")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BoxArgent" type="VBoxContainer" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=1854317214]
 layout_mode = 2
 
-[node name="DescArgent" type="Label" parent="CanvasLayer/PanelArgent/BoxArgent" unique_id=1276439392]
+[node name="DescArgent" type="Label" parent="CanvasLayer/PanelArgent/HBoxContainer/BoxArgent" unique_id=1276439392]
 layout_mode = 2
 text = "Argent :"
 horizontal_alignment = 1
 
-[node name="Argent" type="Label" parent="CanvasLayer/PanelArgent/BoxArgent" unique_id=263076682]
+[node name="Argent" type="Label" parent="CanvasLayer/PanelArgent/HBoxContainer/BoxArgent" unique_id=263076682]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "100 €"

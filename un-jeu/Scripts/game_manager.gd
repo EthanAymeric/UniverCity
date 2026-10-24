@@ -8,6 +8,7 @@ extends Node2D
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+# Bouton pour afficher la route des innovations
 @onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ZoominRoute
 
 ## Ressources : argent et points de science
@@ -20,8 +21,13 @@ extends Node2D
 # WorldTimer
 @onready var world_timer: Timer = $WorldTimer
 
+## Autres
 # Route des innovations
 @onready var popup = $InnovationsZoom
+
+# Bouton pour afficher les stats supplémentaires
+@onready var extra_stats_toggle_btn: TextureButton = $CanvasLayer/ExtraStatsToggle
+@onready var panneau_gauche: PanelContainer = $CanvasLayer/PanneauGauche
 
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
@@ -362,9 +368,16 @@ func d_lose_science():
 func _on_innovations_zoom_close_requested():
 	popup.hide()
 
-
+# Afficher/Cacher la route des innovations en appuyant sur le bouton
 func _on_zoomin_route_pressed() -> void:
 	if popup.visible:
 		popup.hide()
 	else:
 		popup.show()
+
+
+func _on_extra_stats_toggle_pressed() -> void:
+	if panneau_gauche.visible:
+		panneau_gauche.hide()
+	else:
+		panneau_gauche.show()

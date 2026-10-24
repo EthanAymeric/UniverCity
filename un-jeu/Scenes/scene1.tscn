@@ -944,9 +944,10 @@ tile_set = SubResource("TileSet_wu2rp")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2094931427]
 
 [node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=892130975]
+anchors_preset = -1
 offset_top = 107.0
 offset_right = 229.0
-offset_bottom = 711.0
+offset_bottom = 500.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_461wq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
@@ -1087,6 +1088,15 @@ texture_normal = ExtResource("7_2w676")
 ignore_texture_size = true
 stretch_mode = 4
 
+[node name="ExtraStatsToggle" type="TextureButton" parent="CanvasLayer" unique_id=1024059303]
+offset_left = 74.0
+offset_top = 549.0
+offset_right = 149.0
+offset_bottom = 624.0
+texture_normal = ExtResource("7_2w676")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="WorldTimer" type="Timer" parent="." unique_id=573023174]
 autostart = true
 script = ExtResource("7_cx2iu")
@@ -1106,4 +1116,5 @@ size = Vector2i(400, 100)
 [node name="Sprite2D" type="Sprite2D" parent="InnovationsZoom/CameraInnovations" unique_id=934495593]
 
 [connection signal="pressed" from="CanvasLayer/PanelScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
+[connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
 [connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]

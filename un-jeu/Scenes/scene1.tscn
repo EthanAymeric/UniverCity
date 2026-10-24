@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://k0sqmoy377b1" path="res://Assets/Batiment/ferme.png" id="3_sdcb8"]
 [ext_resource type="Texture2D" uid="uid://nqt2of0kisw" path="res://Assets/Batiment/fermeLock.png" id="4_2ni1t"]
 [ext_resource type="Texture2D" uid="uid://mrpxqe3rcaa7" path="res://Assets/batiment.png" id="4_2nq82"]
-[ext_resource type="Texture2D" uid="uid://b111dobxyebri" path="res://icon.svg" id="7_2w676"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
+[ext_resource type="Texture2D" uid="uid://b8jrbslwgm4k4" path="res://Assets/Ressources/science.png" id="7_wplxe"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
+[ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -947,7 +948,7 @@ tile_set = SubResource("TileSet_wu2rp")
 anchors_preset = -1
 offset_top = 107.0
 offset_right = 229.0
-offset_bottom = 500.0
+offset_bottom = 627.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_461wq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
@@ -1065,37 +1066,58 @@ autowrap_mode = 2
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
 offset_left = 1.0
 offset_top = 18.0
-offset_right = 226.0
+offset_right = 258.0
 offset_bottom = 74.0
 
-[node name="BoxScience" type="VBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1619316668]
+[node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
+layout_mode = 2
+alignment = 1
+
+[node name="ZoominRoute" type="TextureButton" parent="CanvasLayer/PanelScience/ContainerScience" unique_id=199756409]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("7_wplxe")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BoxScience" type="VBoxContainer" parent="CanvasLayer/PanelScience/ContainerScience" unique_id=1619316668]
+custom_minimum_size = Vector2(150, 10)
 layout_mode = 2
 offset_transform_enabled = true
+alignment = 1
 
-[node name="DescScience" type="Label" parent="CanvasLayer/PanelScience/BoxScience" unique_id=423598108]
+[node name="DescScience" type="Label" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=423598108]
 layout_mode = 2
 text = "          Points de science :"
 horizontal_alignment = 1
 
-[node name="Science" type="Label" parent="CanvasLayer/PanelScience/BoxScience" unique_id=896183271]
+[node name="ProgressBarScience" type="ProgressBar" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=862718295]
+custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
-text = "10"
-horizontal_alignment = 1
+size_flags_vertical = 4
+step = 1.0
+allow_greater = true
+show_percentage = false
 
-[node name="ZoominRoute" type="TextureButton" parent="CanvasLayer/PanelScience" unique_id=199756409]
-layout_mode = 2
-texture_normal = ExtResource("7_2w676")
-ignore_texture_size = true
-stretch_mode = 4
+[node name="Science" type="Label" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience" unique_id=945621799]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExtraStatsToggle" type="TextureButton" parent="CanvasLayer" unique_id=1024059303]
 offset_left = 74.0
 offset_top = 549.0
 offset_right = 149.0
 offset_bottom = 624.0
-texture_normal = ExtResource("7_2w676")
+texture_normal = ExtResource("9_d2tun")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="WorldTimer" type="Timer" parent="." unique_id=573023174]
 autostart = true
@@ -1115,6 +1137,6 @@ size = Vector2i(400, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="InnovationsZoom/CameraInnovations" unique_id=934495593]
 
-[connection signal="pressed" from="CanvasLayer/PanelScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
 [connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]

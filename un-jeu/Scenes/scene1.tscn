@@ -996,10 +996,10 @@ value = 50.0
 
 [node name="BarreBatiment" type="PanelContainer" parent="CanvasLayer" unique_id=2061337036]
 anchors_preset = -1
-offset_left = 278.0
-offset_top = 604.0
-offset_right = 1153.0
-offset_bottom = 674.0
+offset_left = 254.0
+offset_top = 574.0
+offset_right = 1129.0
+offset_bottom = 644.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ixuc6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BarreBatiment" unique_id=874294949]
@@ -1061,13 +1061,8 @@ stretch_mode = 5
 [node name="BoxArgent" type="VBoxContainer" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=1854317214]
 layout_mode = 2
 
-[node name="DescArgent" type="Label" parent="CanvasLayer/PanelArgent/HBoxContainer/BoxArgent" unique_id=1276439392]
-layout_mode = 2
-text = "Argent :"
-horizontal_alignment = 1
-
 [node name="Argent" type="Label" parent="CanvasLayer/PanelArgent/HBoxContainer/BoxArgent" unique_id=263076682]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "100 €"
 label_settings = SubResource("LabelSettings_1mf5u")
@@ -1160,9 +1155,10 @@ size = Vector2i(400, 100)
 [node name="Sprite2D" type="Sprite2D" parent="InnovationsZoom/CameraInnovations" unique_id=934495593]
 
 [node name="FenetreExit" type="ConfirmationDialog" parent="." unique_id=1967273492]
+oversampling_override = 1.0
 title = "Confirmation"
 initial_position = 1
-size = Vector2i(300, 100)
+size = Vector2i(300, 90)
 ok_button_text = "Oui"
 dialog_text = "Voulez-vous vraiment quitter le jeu ?"
 cancel_button_text = "Annuler"

@@ -8,10 +8,13 @@ extends Node2D
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+# Bouton pour afficher la route des innovations
+@onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ContainerScience/ZoominRoute
 
 ## Ressources : argent et points de science
-@onready var money: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Argent
-@onready var science: Label = $CanvasLayer/PanneauGauche/VBoxContainer/Ressources/Science
+@onready var money: Label = $CanvasLayer/PanelArgent/HBoxContainer/BoxArgent/Argent
+@onready var progress_bar_science: ProgressBar = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience
+@onready var science: Label = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience/Science
 
 ## Timer
 # Label du timer qui affiche le temps à chaque fois
@@ -19,9 +22,27 @@ extends Node2D
 # WorldTimer
 @onready var world_timer: Timer = $WorldTimer
 
+## Autres
+# Route des innovations
+@onready var popup = $InnovationsZoom
+
+# Bouton pour afficher les stats supplémentaires
+@onready var extra_stats_toggle_btn: TextureButton = $CanvasLayer/ExtraStatsToggle
+@onready var panneau_gauche: PanelContainer = $CanvasLayer/PanneauGauche
+
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
 @export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
+
+## Fenêtre Quitter
+@onready var fenetre_exit: ConfirmationDialog = $FenetreExit
+
+
+## Textures
+# Boutons pour les extra stats
+var text_plus: Texture2D = preload("res://Assets/Boutons/plus.png")
+var text_moins: Texture2D = preload("res://Assets/Boutons/moins.png")
+var text_science: Texture2D = preload("res://Assets/Ressources/science.png")
 
 ## Coût de placement d'un bâtiment
 var current_building_cost: int = 100
@@ -36,8 +57,10 @@ var is_deleting: bool = false
 var current_hovered_building: Building = null
 
 # Variables de score
-var score_money = 0
-var score_science = 0
+var score_money: int = 0
+var score_science: int = 0
+# Nombre max de points de science pour atteindre la prochaine innovation
+var max_science: int = 100;
 
 ## Registre des cases occupées : clé = Vector2i, valeur = Building
 var occupied_cells: Dictionary = {}
@@ -58,6 +81,10 @@ func _ready() -> void:
 	show_money()
 	
 	show_science()
+	
+	# Prépare le bouton pour l'affichage de la fenêtre et cache cette dernière comme elle n'est pas encore appelée
+	zoomin_route_btn.pressed.connect(_on_zoomin_route_pressed)
+	popup.hide()
 	
 	# Lancement du Timer
 	world_timer.second_tick.connect(_on_timer_tick)
@@ -295,7 +322,9 @@ func lose_money(score):
 
 ### Gestion/Affichage des points de science gagnés
 func show_science():
-	science.text = str(score_science) + " pts"
+	progress_bar_science.max_value = max_science
+	progress_bar_science.value = score_science
+	science.text = "%d / %d" % [score_science, max_science]
 	
 func add_science(score):
 	score_science += score
@@ -327,6 +356,38 @@ func _on_timer_tick(formatted_time: String) -> void:
 		add_science(science_gain)
 		show_science()
 
+
+## Boutons d'affichage
+# Fermeture de la fenêtre des routes des innovations quand on clique sur la croix
+func _on_innovations_zoom_close_requested():
+	popup.hide()
+	zoomin_route_btn.texture_normal = text_science
+
+# Afficher/Cacher la route des innovations en appuyant sur le bouton
+func _on_zoomin_route_pressed() -> void:
+	if popup.visible:
+		popup.hide()
+		zoomin_route_btn.texture_normal = text_science
+	else:
+		popup.show()
+		zoomin_route_btn.texture_normal = text_moins
+
+func _on_extra_stats_toggle_pressed() -> void:
+	if panneau_gauche.visible:
+		panneau_gauche.hide()
+		extra_stats_toggle_btn.texture_normal = text_plus
+	else:
+		panneau_gauche.show()
+		extra_stats_toggle_btn.texture_normal = text_moins
+
+# Bouton Quitter
+func _on_quitter_btn_pressed():
+	# Ouvre la fenêtre de confirmation pour quitter le jeu
+	fenetre_exit.popup_centered()
+# Si on confirme...
+func _on_fenetre_exit_confirmed():
+	get_tree().quit()
+	
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS

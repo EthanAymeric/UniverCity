@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b8jrbslwgm4k4" path="res://Assets/Ressources/science.png" id="7_wplxe"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
 [ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
+[ext_resource type="Texture2D" uid="uid://q51w8joijb8q" path="res://Assets/Boutons/exit.png" id="10_d2tun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1032,9 +1033,9 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="PanneauTimer" type="PanelContainer" parent="CanvasLayer" unique_id=14508089]
-offset_left = 497.0
+offset_left = 545.0
 offset_top = 1.0
-offset_right = 884.0
+offset_right = 691.0
 offset_bottom = 51.0
 
 [node name="TimerLive" type="Label" parent="CanvasLayer/PanneauTimer" unique_id=1662757551]
@@ -1042,10 +1043,10 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="PanelArgent" type="PanelContainer" parent="CanvasLayer" unique_id=290735369]
-offset_left = 984.0
-offset_top = 2.0
-offset_right = 1140.0
-offset_bottom = 52.0
+offset_left = 892.0
+offset_top = 1.0
+offset_right = 1048.0
+offset_bottom = 51.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=532559040]
 layout_mode = 2
@@ -1076,9 +1077,9 @@ autowrap_mode = 2
 
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
 offset_left = 1.0
-offset_top = 18.0
+offset_top = 1.0
 offset_right = 258.0
-offset_bottom = 74.0
+offset_bottom = 57.0
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
 layout_mode = 2
@@ -1130,6 +1131,16 @@ texture_normal = ExtResource("9_d2tun")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="QuitterBtn" type="TextureButton" parent="CanvasLayer" unique_id=596492083]
+anchors_preset = -1
+offset_left = 1089.0
+offset_top = 2.0
+offset_right = 1141.0
+offset_bottom = 54.0
+texture_normal = ExtResource("10_d2tun")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="WorldTimer" type="Timer" parent="." unique_id=573023174]
 autostart = true
 script = ExtResource("7_cx2iu")
@@ -1148,6 +1159,16 @@ size = Vector2i(400, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="InnovationsZoom/CameraInnovations" unique_id=934495593]
 
+[node name="FenetreExit" type="ConfirmationDialog" parent="." unique_id=1967273492]
+title = "Confirmation"
+initial_position = 1
+size = Vector2i(300, 100)
+ok_button_text = "Oui"
+dialog_text = "Voulez-vous vraiment quitter le jeu ?"
+cancel_button_text = "Annuler"
+
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitterBtn" to="." method="_on_quitter_btn_pressed"]
 [connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]
+[connection signal="confirmed" from="FenetreExit" to="." method="_on_fenetre_exit_confirmed"]

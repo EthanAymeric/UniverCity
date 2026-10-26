@@ -34,6 +34,10 @@ extends Node2D
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
 @export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
 
+## Fenêtre Quitter
+@onready var fenetre_exit: ConfirmationDialog = $FenetreExit
+
+
 ## Textures
 # Boutons pour les extra stats
 var text_plus: Texture2D = preload("res://Assets/Boutons/plus.png")
@@ -375,7 +379,15 @@ func _on_extra_stats_toggle_pressed() -> void:
 	else:
 		panneau_gauche.show()
 		extra_stats_toggle_btn.texture_normal = text_moins
-		
+
+# Bouton Quitter
+func _on_quitter_btn_pressed():
+	# Ouvre la fenêtre de confirmation pour quitter le jeu
+	fenetre_exit.popup_centered()
+# Si on confirme...
+func _on_fenetre_exit_confirmed():
+	get_tree().quit()
+	
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS

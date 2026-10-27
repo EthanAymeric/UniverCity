@@ -40,6 +40,17 @@ extends Node2D
 ## Fenêtre Quitter
 @onready var fenetre_exit: ConfirmationDialog = $FenetreExit
 
+## Home Menu
+@onready var fenetre_home: Window = $FenetreHome
+@onready var quitter_btn: TextureButton = $CanvasLayer/QuitterBtn
+@onready var infos_btn: TextureButton = $CanvasLayer/InfosBtn
+# Boutons
+@onready var exit_btn: TextureButton = $FenetreHome/ExitBtn
+@onready var restart_btn: TextureButton = $FenetreHome/RestartBtn
+@onready var credits_btn: TextureButton = $FenetreHome/CreditsBtn
+@onready var settings_btn: TextureButton = $FenetreHome/SettingsBtn
+
+
 
 ## Textures
 # Boutons pour les extra stats
@@ -406,10 +417,27 @@ func _on_extra_stats_toggle_pressed() -> void:
 func _on_quitter_btn_pressed():
 	# Ouvre la fenêtre de confirmation pour quitter le jeu
 	fenetre_exit.popup_centered()
+
+	
+## Home Menu
+func _on_home_btn_pressed() -> void:
+	if fenetre_home.visible:
+		fenetre_home.hide()
+	else:
+		fenetre_home.show()
+	
+# Bouton Exit du Menu
+func _on_exit_btn_pressed() -> void:
+	# Ouvre la fenêtre de confirmation pour quitter le jeu
+	fenetre_exit.popup_centered()
 # Si on confirme...
 func _on_fenetre_exit_confirmed():
 	get_tree().quit()
-	
+# Si on annule...
+func _on_fenetre_exit_canceled() -> void:
+	fenetre_home.hide()
+	fenetre_home.show()
+
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS

@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://2ccxe0lebxjo" path="res://Assets/Boutons/home.png" id="12_n1oij"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
 [ext_resource type="Texture2D" uid="uid://dqh1gg6ykr1w6" path="res://Assets/Boutons/infos.png" id="13_ust72"]
+[ext_resource type="Texture2D" uid="uid://bcsxoypfaf3ci" path="res://Assets/Boutons/settings.png" id="18_qrm0x"]
+[ext_resource type="Texture2D" uid="uid://diqsde53puxxc" path="res://Assets/Boutons/star_credits.png" id="19_wo1nm"]
+[ext_resource type="Texture2D" uid="uid://c715bni7p4rvt" path="res://Assets/Boutons/restart.png" id="20_a66ic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1303,9 +1306,11 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
+anchors_preset = -1
+anchor_right = 0.001
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 258.0
+offset_right = 256.848
 offset_bottom = 57.0
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
@@ -1426,13 +1431,54 @@ ok_button_text = "Oui"
 dialog_text = "Voulez-vous vraiment quitter le jeu ?"
 cancel_button_text = "Annuler"
 
-[node name="Home" type="Window" parent="." unique_id=1459846854]
+[node name="FenetreHome" type="Window" parent="." unique_id=1459846854]
 oversampling_override = 1.0
-position = Vector2i(0, 36)
+title = "Menu"
+initial_position = 1
+size = Vector2i(500, 300)
 visible = false
+
+[node name="SettingsBtn" type="TextureButton" parent="FenetreHome" unique_id=305389607]
+offset_left = 50.0
+offset_top = 76.0
+offset_right = 225.0
+offset_bottom = 116.0
+texture_normal = ExtResource("18_qrm0x")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="CreditsBtn" type="TextureButton" parent="FenetreHome" unique_id=1942832810]
+offset_left = 279.0
+offset_top = 74.0
+offset_right = 454.0
+offset_bottom = 114.0
+texture_normal = ExtResource("19_wo1nm")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ExitBtn" type="TextureButton" parent="FenetreHome" unique_id=747788420]
+offset_left = 283.0
+offset_top = 169.0
+offset_right = 458.0
+offset_bottom = 209.0
+texture_normal = ExtResource("10_d2tun")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="RestartBtn" type="TextureButton" parent="FenetreHome" unique_id=1185066012]
+offset_left = 49.0
+offset_top = 165.0
+offset_right = 224.0
+offset_bottom = 205.0
+texture_normal = ExtResource("20_a66ic")
+ignore_texture_size = true
+stretch_mode = 4
 
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitterBtn" to="." method="_on_quitter_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]
+[connection signal="canceled" from="FenetreExit" to="." method="_on_fenetre_exit_canceled"]
 [connection signal="confirmed" from="FenetreExit" to="." method="_on_fenetre_exit_confirmed"]
+[connection signal="pressed" from="FenetreHome/ExitBtn" to="." method="_on_exit_btn_pressed"]

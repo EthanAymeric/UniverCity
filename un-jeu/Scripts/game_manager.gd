@@ -42,7 +42,6 @@ extends Node2D
 
 ## Home Menu
 @onready var fenetre_home: Window = $FenetreHome
-@onready var quitter_btn: TextureButton = $CanvasLayer/QuitterBtn
 @onready var infos_btn: TextureButton = $CanvasLayer/InfosBtn
 # Boutons
 @onready var exit_btn: TextureButton = $FenetreHome/ExitBtn
@@ -412,12 +411,6 @@ func _on_extra_stats_toggle_pressed() -> void:
 	else:
 		panneau_gauche.show()
 		extra_stats_toggle_btn.texture_normal = text_moins
-
-# Bouton Quitter
-func _on_quitter_btn_pressed():
-	# Ouvre la fenêtre de confirmation pour quitter le jeu
-	fenetre_exit.popup_centered()
-
 	
 ## Home Menu
 func _on_home_btn_pressed() -> void:
@@ -425,18 +418,19 @@ func _on_home_btn_pressed() -> void:
 		fenetre_home.hide()
 	else:
 		fenetre_home.show()
-	
+		
+func _on_fenetre_home_close_requested() -> void:
+	fenetre_home.hide()
+
 # Bouton Exit du Menu
 func _on_exit_btn_pressed() -> void:
 	# Ouvre la fenêtre de confirmation pour quitter le jeu
+	fenetre_home.hide()
 	fenetre_exit.popup_centered()
+	
 # Si on confirme...
 func _on_fenetre_exit_confirmed():
 	get_tree().quit()
-# Si on annule...
-func _on_fenetre_exit_canceled() -> void:
-	fenetre_home.hide()
-	fenetre_home.show()
 
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche

@@ -1308,10 +1308,11 @@ autowrap_mode = 2
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
 anchors_preset = -1
 anchor_right = 0.001
+anchor_bottom = 0.002
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 256.848
-offset_bottom = 57.0
+offset_bottom = 55.704
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
 layout_mode = 2
@@ -1364,16 +1365,6 @@ texture_normal = ExtResource("9_d2tun")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="QuitterBtn" type="TextureButton" parent="CanvasLayer" unique_id=596492083]
-anchors_preset = -1
-offset_left = 1089.0
-offset_top = 2.0
-offset_right = 1141.0
-offset_bottom = 54.0
-texture_normal = ExtResource("10_d2tun")
-ignore_texture_size = true
-stretch_mode = 5
-
 [node name="HomeBtn" type="TextureButton" parent="CanvasLayer" unique_id=2067168536]
 offset_left = 19.0
 offset_top = 574.0
@@ -1417,6 +1408,7 @@ oversampling_override = 1.0
 title = "Route des innovations"
 initial_position = 1
 size = Vector2i(400, 100)
+visible = false
 
 [node name="CameraInnovations" type="Camera2D" parent="InnovationsZoom" unique_id=1119648779]
 
@@ -1436,22 +1428,21 @@ oversampling_override = 1.0
 title = "Menu"
 initial_position = 1
 size = Vector2i(500, 300)
-visible = false
 
 [node name="SettingsBtn" type="TextureButton" parent="FenetreHome" unique_id=305389607]
-offset_left = 50.0
-offset_top = 76.0
-offset_right = 225.0
-offset_bottom = 116.0
+offset_left = 56.0
+offset_top = 168.0
+offset_right = 231.0
+offset_bottom = 208.0
 texture_normal = ExtResource("18_qrm0x")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="CreditsBtn" type="TextureButton" parent="FenetreHome" unique_id=1942832810]
-offset_left = 279.0
-offset_top = 74.0
-offset_right = 454.0
-offset_bottom = 114.0
+offset_left = 280.0
+offset_top = 81.0
+offset_right = 455.0
+offset_bottom = 121.0
 texture_normal = ExtResource("19_wo1nm")
 ignore_texture_size = true
 stretch_mode = 4
@@ -1466,19 +1457,19 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="RestartBtn" type="TextureButton" parent="FenetreHome" unique_id=1185066012]
-offset_left = 49.0
-offset_top = 165.0
-offset_right = 224.0
-offset_bottom = 205.0
+offset_left = 54.0
+offset_top = 84.0
+offset_right = 229.0
+offset_bottom = 124.0
 texture_normal = ExtResource("20_a66ic")
 ignore_texture_size = true
 stretch_mode = 4
 
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
-[connection signal="pressed" from="CanvasLayer/QuitterBtn" to="." method="_on_quitter_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="close_requested" from="InnovationsZoom" to="." method="_on_innovations_zoom_close_requested"]
 [connection signal="canceled" from="FenetreExit" to="." method="_on_fenetre_exit_canceled"]
 [connection signal="confirmed" from="FenetreExit" to="." method="_on_fenetre_exit_confirmed"]
+[connection signal="close_requested" from="FenetreHome" to="." method="_on_fenetre_home_close_requested"]
 [connection signal="pressed" from="FenetreHome/ExitBtn" to="." method="_on_exit_btn_pressed"]

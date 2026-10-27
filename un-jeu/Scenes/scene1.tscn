@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
 [ext_resource type="Texture2D" uid="uid://q51w8joijb8q" path="res://Assets/Boutons/exit.png" id="10_d2tun"]
 [ext_resource type="Script" uid="uid://b7hlhr4wceuxm" path="res://Scripts/population_manager.gd" id="11_pop_mgr"]
+[ext_resource type="Texture2D" uid="uid://2ccxe0lebxjo" path="res://Assets/Boutons/home.png" id="12_n1oij"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
+[ext_resource type="Texture2D" uid="uid://dqh1gg6ykr1w6" path="res://Assets/Boutons/infos.png" id="13_ust72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1163,9 +1165,10 @@ tile_set = SubResource("TileSet_wu2rp")
 
 [node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=892130975]
 anchors_preset = -1
-offset_top = 107.0
-offset_right = 229.0
-offset_bottom = 627.0
+offset_left = 5.0
+offset_top = 106.0
+offset_right = 234.0
+offset_bottom = 645.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_461wq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
@@ -1347,10 +1350,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExtraStatsToggle" type="TextureButton" parent="CanvasLayer" unique_id=1024059303]
-offset_left = 74.0
-offset_top = 549.0
-offset_right = 149.0
-offset_bottom = 624.0
+anchors_preset = -1
+offset_left = 90.0
+offset_top = 574.0
+offset_right = 150.0
+offset_bottom = 634.0
 texture_normal = ExtResource("9_d2tun")
 ignore_texture_size = true
 stretch_mode = 5
@@ -1362,6 +1366,24 @@ offset_top = 2.0
 offset_right = 1141.0
 offset_bottom = 54.0
 texture_normal = ExtResource("10_d2tun")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HomeBtn" type="TextureButton" parent="CanvasLayer" unique_id=2067168536]
+offset_left = 19.0
+offset_top = 574.0
+offset_right = 79.0
+offset_bottom = 634.0
+texture_normal = ExtResource("12_n1oij")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="InfosBtn" type="TextureButton" parent="CanvasLayer" unique_id=1036149249]
+offset_left = 161.0
+offset_top = 574.0
+offset_right = 221.0
+offset_bottom = 634.0
+texture_normal = ExtResource("13_ust72")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1403,6 +1425,11 @@ size = Vector2i(300, 90)
 ok_button_text = "Oui"
 dialog_text = "Voulez-vous vraiment quitter le jeu ?"
 cancel_button_text = "Annuler"
+
+[node name="Home" type="Window" parent="." unique_id=1459846854]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]

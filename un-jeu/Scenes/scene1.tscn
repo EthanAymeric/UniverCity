@@ -1169,7 +1169,7 @@ tile_set = SubResource("TileSet_wu2rp")
 [node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=892130975]
 anchors_preset = -1
 offset_left = 5.0
-offset_top = 106.0
+offset_top = 208.0
 offset_right = 234.0
 offset_bottom = 645.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_461wq")
@@ -1254,9 +1254,9 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="PanneauTimer" type="PanelContainer" parent="CanvasLayer" unique_id=14508089]
-offset_left = 712.0
+offset_left = 564.0
 offset_top = 2.0
-offset_right = 858.0
+offset_right = 710.0
 offset_bottom = 52.0
 
 [node name="TimerLive" type="Label" parent="CanvasLayer/PanneauTimer" unique_id=1662757551]
@@ -1266,10 +1266,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelPopulation" type="PanelContainer" parent="CanvasLayer" unique_id=1482903412]
-offset_left = 516.0
-offset_top = 3.0
-offset_right = 673.0
-offset_bottom = 56.0
+offset_left = 3.0
+offset_top = 142.0
+offset_right = 236.0
+offset_bottom = 195.0
 
 [node name="PopulationLabel" type="Label" parent="CanvasLayer/PanelPopulation" unique_id=1938472615]
 layout_mode = 2
@@ -1278,10 +1278,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelArgent" type="PanelContainer" parent="CanvasLayer" unique_id=290735369]
-offset_left = 892.0
-offset_top = 1.0
-offset_right = 1048.0
-offset_bottom = 51.0
+offset_left = 3.0
+offset_top = 74.0
+offset_right = 236.0
+offset_bottom = 124.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=532559040]
 layout_mode = 2
@@ -1308,11 +1308,10 @@ autowrap_mode = 2
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
 anchors_preset = -1
 anchor_right = 0.001
-anchor_bottom = 0.002
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 256.848
-offset_bottom = 55.704
+offset_right = 233.848
+offset_bottom = 57.0
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
 layout_mode = 2
@@ -1334,8 +1333,9 @@ alignment = 1
 
 [node name="DescScience" type="Label" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=423598108]
 layout_mode = 2
-text = "          Points de science :"
+text = "Points de science :"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ProgressBarScience" type="ProgressBar" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=862718295]
 custom_minimum_size = Vector2(70, 20)
@@ -1428,6 +1428,7 @@ oversampling_override = 1.0
 title = "Menu"
 initial_position = 1
 size = Vector2i(500, 300)
+visible = false
 
 [node name="SettingsBtn" type="TextureButton" parent="FenetreHome" unique_id=305389607]
 offset_left = 56.0

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nqt2of0kisw" path="res://Assets/Batiment/fermeLock.png" id="4_2ni1t"]
 [ext_resource type="Texture2D" uid="uid://mrpxqe3rcaa7" path="res://Assets/batiment.png" id="4_2nq82"]
 [ext_resource type="Texture2D" uid="uid://024mi0ey68k" path="res://Assets/A-small-country-house,-viewed-from-the-f.svg" id="5_arbli"]
+[ext_resource type="Texture2D" uid="uid://opuy1wmt368y" path="res://Assets/Ressources/panneau_gauche.png" id="6_wo1nm"]
 [ext_resource type="Texture2D" uid="uid://bqvqhscacvjw8" path="res://Assets/Ressources/money.png" id="7_5dfij"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
 [ext_resource type="Texture2D" uid="uid://b8jrbslwgm4k4" path="res://Assets/Ressources/science.png" id="7_wplxe"]
@@ -1121,8 +1122,8 @@ sources/1 = SubResource("TileSetAtlasSource_1mf5u")
 sources/0 = SubResource("TileSetAtlasSource_s2pjx")
 sources/2 = SubResource("TileSetAtlasSource_81am6")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_461wq"]
-bg_color = Color(0, 0, 0, 0.3137255)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xeq1"]
+texture = ExtResource("6_wo1nm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xna76"]
 bg_color = Color(0.8431838, 0.8431839, 0.84318364, 0.5176471)
@@ -1168,11 +1169,10 @@ tile_set = SubResource("TileSet_wu2rp")
 
 [node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=892130975]
 anchors_preset = -1
-offset_left = 5.0
-offset_top = 208.0
+offset_top = 234.0
 offset_right = 234.0
-offset_bottom = 645.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_461wq")
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2xeq1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
 layout_mode = 2

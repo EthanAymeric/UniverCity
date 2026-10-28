@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://mrpxqe3rcaa7" path="res://Assets/batiment.png" id="4_2nq82"]
 [ext_resource type="Texture2D" uid="uid://024mi0ey68k" path="res://Assets/A-small-country-house,-viewed-from-the-f.svg" id="5_arbli"]
 [ext_resource type="Texture2D" uid="uid://opuy1wmt368y" path="res://Assets/Ressources/panneau_gauche.png" id="6_wo1nm"]
-[ext_resource type="Texture2D" uid="uid://bqvqhscacvjw8" path="res://Assets/Ressources/money.png" id="7_5dfij"]
+[ext_resource type="Texture2D" uid="uid://c055iyvynhath" path="res://Assets/Ressources/spritesheet_innovations.png" id="7_a66ic"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
-[ext_resource type="Texture2D" uid="uid://b8jrbslwgm4k4" path="res://Assets/Ressources/science.png" id="7_wplxe"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
 [ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
 [ext_resource type="Texture2D" uid="uid://q51w8joijb8q" path="res://Assets/Boutons/exit.png" id="10_d2tun"]
+[ext_resource type="Texture2D" uid="uid://qoil65nt3i5o" path="res://Assets/Ressources/spritesheet_icons.png" id="10_dra8o"]
 [ext_resource type="Script" uid="uid://b7hlhr4wceuxm" path="res://Scripts/population_manager.gd" id="11_pop_mgr"]
 [ext_resource type="Texture2D" uid="uid://2ccxe0lebxjo" path="res://Assets/Boutons/home.png" id="12_n1oij"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
@@ -1125,6 +1125,11 @@ sources/2 = SubResource("TileSetAtlasSource_81am6")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xeq1"]
 texture = ExtResource("6_wo1nm")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu2rp"]
+atlas = ExtResource("7_a66ic")
+region = Rect2(5.2000427, 7.0000305, 297.5999, 300.7999)
+margin = Rect2(10, 10, 0, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xna76"]
 bg_color = Color(0.8431838, 0.8431839, 0.84318364, 0.5176471)
 corner_radius_top_left = 45
@@ -1143,7 +1148,28 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xna76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xna76"]
+atlas = ExtResource("10_dra8o")
+region = Rect2(869.8, 333.09998, 290.2, 203.39996)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu2rp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wo1nm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a66ic"]
+atlas = ExtResource("10_dra8o")
+region = Rect2(328.8, 294.19995, 214.39996, 277.40002)
+
 [sub_resource type="LabelSettings" id="LabelSettings_1mf5u"]
+font_size = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a66ic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dra8o"]
+atlas = ExtResource("10_dra8o")
+region = Rect2(45.400024, 289.8999, 198, 288.1001)
 
 [node name="Node2D" type="Node2D" unique_id=1112657240]
 scale = Vector2(3, 3)
@@ -1167,15 +1193,29 @@ tile_set = SubResource("TileSet_wu2rp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2094931427]
 
-[node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=892130975]
+[node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=1808554513]
 anchors_preset = -1
-offset_top = 234.0
+offset_top = -2.0
 offset_right = 234.0
 offset_bottom = 649.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2xeq1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=382063559]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = SubResource("AtlasTexture_wu2rp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=810747896]
+layout_mode = 2
+theme_override_constants/margin_top = 300
 
 [node name="Control" type="Control" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1435654588]
 layout_mode = 2
@@ -1266,31 +1306,50 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelPopulation" type="PanelContainer" parent="CanvasLayer" unique_id=1482903412]
-offset_left = 3.0
-offset_top = 142.0
-offset_right = 236.0
-offset_bottom = 195.0
+offset_left = -1.0
+offset_top = 350.0
+offset_right = 232.0
+offset_bottom = 403.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xna76")
 
-[node name="PopulationLabel" type="Label" parent="CanvasLayer/PanelPopulation" unique_id=1938472615]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelPopulation" unique_id=588367677]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelPopulation/HBoxContainer" unique_id=1656382606]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_xna76")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BoxPopulation" type="VBoxContainer" parent="CanvasLayer/PanelPopulation/HBoxContainer" unique_id=988346547]
+layout_mode = 2
+
+[node name="PopulationLabel" type="Label" parent="CanvasLayer/PanelPopulation/HBoxContainer/BoxPopulation" unique_id=1938472615]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Habitants : 4"
+label_settings = SubResource("LabelSettings_wu2rp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelArgent" type="PanelContainer" parent="CanvasLayer" unique_id=290735369]
 offset_left = 3.0
-offset_top = 74.0
+offset_top = 260.0
 offset_right = 236.0
-offset_bottom = 124.0
+offset_bottom = 310.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wo1nm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=532559040]
 layout_mode = 2
 alignment = 1
 
 [node name="TextArgent" type="TextureRect" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=2111833906]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("7_5dfij")
-expand_mode = 3
+texture = SubResource("AtlasTexture_a66ic")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="BoxArgent" type="VBoxContainer" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=1854317214]
@@ -1309,9 +1368,10 @@ autowrap_mode = 2
 anchors_preset = -1
 anchor_right = 0.001
 offset_left = 1.0
-offset_top = 1.0
+offset_top = 200.0
 offset_right = 233.848
-offset_bottom = 57.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a66ic")
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
 layout_mode = 2
@@ -1321,7 +1381,7 @@ alignment = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("7_wplxe")
+texture_normal = SubResource("AtlasTexture_dra8o")
 ignore_texture_size = true
 stretch_mode = 5
 

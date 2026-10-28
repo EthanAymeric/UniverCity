@@ -16,7 +16,7 @@ extends Node2D
 @onready var money: Label = $CanvasLayer/PanelArgent/HBoxContainer/BoxArgent/Argent
 @onready var progress_bar_science: ProgressBar = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience
 @onready var science: Label = $CanvasLayer/PanelScience/ContainerScience/BoxScience/ProgressBarScience/Science
-@onready var population_label: Label = $CanvasLayer/PanelPopulation/PopulationLabel
+@onready var population_label: Label = $CanvasLayer/PanelPopulation/HBoxContainer/BoxPopulation/PopulationLabel
 @onready var population_manager: PopulationManager = $PopulationManager
 
 ## Timer
@@ -32,6 +32,14 @@ extends Node2D
 # Bouton pour afficher les stats supplémentaires
 @onready var extra_stats_toggle_btn: TextureButton = $CanvasLayer/ExtraStatsToggle
 @onready var panneau_gauche: PanelContainer = $CanvasLayer/PanneauGauche
+@onready var panel_argent: PanelContainer = $CanvasLayer/PanelArgent
+@onready var panel_science: PanelContainer = $CanvasLayer/PanelScience
+@onready var panel_population: PanelContainer = $CanvasLayer/PanelPopulation
+
+# Possitions des éléments du panneau latéral gauche
+@onready var position_argent: Vector2 = $CanvasLayer/PanelArgent.position
+@onready var position_science: Vector2 = $CanvasLayer/PanelScience.position
+@onready var position_population: Vector2 = $CanvasLayer/PanelPopulation.position
 
 ## Scène de bâtiment par défaut
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
@@ -366,7 +374,7 @@ func _on_population_changed(_total: int) -> void:
 	show_population()
 
 func show_population() -> void:
-	population_label.text = "Habitants : %d" % population_manager.get_total_population()
+	population_label.text = "%d" % population_manager.get_total_population()
 
 ## Gestion du WorldTimer
 
@@ -403,14 +411,21 @@ func _on_zoomin_route_pressed() -> void:
 	else:
 		popup.show()
 		zoomin_route_btn.texture_normal = text_moins
-
+		
+# à modifier pour mon panneau lateral
 func _on_extra_stats_toggle_pressed() -> void:
 	if panneau_gauche.visible:
 		panneau_gauche.hide()
 		extra_stats_toggle_btn.texture_normal = text_plus
+		panel_argent.position = Vector2(300,2); 
+		panel_science.position = Vector2(2,2); 
+		panel_population.position = Vector2(900,2); 
 	else:
 		panneau_gauche.show()
 		extra_stats_toggle_btn.texture_normal = text_moins
+		panel_argent.position = position_argent; 
+		panel_science.position = position_science; 
+		panel_population.position = position_population; 
 	
 ## Home Menu
 func _on_home_btn_pressed() -> void:

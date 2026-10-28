@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
 [ext_resource type="Texture2D" uid="uid://q51w8joijb8q" path="res://Assets/Boutons/exit.png" id="10_d2tun"]
 [ext_resource type="Texture2D" uid="uid://qoil65nt3i5o" path="res://Assets/Ressources/spritesheet_icons.png" id="10_dra8o"]
+[ext_resource type="Texture2D" uid="uid://yjyauga4h3at" path="res://Assets/Boutons/spritesheet_menu_buttons.png" id="11_a66ic"]
 [ext_resource type="Script" uid="uid://b7hlhr4wceuxm" path="res://Scripts/population_manager.gd" id="11_pop_mgr"]
 [ext_resource type="Texture2D" uid="uid://2ccxe0lebxjo" path="res://Assets/Boutons/home.png" id="12_n1oij"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
@@ -1165,7 +1166,9 @@ region = Rect2(328.8, 294.19995, 214.39996, 277.40002)
 [sub_resource type="LabelSettings" id="LabelSettings_1mf5u"]
 font_size = 30
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a66ic"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wo1nm"]
+texture = ExtResource("11_a66ic")
+region_rect = Rect2(0, 163.09094, 638.5, 168.90906)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dra8o"]
 atlas = ExtResource("10_dra8o")
@@ -1371,7 +1374,7 @@ offset_left = 1.0
 offset_top = 200.0
 offset_right = 233.848
 offset_bottom = 256.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_a66ic")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wo1nm")
 
 [node name="ContainerScience" type="HBoxContainer" parent="CanvasLayer/PanelScience" unique_id=1629756499]
 layout_mode = 2
@@ -1390,12 +1393,6 @@ custom_minimum_size = Vector2(150, 10)
 layout_mode = 2
 offset_transform_enabled = true
 alignment = 1
-
-[node name="DescScience" type="Label" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=423598108]
-layout_mode = 2
-text = "Points de science :"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ProgressBarScience" type="ProgressBar" parent="CanvasLayer/PanelScience/ContainerScience/BoxScience" unique_id=862718295]
 custom_minimum_size = Vector2(70, 20)

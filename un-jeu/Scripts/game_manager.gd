@@ -61,8 +61,8 @@ extends Node2D
 
 ## Textures
 # Boutons pour les extra stats
-var text_plus: Texture2D = preload("res://Assets/Boutons/plus.png")
-var text_moins: Texture2D = preload("res://Assets/Boutons/moins.png")
+var text_plus: Texture2D = preload("res://Assets/Boutons/plus_icon.png")
+var text_moins: Texture2D = preload("res://Assets/Boutons/close_icon.png")
 var text_science: Texture2D = preload("res://Assets/Ressources/science.png")
 
 ## Coût de placement d'un bâtiment

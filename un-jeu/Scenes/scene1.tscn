@@ -11,14 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://c055iyvynhath" path="res://Assets/Ressources/spritesheet_innovations.png" id="7_a66ic"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
-[ext_resource type="Texture2D" uid="uid://bg3k27cr745aq" path="res://Assets/Boutons/moins.png" id="9_d2tun"]
 [ext_resource type="Texture2D" uid="uid://q51w8joijb8q" path="res://Assets/Boutons/exit.png" id="10_d2tun"]
 [ext_resource type="Texture2D" uid="uid://qoil65nt3i5o" path="res://Assets/Ressources/spritesheet_icons.png" id="10_dra8o"]
 [ext_resource type="Texture2D" uid="uid://yjyauga4h3at" path="res://Assets/Boutons/spritesheet_menu_buttons.png" id="11_a66ic"]
 [ext_resource type="Script" uid="uid://b7hlhr4wceuxm" path="res://Scripts/population_manager.gd" id="11_pop_mgr"]
-[ext_resource type="Texture2D" uid="uid://2ccxe0lebxjo" path="res://Assets/Boutons/home.png" id="12_n1oij"]
+[ext_resource type="Texture2D" uid="uid://bd5hpgqffwpqa" path="res://Assets/Boutons/spritesheet (1).png" id="12_qrm0x"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
-[ext_resource type="Texture2D" uid="uid://dqh1gg6ykr1w6" path="res://Assets/Boutons/infos.png" id="13_ust72"]
 [ext_resource type="Texture2D" uid="uid://bcsxoypfaf3ci" path="res://Assets/Boutons/settings.png" id="18_qrm0x"]
 [ext_resource type="Texture2D" uid="uid://diqsde53puxxc" path="res://Assets/Boutons/star_credits.png" id="19_wo1nm"]
 [ext_resource type="Texture2D" uid="uid://c715bni7p4rvt" path="res://Assets/Boutons/restart.png" id="20_a66ic"]
@@ -1149,7 +1147,9 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xna76"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_we4pl"]
+texture = ExtResource("11_a66ic")
+region_rect = Rect2(0, 167.2, 635.968, 164.8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xna76"]
 atlas = ExtResource("10_dra8o")
@@ -1157,14 +1157,15 @@ region = Rect2(869.8, 333.09998, 290.2, 203.39996)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu2rp"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wo1nm"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3uwe"]
+texture = ExtResource("11_a66ic")
+region_rect = Rect2(-0.35305786, 166.99998, 637.2001, 161.8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a66ic"]
 atlas = ExtResource("10_dra8o")
 region = Rect2(328.8, 294.19995, 214.39996, 277.40002)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1mf5u"]
-font_size = 30
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wo1nm"]
 texture = ExtResource("11_a66ic")
@@ -1173,6 +1174,18 @@ region_rect = Rect2(0, 163.09094, 638.5, 168.90906)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dra8o"]
 atlas = ExtResource("10_dra8o")
 region = Rect2(45.400024, 289.8999, 198, 288.1001)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo1nm"]
+atlas = ExtResource("12_qrm0x")
+region = Rect2(376.2565, 375.9337, 377.2098, 376.0663)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chwmy"]
+atlas = ExtResource("12_qrm0x")
+region = Rect2(376.95316, -0.038366318, 377.0234, 374.97437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_allfu"]
+atlas = ExtResource("12_qrm0x")
+region = Rect2(755.21954, 0.21276093, 374.97455, 374.43893)
 
 [node name="Node2D" type="Node2D" unique_id=1112657240]
 scale = Vector2(3, 3)
@@ -1198,9 +1211,8 @@ tile_set = SubResource("TileSet_wu2rp")
 
 [node name="PanneauGauche" type="PanelContainer" parent="CanvasLayer" unique_id=1808554513]
 anchors_preset = -1
-offset_top = -2.0
 offset_right = 234.0
-offset_bottom = 649.0
+offset_bottom = 651.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2xeq1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
@@ -1218,7 +1230,7 @@ stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=810747896]
 layout_mode = 2
-theme_override_constants/margin_top = 300
+theme_override_constants/margin_top = 250
 
 [node name="Control" type="Control" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1435654588]
 layout_mode = 2
@@ -1310,10 +1322,10 @@ vertical_alignment = 1
 
 [node name="PanelPopulation" type="PanelContainer" parent="CanvasLayer" unique_id=1482903412]
 offset_left = -1.0
-offset_top = 350.0
+offset_top = 315.0
 offset_right = 232.0
-offset_bottom = 403.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_xna76")
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_we4pl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelPopulation" unique_id=588367677]
 layout_mode = 2
@@ -1342,14 +1354,14 @@ offset_left = 3.0
 offset_top = 260.0
 offset_right = 236.0
 offset_bottom = 310.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_wo1nm")
+theme_override_styles/panel = SubResource("StyleBoxTexture_y3uwe")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelArgent" unique_id=532559040]
 layout_mode = 2
 alignment = 1
 
 [node name="TextArgent" type="TextureRect" parent="CanvasLayer/PanelArgent/HBoxContainer" unique_id=2111833906]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = SubResource("AtlasTexture_a66ic")
 expand_mode = 1
@@ -1414,20 +1426,20 @@ vertical_alignment = 1
 
 [node name="ExtraStatsToggle" type="TextureButton" parent="CanvasLayer" unique_id=1024059303]
 anchors_preset = -1
-offset_left = 90.0
-offset_top = 574.0
-offset_right = 150.0
-offset_bottom = 634.0
-texture_normal = ExtResource("9_d2tun")
+offset_left = 15.0
+offset_top = 575.0
+offset_right = 75.0
+offset_bottom = 635.0
+texture_normal = SubResource("AtlasTexture_wo1nm")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HomeBtn" type="TextureButton" parent="CanvasLayer" unique_id=2067168536]
-offset_left = 19.0
-offset_top = 574.0
-offset_right = 79.0
-offset_bottom = 634.0
-texture_normal = ExtResource("12_n1oij")
+offset_left = 89.0
+offset_top = 575.0
+offset_right = 149.0
+offset_bottom = 635.0
+texture_normal = SubResource("AtlasTexture_chwmy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1436,7 +1448,7 @@ offset_left = 161.0
 offset_top = 574.0
 offset_right = 221.0
 offset_bottom = 634.0
-texture_normal = ExtResource("13_ust72")
+texture_normal = SubResource("AtlasTexture_allfu")
 ignore_texture_size = true
 stretch_mode = 5
 

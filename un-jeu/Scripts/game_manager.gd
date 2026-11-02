@@ -36,6 +36,10 @@ extends Node2D
 @onready var panel_science: PanelContainer = $CanvasLayer/PanelScience
 @onready var panel_population: PanelContainer = $CanvasLayer/PanelPopulation
 
+# Boutons home et info
+@onready var bouton_home : TextureButton = $CanvasLayer/HomeBtn
+@onready var bouton_info: TextureButton = $CanvasLayer/InfosBtn
+
 # Possitions des éléments du panneau latéral gauche
 @onready var position_argent: Vector2 = $CanvasLayer/PanelArgent.position
 @onready var position_science: Vector2 = $CanvasLayer/PanelScience.position
@@ -419,13 +423,18 @@ func _on_extra_stats_toggle_pressed() -> void:
 		extra_stats_toggle_btn.texture_normal = text_plus
 		panel_argent.position = Vector2(300,2); 
 		panel_science.position = Vector2(2,2); 
-		panel_population.position = Vector2(900,2); 
+		panel_population.position = Vector2(900,2);
+		bouton_home.visible = false;
+		bouton_info.visible = false;
+		
 	else:
 		panneau_gauche.show()
 		extra_stats_toggle_btn.texture_normal = text_moins
 		panel_argent.position = position_argent; 
 		panel_science.position = position_science; 
 		panel_population.position = position_population; 
+		bouton_home.visible = true;
+		bouton_info.visible = true;
 	
 ## Home Menu
 func _on_home_btn_pressed() -> void:

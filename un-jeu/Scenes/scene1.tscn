@@ -1123,10 +1123,9 @@ sources/2 = SubResource("TileSetAtlasSource_81am6")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xeq1"]
 texture = ExtResource("6_wo1nm")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wu2rp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iytj"]
 atlas = ExtResource("7_a66ic")
-region = Rect2(5.2000427, 7.0000305, 297.5999, 300.7999)
-margin = Rect2(10, 10, 0, 0)
+region = Rect2(2.7103882, 0.29969788, 304.68076, 306.59692)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xna76"]
 bg_color = Color(0.8431838, 0.8431839, 0.84318364, 0.5176471)
@@ -1242,14 +1241,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2xeq1")
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=382063559]
-custom_minimum_size = Vector2(180, 180)
+[node name="BoutonInnovations" type="TextureButton" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1263065057]
+custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-texture = SubResource("AtlasTexture_wu2rp")
-expand_mode = 1
+texture_normal = SubResource("AtlasTexture_5iytj")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=810747896]
@@ -1403,9 +1399,8 @@ autowrap_mode = 2
 
 [node name="PanelScience" type="PanelContainer" parent="CanvasLayer" unique_id=583108545]
 anchors_preset = -1
-anchor_right = 0.001
 offset_top = 200.0
-offset_right = 233.848
+offset_right = 235.0
 offset_bottom = 256.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_wo1nm")
 
@@ -1588,6 +1583,7 @@ scale = Vector2(0.2, 0.2)
 texture_normal = SubResource("AtlasTexture_461wq")
 stretch_mode = 0
 
+[connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_bouton_innovations_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
 [connection signal="pressed" from="CanvasLayer/HomeBtn" to="." method="_on_home_btn_pressed"]

@@ -10,7 +10,7 @@ extends Node2D
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
 # Bouton pour afficher la route des innovations
-@onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ContainerScience/ZoominRoute
+@onready var bouton_innovations: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
 ## Ressources : argent, science et population
 @onready var money: Label = $CanvasLayer/PanelArgent/HBoxContainer/BoxArgent/Argent
@@ -67,7 +67,9 @@ extends Node2D
 # Boutons pour les extra stats
 var text_plus: Texture2D = preload("res://Assets/Boutons/plus_icon.png")
 var text_moins: Texture2D = preload("res://Assets/Boutons/close_icon.png")
-var text_science: Texture2D = preload("res://Assets/Ressources/science.png")
+var text_innovations: AtlasTexture
+
+
 
 ## Coût de placement d'un bâtiment
 var current_building_cost: int = 100
@@ -108,8 +110,13 @@ func _ready() -> void:
 	show_science()
 	
 	# Prépare le bouton pour l'affichage de la fenêtre et cache cette dernière comme elle n'est pas encore appelée
-	zoomin_route_btn.pressed.connect(_on_zoomin_route_pressed)
+	bouton_innovations.pressed.connect(_on_bouton_innovations_pressed)
 	popup.hide()
+	
+	# Gestion de la texture des innovations : initialisation
+	text_innovations = AtlasTexture.new()
+	text_innovations.atlas = preload("res://Assets/Ressources/spritesheet_innovations.png")
+	text_innovations.region = Rect2(0, 0, 300, 300)
 	
 	# Affichage initial et connexion de la population
 	population_manager.population_changed.connect(_on_population_changed)
@@ -405,17 +412,18 @@ func _on_timer_tick(formatted_time: String) -> void:
 # Fermeture de la fenêtre des routes des innovations quand on clique sur la croix
 func _on_innovations_zoom_close_requested():
 	popup.hide()
-	zoomin_route_btn.texture_normal = text_science
+	bouton_innovations.texture_normal = text_innovations
 
-# Afficher/Cacher la route des innovations en appuyant sur le bouton
-func _on_zoomin_route_pressed() -> void:
+# Afficher/Cacher la route des innovations en appuyant sur le bouton	
+func _on_bouton_innovations_pressed():
 	if popup.visible:
 		popup.hide()
-		zoomin_route_btn.texture_normal = text_science
+		bouton_innovations.texture_normal = text_innovations
 	else:
 		popup.show()
-		zoomin_route_btn.texture_normal = text_moins
-		
+		bouton_innovations.texture_normal = text_moins
+	
+	
 # à modifier pour mon panneau lateral
 func _on_extra_stats_toggle_pressed() -> void:
 	if panneau_gauche.visible:

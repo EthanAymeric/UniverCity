@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diqsde53puxxc"
-path="res://.godot/imported/star_credits.png-f4fa6c9bf37226bfef93f9643aeb60bf.ctex"
+uid="uid://b1u716fxupeyp"
+path="res://.godot/imported/fond_delete.png-6477e023a0be16447b9efd5d8c1d8fdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boutons/star_credits.png"
-dest_files=["res://.godot/imported/star_credits.png-f4fa6c9bf37226bfef93f9643aeb60bf.ctex"]
+source_file="res://Assets/Ressources/fond_delete.png"
+dest_files=["res://.godot/imported/fond_delete.png-6477e023a0be16447b9efd5d8c1d8fdf.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2ccxe0lebxjo"
-path="res://.godot/imported/home.png-df2dbb7b43f135e640544f18e3c5a7fe.ctex"
+uid="uid://l8nup2mctfrg"
+path="res://.godot/imported/BarreBatiment.png-f0bb7d6ae51b62de5aa83908b7136aa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boutons/home.png"
-dest_files=["res://.godot/imported/home.png-df2dbb7b43f135e640544f18e3c5a7fe.ctex"]
+source_file="res://Assets/Ressources/BarreBatiment.png"
+dest_files=["res://.godot/imported/BarreBatiment.png-f0bb7d6ae51b62de5aa83908b7136aa3.ctex"]
 
 [params]
 

@@ -92,7 +92,7 @@ var is_deleting: bool = false
 var current_hovered_building: Building = null
 
 # Variables de score
-var score_money: int = 0
+var score_money: int = 2000
 var score_science: int = 0
 # Nombre max de points de science pour atteindre la prochaine innovation
 var max_science: int = 100;

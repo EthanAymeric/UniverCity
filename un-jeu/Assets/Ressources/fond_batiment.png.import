@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd5hpgqffwpqa"
-path="res://.godot/imported/spritesheet (1).png-492ec6cf243a887db4aab32207cc744c.ctex"
+uid="uid://dngyaeyevjm0g"
+path="res://.godot/imported/fond_batiment.png-8a76b60b7565a6e73db485a1fb2a056c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boutons/spritesheet (1).png"
-dest_files=["res://.godot/imported/spritesheet (1).png-492ec6cf243a887db4aab32207cc744c.ctex"]
+source_file="res://Assets/Ressources/fond_batiment.png"
+dest_files=["res://.godot/imported/fond_batiment.png-8a76b60b7565a6e73db485a1fb2a056c.ctex"]
 
 [params]
 

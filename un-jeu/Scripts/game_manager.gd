@@ -7,7 +7,7 @@ extends Node2D
 @onready var buildings_container: Node2D = $Buildings
 @onready var preview_sprite: Sprite2D = $PreviewSprite
 @onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
-@onready var delete_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/delete
+@onready var delete_btn: TextureButton = $CanvasLayer/BarreDelete/delete
 @onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
 # Bouton pour afficher la route des innovations
 @onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ContainerScience/ZoominRoute
@@ -21,7 +21,7 @@ extends Node2D
 
 ## Timer
 # Label du timer qui affiche le temps à chaque fois
-@onready var timer_live: Label = $CanvasLayer/PanneauTimer/TimerLive
+@onready var timer_live: Label = $CanvasLayer/PanneauTimer/HBoxContainer/BoxTimer/TimerLive
 # WorldTimer
 @onready var world_timer: GameTimer = $WorldTimer
 
@@ -52,14 +52,24 @@ extends Node2D
 ## Fenêtre Quitter
 @onready var fenetre_exit: ConfirmationDialog = $FenetreExit
 
+## Fenêtre Recommencer
+@onready var fenetre_restart: ConfirmationDialog = $FenetreRestart
+
 ## Home Menu
 @onready var fenetre_home: Window = $FenetreHome
 @onready var infos_btn: TextureButton = $CanvasLayer/InfosBtn
 # Boutons
+@onready var quit_btn: TextureButton = $FenetreHome/QuitBtn
 @onready var exit_btn: TextureButton = $FenetreHome/ExitBtn
 @onready var restart_btn: TextureButton = $FenetreHome/RestartBtn
 @onready var credits_btn: TextureButton = $FenetreHome/CreditsBtn
 @onready var settings_btn: TextureButton = $FenetreHome/SettingsBtn
+
+#Fenêtre Crédits
+@onready var fenetre_credit: Window = $FenetreCredit
+
+#Fenêtre Paramètres
+@onready var fenetre_param: Window = $FenetreParam
 
 
 
@@ -423,7 +433,7 @@ func _on_extra_stats_toggle_pressed() -> void:
 		extra_stats_toggle_btn.texture_normal = text_plus
 		panel_argent.position = Vector2(300,2); 
 		panel_science.position = Vector2(2,2); 
-		panel_population.position = Vector2(900,2);
+		panel_population.position = Vector2(600,2);
 		bouton_home.visible = false;
 		bouton_info.visible = false;
 		
@@ -445,6 +455,12 @@ func _on_home_btn_pressed() -> void:
 		
 func _on_fenetre_home_close_requested() -> void:
 	fenetre_home.hide()
+	
+func _on_fenetre_param_close_requested() -> void:
+	fenetre_param.hide()
+	
+func _on_fenetre_credit_close_requested() -> void:
+	fenetre_credit.hide()
 
 # Bouton Exit du Menu
 func _on_exit_btn_pressed() -> void:
@@ -455,7 +471,25 @@ func _on_exit_btn_pressed() -> void:
 # Si on confirme...
 func _on_fenetre_exit_confirmed():
 	get_tree().quit()
+	
+# Bouton X du Menu
+func _on_quit_btn_pressed() -> void:
+	fenetre_home.hide()
 
+func _on_restart_btn_pressed() -> void:
+	fenetre_home.hide()
+	fenetre_restart.popup_centered()
+	
+func _on_settings_btn_pressed() -> void:
+	fenetre_home.hide()
+	fenetre_param.popup_centered()
+	fenetre_param.visible = true
+	
+func _on_credits_btn_pressed() -> void:
+	fenetre_home.hide()
+	fenetre_credit.popup_centered()
+	fenetre_credit.visible = true
+	
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS

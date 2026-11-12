@@ -1434,7 +1434,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_qrm0x")
 layout_mode = 2
 alignment = 1
 
-[node name="Batiment1" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=987754146]
+[node name="Ferme" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=987754146]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1443,7 +1443,7 @@ texture_disabled = SubResource("AtlasTexture_4wnib")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment2" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1403575012]
+[node name="Usine" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1403575012]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1452,7 +1452,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment3" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=986022033]
+[node name="Gratte-ciel" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=986022033]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1461,7 +1461,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment4" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1331113317]
+[node name="Tour" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1331113317]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1470,7 +1470,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment5" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1433687701]
+[node name="Fusee" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=1433687701]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1479,7 +1479,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment6" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=486676622]
+[node name="Ecole" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=486676622]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1488,7 +1488,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment7" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=623144605]
+[node name="Lycee" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=623144605]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1497,7 +1497,7 @@ texture_disabled = ExtResource("4_2ni1t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Batiment8" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=256053450]
+[node name="Universite" type="TextureButton" parent="CanvasLayer/BarreBatiment/HBoxContainer" unique_id=256053450]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1856,6 +1856,14 @@ size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Usine" to="." method="_on_usine_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Gratte-ciel" to="." method="_on_gratteciel_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Tour" to="." method="_on_tour_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Fusee" to="." method="_on_fusee_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ecole" to="." method="_on_ecole_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Lycee" to="." method="_on_lycee_pressed"]
+[connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Universite" to="." method="_on_universite_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelScience/ContainerScience/ZoominRoute" to="." method="_on_zoomin_route_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExtraStatsToggle" to="." method="_on_extra_stats_toggle_pressed"]
 [connection signal="pressed" from="CanvasLayer/HomeBtn" to="." method="_on_home_btn_pressed"]

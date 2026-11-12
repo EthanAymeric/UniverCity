@@ -6,9 +6,19 @@ extends Node2D
 @onready var maisons: TileMapLayer = $Maisons
 @onready var buildings_container: Node2D = $Buildings
 @onready var preview_sprite: Sprite2D = $PreviewSprite
-@onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
+
+### Bouton de suppression de bâtiments
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreDelete/delete
-@onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+### Bâtiments
+@onready var ferme_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Ferme
+@onready var usine_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Usine
+@onready var gratte_ciel_btn: TextureButton = $"CanvasLayer/BarreBatiment/HBoxContainer/Gratte-ciel"
+@onready var tour_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Tour
+@onready var fusee_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Fusee
+@onready var ecole_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Ecole
+@onready var lycee_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Lycee
+@onready var universite_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Universite
+
 # Bouton pour afficher la route des innovations
 @onready var bouton_innovations: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
@@ -108,10 +118,12 @@ func _ready() -> void:
 	preview_sprite.z_index = 10
 	
 	# Connexion du bouton de bâtiment
-	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
-
+	ferme_btn.pressed.connect(_on_ferme_pressed)
+	usine_btn.pressed.connect(_on_usine_pressed)
+	
+	# Connexion du bouton de suppression des bâtiments
 	delete_btn.pressed.connect(_on_delete_pressed)
-	farm_btn.pressed.connect(_on_batiment_3_pressed)
+	
 	
 	# Affichage du score d'argent possédé
 	# TESTS
@@ -342,13 +354,7 @@ func delete_building(building: Building) -> void:
 			
 	building.queue_free()
 
-## Clic sur le bouton de la ferme dans l'interface
-func _on_batiment_1_pressed() -> void:
-	start_placement(building_scene)
-	
-func _on_batiment_3_pressed()->void:
-	start_placement(farm_scene)
-	
+
 func _on_delete_pressed() -> void:
 	if is_deleting:
 		cancel_deletion()
@@ -520,3 +526,29 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
+
+
+## Clic sur le bouton de la ferme dans l'interface
+func _on_ferme_pressed() -> void:
+	start_placement(farm_scene)
+	
+func _on_usine_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_gratteciel_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_tour_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_fusee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_ecole_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_lycee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_universite_pressed() -> void:
+	start_placement(building_scene)

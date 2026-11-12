@@ -81,7 +81,20 @@ extends Node2D
 #Fenêtre Paramètres
 @onready var fenetre_param: Window = $FenetreParam
 
+# Liste ordonnée de tous les boutons de bâtiments
+@onready var building_buttons: Array[TextureButton] = [
+	ferme_btn,
+	usine_btn,
+	gratte_ciel_btn,
+	tour_btn,
+	fusee_btn,
+	ecole_btn,
+	lycee_btn,
+	universite_btn
+]
 
+# Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
+var unlocked_building_count: int = 1
 
 ## Textures
 # Boutons pour les extra stats
@@ -117,13 +130,21 @@ func _ready() -> void:
 	preview_sprite.visible = false
 	preview_sprite.z_index = 10
 	
-	# Connexion du bouton de bâtiment
+	# Connexion des boutons de bâtiment
 	ferme_btn.pressed.connect(_on_ferme_pressed)
 	usine_btn.pressed.connect(_on_usine_pressed)
+	gratte_ciel_btn.pressed.connect(_on_gratteciel_pressed)
+	tour_btn.pressed.connect(_on_tour_pressed)
+	fusee_btn.pressed.connect(_on_fusee_pressed)
+	ecole_btn.pressed.connect(_on_ecole_pressed)
+	lycee_btn.pressed.connect(_on_lycee_pressed)
+	universite_btn.pressed.connect(_on_universite_pressed)
 	
 	# Connexion du bouton de suppression des bâtiments
 	delete_btn.pressed.connect(_on_delete_pressed)
 	
+	# Initialiser le verrouillage des bâtiments
+	update_building_unlocks()
 	
 	# Affichage du score d'argent possédé
 	# TESTS
@@ -360,11 +381,35 @@ func _on_delete_pressed() -> void:
 		cancel_deletion()
 	else:
 		start_deletion()
+		
+### Placement des bâtiments
+## Par exemple, clic sur le bouton de la ferme dans l'interface
+func _on_ferme_pressed() -> void:
+	start_placement(farm_scene)
+	
+func _on_usine_pressed() -> void:
+	start_placement(building_scene)
 
+func _on_gratteciel_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_tour_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_fusee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_ecole_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_lycee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_universite_pressed() -> void:
+	start_placement(building_scene)
 
 
 ### Gestion/Affichage de l'argent gagné
-
 # Affichage du score
 func show_money():
 	money.text = str(score_money) + " €"
@@ -388,6 +433,25 @@ func show_science():
 	
 func add_science(score):
 	score_science += score
+	
+	# Tant qu'on atteint le palier et qu'il reste des bâtiments à débloquer
+	while score_science >= max_science and unlocked_building_count < building_buttons.size():
+		score_science -= max_science # Réinitialise la jauge tout en reportant le surplus
+		unlocked_building_count += 1
+		update_building_unlocks()
+	
+	# Si tous les bâtiments sont débloqués, on bloque la jauge au maximum
+	if unlocked_building_count >= building_buttons.size() and score_science > max_science:
+		score_science = max_science
+
+## Active ou désactive l'intéractivité et l'affichage des boutons selon la progression
+func update_building_unlocks() -> void:
+	for i in range(building_buttons.size()):
+		var btn = building_buttons[i]
+		if i < unlocked_building_count:
+			btn.disabled = false  # Débloqué : cliquable et affichage normal
+		else:
+			btn.disabled = true   # Verrouillé : bascule automatiquement sur texture_disabled (fermeLock.png)
 
 func lose_science(score):
 	# Empêcher d'entrer en dette (pour l'instant)
@@ -526,29 +590,3 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
-
-
-## Clic sur le bouton de la ferme dans l'interface
-func _on_ferme_pressed() -> void:
-	start_placement(farm_scene)
-	
-func _on_usine_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_gratteciel_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_tour_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_fusee_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_ecole_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_lycee_pressed() -> void:
-	start_placement(building_scene)
-
-func _on_universite_pressed() -> void:
-	start_placement(building_scene)

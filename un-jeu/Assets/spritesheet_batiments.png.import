@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2vlsjvx6etxb"
-path="res://.godot/imported/Sans titre.png-c7850d1bb94a8e90e575fdfd43ff1414.ctex"
+uid="uid://bt2xi6vnsbhit"
+path="res://.godot/imported/spritesheet_batiments.png-de3ad9fc39fa9a3cfa4cbc3651e27c65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sans titre.png"
-dest_files=["res://.godot/imported/Sans titre.png-c7850d1bb94a8e90e575fdfd43ff1414.ctex"]
+source_file="res://Assets/spritesheet_batiments.png"
+dest_files=["res://.godot/imported/spritesheet_batiments.png-de3ad9fc39fa9a3cfa4cbc3651e27c65.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvlmsvm41mav7"
-path="res://.godot/imported/batiments2.jpeg-8fe1d00e8f2476b0844dfb415e7c94b8.ctex"
+uid="uid://dh44prorhayx3"
+path="res://.godot/imported/Planche d’icônes métiers et objets en vecteur.png-7b99dbbf6a23d884b7bc362f8915b3b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/batiments2.jpeg"
-dest_files=["res://.godot/imported/batiments2.jpeg-8fe1d00e8f2476b0844dfb415e7c94b8.ctex"]
+source_file="res://Assets/Ressources/Planche d’icônes métiers et objets en vecteur.png"
+dest_files=["res://.godot/imported/Planche d’icônes métiers et objets en vecteur.png-7b99dbbf6a23d884b7bc362f8915b3b3.ctex"]
 
 [params]
 

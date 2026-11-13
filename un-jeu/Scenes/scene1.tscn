@@ -15,15 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://coxd30vgn0ih7" path="res://Assets/Batiment/spritesheet_buildings.png" id="9_qrm0x"]
 [ext_resource type="Texture2D" uid="uid://qoil65nt3i5o" path="res://Assets/Ressources/spritesheet_icons.png" id="10_dra8o"]
 [ext_resource type="Texture2D" uid="uid://yjyauga4h3at" path="res://Assets/Boutons/spritesheet_menu_buttons.png" id="11_a66ic"]
-[ext_resource type="Texture2D" uid="uid://bt2xi6vnsbhit" path="res://Assets/Planche de sprites urbains colorés.png" id="11_dra8o"]
+[ext_resource type="Texture2D" uid="uid://bt2xi6vnsbhit" path="res://Assets/spritesheet_batiments.png" id="11_dra8o"]
 [ext_resource type="Script" uid="uid://b7hlhr4wceuxm" path="res://Scripts/population_manager.gd" id="11_pop_mgr"]
 [ext_resource type="Texture2D" uid="uid://b1u716fxupeyp" path="res://Assets/Ressources/fond_delete.png" id="12_a66ic"]
 [ext_resource type="Texture2D" uid="uid://bd5hpgqffwpqa" path="res://Assets/Boutons/spritesheet_buttons.png" id="12_qrm0x"]
 [ext_resource type="Script" uid="uid://c4urban7mgr12" path="res://Scripts/urban_manager.gd" id="12_urban_mgr"]
-[ext_resource type="Texture2D" uid="uid://dxbg7aafec2aj" path="res://Assets/Boutons/close_icon.png" id="12_wo1nm"]
 [ext_resource type="Texture2D" uid="uid://dytofnlfxsr2l" path="res://Assets/Ressources/time.png" id="15_dra8o"]
 [ext_resource type="Texture2D" uid="uid://swvkua4e8j10" path="res://Assets/Ressources/fond_menu.png" id="18_ust72"]
 [ext_resource type="Texture2D" uid="uid://i4p06vikntgp" path="res://Assets/Ressources/menu_word.png" id="19_4fqm2"]
+[ext_resource type="Texture2D" uid="uid://djfkjx3xxf32c" path="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png" id="19_6cohq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1137,7 +1137,7 @@ region = Rect2(0, 0, 308.87933, 313.4845)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fhrg"]
 atlas = ExtResource("9_chwmy")
-region = Rect2(0, 0, 449.6823, 457.7441)
+region = Rect2(2.2019348, 0, 443.4584, 439.3402)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dra8o"]
 bg_color = Color(0.84313726, 1, 0.84313726, 0.5176471)
@@ -1153,8 +1153,8 @@ corner_radius_top_left = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejaxs"]
-atlas = ExtResource("10_dra8o")
-region = Rect2(290, 0, 289.571, 288.844)
+atlas = ExtResource("9_chwmy")
+region = Rect2(445.62085, -0.6410217, 442.54504, 439.5251)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deps0"]
 bg_color = Color(0.84313726, 1, 0.84313726, 0.5176471)
@@ -1170,8 +1170,8 @@ corner_radius_top_left = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dllfk"]
-atlas = ExtResource("10_dra8o")
-region = Rect2(580, 0, 289.571, 288.844)
+atlas = ExtResource("9_chwmy")
+region = Rect2(888.3356, 0.667984, 443.5869, 437.7713)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xna76"]
 bg_color = Color(0.84313726, 1, 0.84313726, 0.5176471)
@@ -1194,48 +1194,77 @@ region_rect = Rect2(-3.9349213, -5.3648987, 1845.5858, 274.06955)
 atlas = ExtResource("11_dra8o")
 region = Rect2(0.23991394, 0.007183075, 229.5341, 214.60179)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a66ic"]
-load_path = "res://.godot/imported/spritesheet_buildings.png-2a1df1a0c89e781561903f8725826e49.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_chwmy"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(229.3504, -1.0647964, 224.96777, 221.27295)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wnib"]
-atlas = SubResource("CompressedTexture2D_a66ic")
+atlas = SubResource("AtlasTexture_chwmy")
 region = Rect2(201.29321, 8.883869, 197.7066, 180.00008)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_beyuu"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(1.1712646, 214.55888, 229.68375, 224.88597)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfauo"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(233.03217, 215.34164, 228.93213, 216.15448)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hoa6g"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(0, 1498.0001, 227.20038, 217.34448)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8dah"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(226.9743, 1496.7, 231.89746, 217.80005)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8u50"]
 atlas = ExtResource("11_dra8o")
-region = Rect2(0, 861.8998, 230.57938, 209.64209)
+region = Rect2(0, 873.49976, 230.57938, 169.00024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o62v7"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(228.90915, 867.27277, 229.09097, 181.73431)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahqdf"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(-1.5589905, 427.7601, 233.35928, 223.52017)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e30v2"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(231.70006, 428.69998, 223.30006, 215.60007)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fso4"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(1.7600021, 645.44, 229.43857, 213.33691)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qqef"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(224.8265, 649.2232, 231.40503, 201.65295)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7bhq"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(-0.57473755, 1068.008, 236.39914, 209.08826)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tiq"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(230.72, 1072.3698, 227.44351, 196.0249)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cvxh"]
 atlas = ExtResource("11_dra8o")
 region = Rect2(1.3602295, 1270.1759, 229.98859, 228.9237)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2yhw"]
+atlas = ExtResource("11_dra8o")
+region = Rect2(228.59027, 1270.42, 226.27008, 228.69006)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fqm2"]
 texture = ExtResource("12_a66ic")
 region_rect = Rect2(0, -0.9562988, 310.7948, 224.30963)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cohq"]
-atlas = ExtResource("10_dra8o")
-region = Rect2(578.375, 311.34253, 292.30762, 244.4754)
+atlas = ExtResource("9_chwmy")
+region = Rect2(856.34576, 489.6593, 479.49628, 374.83582)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xna76"]
 texture = ExtResource("11_a66ic")
@@ -1258,8 +1287,8 @@ texture = ExtResource("11_a66ic")
 region_rect = Rect2(-0.35305786, 166.99998, 637.2001, 161.8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a66ic"]
-atlas = ExtResource("10_dra8o")
-region = Rect2(328.8, 294.19995, 214.39996, 277.40002)
+atlas = ExtResource("9_chwmy")
+region = Rect2(482.3751, 463.91824, 353.69266, 414.21536)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1mf5u"]
 
@@ -1268,19 +1297,20 @@ texture = ExtResource("11_a66ic")
 region_rect = Rect2(0, 163.09094, 638.5, 168.90906)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dra8o"]
-atlas = ExtResource("10_dra8o")
-region = Rect2(45.400024, 289.8999, 198, 288.1001)
+atlas = ExtResource("9_chwmy")
+region = Rect2(60.40516, 472.51056, 315.7761, 409.87946)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrm0x"]
-atlas = ExtResource("12_wo1nm")
+atlas = ExtResource("19_6cohq")
+region = Rect2(1129.7957, 1127.4387, 1130.2576, 1128.5613)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_chwmy"]
-atlas = ExtResource("12_qrm0x")
-region = Rect2(376.95316, -0.038366318, 377.0234, 374.97437)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvcd7"]
+atlas = ExtResource("19_6cohq")
+region = Rect2(1131.4056, -6.7658443, 1133.4669, 1135.7664)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_allfu"]
-atlas = ExtResource("12_qrm0x")
-region = Rect2(755.21954, 0.21276093, 374.97455, 374.43893)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtfvw"]
+atlas = ExtResource("19_6cohq")
+region = Rect2(2262.783, 0, 1131.8167, 1129.7698)
 
 [sub_resource type="Theme" id="Theme_n1oij"]
 default_font_size = 20
@@ -1350,7 +1380,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2xeq1")
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche" unique_id=360220696]
 layout_mode = 2
 
-[node name="BtnInno" type="TextureButton" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1086496012]
+[node name="BoutonInnovations" type="TextureButton" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1086496012]
 custom_minimum_size = Vector2(150, 150)
 custom_maximum_size = Vector2(200, 200)
 layout_mode = 2
@@ -1363,32 +1393,45 @@ stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=810747896]
 layout_mode = 2
-theme_override_constants/margin_top = 150
+theme_override_constants/margin_top = 135
 
 [node name="Control" type="Control" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1435654588]
 layout_mode = 2
 
 [node name="Jauges" type="VBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer" unique_id=1595289699]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges" unique_id=1249750074]
 layout_mode = 2
-theme_override_constants/separation = 4
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer" unique_id=1100529108]
+custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("AtlasTexture_1fhrg")
 
-[node name="BarreNonQualifie" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer" unique_id=1606529841]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer" unique_id=1951216897]
+layout_mode = 2
+
+[node name="BarreBesoinNonQualifie" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer/VBoxContainer" unique_id=1606529841]
 custom_minimum_size = Vector2(170, 20)
 layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.83
 theme_override_styles/background = SubResource("StyleBoxFlat_dra8o")
 theme_override_styles/fill = SubResource("StyleBoxFlat_chwmy")
-value = 50.0
+value = 80.0
+
+[node name="BarreActuelNonQualifie" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer/VBoxContainer" unique_id=103998750]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.83
+theme_override_styles/background = SubResource("StyleBoxFlat_dra8o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_chwmy")
+value = 20.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges" unique_id=566142265]
 layout_mode = 2
@@ -1400,7 +1443,19 @@ custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ejaxs")
 
-[node name="BarreTech" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer2" unique_id=492443591]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer2" unique_id=1917897056]
+layout_mode = 2
+
+[node name="BarreBesoinTech" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer2/VBoxContainer" unique_id=492443591]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.83
+theme_override_styles/background = SubResource("StyleBoxFlat_deps0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0fso4")
+value = 50.0
+
+[node name="BarreActuelTech" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer2/VBoxContainer" unique_id=2027646690]
 custom_minimum_size = Vector2(170, 20)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1419,14 +1474,24 @@ custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("AtlasTexture_dllfk")
 
-[node name="BarreInge" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer3" unique_id=1948944902]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer3" unique_id=721188111]
+layout_mode = 2
+
+[node name="BarreBesoinInge" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer3/VBoxContainer" unique_id=1948944902]
 custom_minimum_size = Vector2(170, 20)
 layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.83
 theme_override_styles/background = SubResource("StyleBoxFlat_xna76")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wu2rp")
-value = 50.0
+
+[node name="BarreActuelInge" type="ProgressBar" parent="CanvasLayer/PanneauGauche/VBoxContainer/Jauges/HBoxContainer3/VBoxContainer" unique_id=170359]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.83
+theme_override_styles/background = SubResource("StyleBoxFlat_xna76")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wu2rp")
 
 [node name="BarreBatiment" type="PanelContainer" parent="CanvasLayer" unique_id=2061337036]
 anchors_preset = -1
@@ -1454,7 +1519,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_beyuu")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_dfauo")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1463,7 +1528,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_hoa6g")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_n8dah")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1472,7 +1537,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_c8u50")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_o62v7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1481,7 +1546,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_ahqdf")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_e30v2")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1490,7 +1555,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_0fso4")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_0qqef")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1499,7 +1564,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_w7bhq")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_s7tiq")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1508,7 +1573,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_0cvxh")
-texture_disabled = ExtResource("4_2ni1t")
+texture_disabled = SubResource("AtlasTexture_v2yhw")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1563,6 +1628,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelPopulation" type="PanelContainer" parent="CanvasLayer" unique_id=1482903412]
+visible = false
 offset_left = 987.0
 offset_top = 54.0
 offset_right = 1153.0
@@ -1680,7 +1746,7 @@ offset_top = 575.0
 offset_right = 149.0
 offset_bottom = 635.0
 mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_chwmy")
+texture_normal = SubResource("AtlasTexture_gvcd7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1690,7 +1756,7 @@ offset_top = 574.0
 offset_right = 221.0
 offset_bottom = 634.0
 mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_allfu")
+texture_normal = SubResource("AtlasTexture_jtfvw")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1719,6 +1785,7 @@ oversampling_override = 1.0
 title = "Route des innovations"
 initial_position = 1
 size = Vector2i(1000, 500)
+visible = false
 
 [node name="CameraInnovations" type="Camera2D" parent="InnovationsZoom" unique_id=1119648779]
 
@@ -1862,7 +1929,7 @@ size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
-[connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BtnInno" to="." method="_on_btn_inno_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Usine" to="." method="_on_usine_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Gratte-ciel" to="." method="_on_gratteciel_pressed"]

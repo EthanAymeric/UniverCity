@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byce0wxo3exj1"
-path="res://.godot/imported/batiments2-removebg-preview.png-852a37cfb8d1a5366c9492877d36a07c.ctex"
+uid="uid://djfkjx3xxf32c"
+path="res://.godot/imported/spritesheet_boutons_lissee_transparente.png-27adf26b8b3337127c14209ac420e105.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/batiments2-removebg-preview.png"
-dest_files=["res://.godot/imported/batiments2-removebg-preview.png-852a37cfb8d1a5366c9492877d36a07c.ctex"]
+source_file="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png"
+dest_files=["res://.godot/imported/spritesheet_boutons_lissee_transparente.png-27adf26b8b3337127c14209ac420e105.ctex"]
 
 [params]
 

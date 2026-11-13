@@ -50,7 +50,7 @@ extends Node2D
 @onready var bouton_home : TextureButton = $CanvasLayer/HomeBtn
 @onready var bouton_info: TextureButton = $CanvasLayer/InfosBtn
 
-@onready var bouton_inno: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BtnInno
+@onready var bouton_inno: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
 # Possitions des éléments du panneau latéral gauche
 @onready var position_argent: Vector2 = $CanvasLayer/PanelArgent.position
@@ -136,14 +136,29 @@ func _ready() -> void:
 	preview_sprite.z_index = 1
 	
 	# Connexion des boutons de bâtiment
-	ferme_btn.pressed.connect(_on_ferme_pressed)
-	usine_btn.pressed.connect(_on_usine_pressed)
-	gratte_ciel_btn.pressed.connect(_on_gratteciel_pressed)
-	tour_btn.pressed.connect(_on_tour_pressed)
-	fusee_btn.pressed.connect(_on_fusee_pressed)
-	ecole_btn.pressed.connect(_on_ecole_pressed)
-	lycee_btn.pressed.connect(_on_lycee_pressed)
-	universite_btn.pressed.connect(_on_universite_pressed)
+	if not ferme_btn.pressed.is_connected(_on_ferme_pressed):
+		ferme_btn.pressed.connect(_on_ferme_pressed)
+
+	if not usine_btn.pressed.is_connected(_on_usine_pressed):
+		usine_btn.pressed.connect(_on_usine_pressed)
+
+	if not gratte_ciel_btn.pressed.is_connected(_on_gratteciel_pressed):
+		gratte_ciel_btn.pressed.connect(_on_gratteciel_pressed)
+
+	if not tour_btn.pressed.is_connected(_on_tour_pressed):
+		tour_btn.pressed.connect(_on_tour_pressed)
+
+	if not fusee_btn.pressed.is_connected(_on_fusee_pressed):
+		fusee_btn.pressed.connect(_on_fusee_pressed)
+
+	if not ecole_btn.pressed.is_connected(_on_ecole_pressed):
+		ecole_btn.pressed.connect(_on_ecole_pressed)
+
+	if not lycee_btn.pressed.is_connected(_on_lycee_pressed):
+		lycee_btn.pressed.connect(_on_lycee_pressed)
+
+	if not universite_btn.pressed.is_connected(_on_universite_pressed):
+		universite_btn.pressed.connect(_on_universite_pressed)
 	
 	# Connexion du bouton de suppression des bâtiments
 	delete_btn.pressed.connect(_on_delete_pressed)

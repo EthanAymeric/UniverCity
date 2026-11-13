@@ -6,11 +6,21 @@ extends Node2D
 @onready var maisons: TileMapLayer = $Maisons
 @onready var buildings_container: Node2D = $Buildings
 @onready var preview_sprite: Sprite2D = $PreviewSprite
-@onready var batiment_1_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment1
+
+### Bouton de suppression de bâtiments
 @onready var delete_btn: TextureButton = $CanvasLayer/BarreDelete/delete
-@onready var farm_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Batiment3
+### Bâtiments
+@onready var ferme_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Ferme
+@onready var usine_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Usine
+@onready var gratte_ciel_btn: TextureButton = $"CanvasLayer/BarreBatiment/HBoxContainer/Gratte-ciel"
+@onready var tour_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Tour
+@onready var fusee_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Fusee
+@onready var ecole_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Ecole
+@onready var lycee_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Lycee
+@onready var universite_btn: TextureButton = $CanvasLayer/BarreBatiment/HBoxContainer/Universite
+
 # Bouton pour afficher la route des innovations
-@onready var zoomin_route_btn: TextureButton = $CanvasLayer/PanelScience/ContainerScience/ZoominRoute
+@onready var bouton_innovations: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
 ## Ressources : argent, science et population
 @onready var money: Label = $CanvasLayer/PanelArgent/HBoxContainer/BoxArgent/Argent
@@ -76,13 +86,28 @@ extends Node2D
 #Fenêtre Innovation
 @onready var fenetre_inno: Window = $InnovationsZoom
 
+# Liste ordonnée de tous les boutons de bâtiments
+@onready var building_buttons: Array[TextureButton] = [
+	ferme_btn,
+	usine_btn,
+	gratte_ciel_btn,
+	tour_btn,
+	fusee_btn,
+	ecole_btn,
+	lycee_btn,
+	universite_btn
+]
 
+# Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
+var unlocked_building_count: int = 1
 
 ## Textures
 # Boutons pour les extra stats
 var text_plus: Texture2D = preload("res://Assets/Boutons/plus_icon.png")
 var text_moins: Texture2D = preload("res://Assets/Boutons/close_icon.png")
-var text_science: Texture2D = preload("res://Assets/Ressources/science.png")
+var text_innovations: AtlasTexture
+
+
 
 ## Coût de placement d'un bâtiment
 var current_building_cost: int = 100
@@ -110,11 +135,21 @@ func _ready() -> void:
 	preview_sprite.visible = false
 	preview_sprite.z_index = 1
 	
-	# Connexion du bouton de bâtiment
-	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
-
+	# Connexion des boutons de bâtiment
+	ferme_btn.pressed.connect(_on_ferme_pressed)
+	usine_btn.pressed.connect(_on_usine_pressed)
+	gratte_ciel_btn.pressed.connect(_on_gratteciel_pressed)
+	tour_btn.pressed.connect(_on_tour_pressed)
+	fusee_btn.pressed.connect(_on_fusee_pressed)
+	ecole_btn.pressed.connect(_on_ecole_pressed)
+	lycee_btn.pressed.connect(_on_lycee_pressed)
+	universite_btn.pressed.connect(_on_universite_pressed)
+	
+	# Connexion du bouton de suppression des bâtiments
 	delete_btn.pressed.connect(_on_delete_pressed)
-	farm_btn.pressed.connect(_on_batiment_3_pressed)
+	
+	# Initialiser le verrouillage des bâtiments
+	update_building_unlocks()
 	
 	# Affichage du score d'argent possédé
 	# TESTS
@@ -123,8 +158,13 @@ func _ready() -> void:
 	show_science()
 	
 	# Prépare le bouton pour l'affichage de la fenêtre et cache cette dernière comme elle n'est pas encore appelée
-	zoomin_route_btn.pressed.connect(_on_zoomin_route_pressed)
+	bouton_innovations.pressed.connect(_on_bouton_innovations_pressed)
 	popup.hide()
+	
+	# Gestion de la texture des innovations : initialisation
+	text_innovations = AtlasTexture.new()
+	text_innovations.atlas = preload("res://Assets/Ressources/spritesheet_innovations.png")
+	text_innovations.region = Rect2(0, 0, 300, 300)
 	
 	# Affichage initial et connexion de la population
 	population_manager.population_changed.connect(_on_population_changed)
@@ -340,23 +380,41 @@ func delete_building(building: Building) -> void:
 			
 	building.queue_free()
 
-## Clic sur le bouton de la ferme dans l'interface
-func _on_batiment_1_pressed() -> void:
-	start_placement(building_scene)
-	
-func _on_batiment_3_pressed()->void:
-	start_placement(farm_scene)
-	
+
 func _on_delete_pressed() -> void:
 	if is_deleting:
 		cancel_deletion()
 	else:
 		start_deletion()
+		
+### Placement des bâtiments
+## Par exemple, clic sur le bouton de la ferme dans l'interface
+func _on_ferme_pressed() -> void:
+	start_placement(farm_scene)
+	
+func _on_usine_pressed() -> void:
+	start_placement(building_scene)
 
+func _on_gratteciel_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_tour_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_fusee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_ecole_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_lycee_pressed() -> void:
+	start_placement(building_scene)
+
+func _on_universite_pressed() -> void:
+	start_placement(building_scene)
 
 
 ### Gestion/Affichage de l'argent gagné
-
 # Affichage du score
 func show_money():
 	money.text = str(score_money) + " €"
@@ -380,6 +438,25 @@ func show_science():
 	
 func add_science(score):
 	score_science += score
+	
+	# Tant qu'on atteint le palier et qu'il reste des bâtiments à débloquer
+	while score_science >= max_science and unlocked_building_count < building_buttons.size():
+		score_science -= max_science # Réinitialise la jauge tout en reportant le surplus
+		unlocked_building_count += 1
+		update_building_unlocks()
+	
+	# Si tous les bâtiments sont débloqués, on bloque la jauge au maximum
+	if unlocked_building_count >= building_buttons.size() and score_science > max_science:
+		score_science = max_science
+
+## Active ou désactive l'intéractivité et l'affichage des boutons selon la progression
+func update_building_unlocks() -> void:
+	for i in range(building_buttons.size()):
+		var btn = building_buttons[i]
+		if i < unlocked_building_count:
+			btn.disabled = false  # Débloqué : cliquable et affichage normal
+		else:
+			btn.disabled = true   # Verrouillé : bascule automatiquement sur texture_disabled (fermeLock.png)
 
 func lose_science(score):
 	# Empêcher d'entrer en dette (pour l'instant)
@@ -420,17 +497,18 @@ func _on_timer_tick(formatted_time: String) -> void:
 # Fermeture de la fenêtre des routes des innovations quand on clique sur la croix
 func _on_innovations_zoom_close_requested():
 	popup.hide()
-	zoomin_route_btn.texture_normal = text_science
+	bouton_innovations.texture_normal = text_innovations
 
-# Afficher/Cacher la route des innovations en appuyant sur le bouton
-func _on_zoomin_route_pressed() -> void:
+# Afficher/Cacher la route des innovations en appuyant sur le bouton	
+func _on_bouton_innovations_pressed():
 	if popup.visible:
 		popup.hide()
-		zoomin_route_btn.texture_normal = text_science
+		bouton_innovations.texture_normal = text_innovations
 	else:
 		popup.show()
-		zoomin_route_btn.texture_normal = text_moins
-		
+		bouton_innovations.texture_normal = text_moins
+	
+	
 # à modifier pour mon panneau lateral
 func _on_extra_stats_toggle_pressed() -> void:
 	if panneau_gauche.visible:

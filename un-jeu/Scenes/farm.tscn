@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://24362q5uq6fd"]
 
 [ext_resource type="PackedScene" uid="uid://csalvi63piyn0" path="res://Scenes/Building.tscn" id="1_1bveb"]
+[ext_resource type="Texture2D" uid="uid://coxd30vgn0ih7" path="res://Assets/Batiment/spritesheet_buildings.png" id="2_1yvdp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30eac"]
+atlas = ExtResource("2_1yvdp")
 
 [node name="Building" unique_id=1001849790 instance=ExtResource("1_1bveb")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=107816283]
-region_rect = Rect2(170, 17, 16, 16)
+position = Vector2(1.1920929e-07, 0)
+scale = Vector2(0.07217078, 0.06962768)
+texture = SubResource("AtlasTexture_30eac")
+region_rect = Rect2(0.8338089, 0.40776062, 243.4266, 233.55797)

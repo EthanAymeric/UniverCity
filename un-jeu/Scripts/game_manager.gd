@@ -40,6 +40,8 @@ extends Node2D
 @onready var bouton_home : TextureButton = $CanvasLayer/HomeBtn
 @onready var bouton_info: TextureButton = $CanvasLayer/InfosBtn
 
+@onready var bouton_inno: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BtnInno
+
 # Possitions des éléments du panneau latéral gauche
 @onready var position_argent: Vector2 = $CanvasLayer/PanelArgent.position
 @onready var position_science: Vector2 = $CanvasLayer/PanelScience.position
@@ -70,6 +72,9 @@ extends Node2D
 
 #Fenêtre Paramètres
 @onready var fenetre_param: Window = $FenetreParam
+
+#Fenêtre Innovation
+@onready var fenetre_inno: Window = $InnovationsZoom
 
 
 
@@ -103,7 +108,7 @@ var occupied_cells: Dictionary = {}
 func _ready() -> void:
 	# Cache l'aperçu au démarrage
 	preview_sprite.visible = false
-	preview_sprite.z_index = 10
+	preview_sprite.z_index = 1
 	
 	# Connexion du bouton de bâtiment
 	batiment_1_btn.pressed.connect(_on_batiment_1_pressed)
@@ -433,7 +438,7 @@ func _on_extra_stats_toggle_pressed() -> void:
 		extra_stats_toggle_btn.texture_normal = text_plus
 		panel_argent.position = Vector2(300,2); 
 		panel_science.position = Vector2(2,2); 
-		panel_population.position = Vector2(600,2);
+		#panel_population.position = Vector2(600,2);
 		bouton_home.visible = false;
 		bouton_info.visible = false;
 		
@@ -442,7 +447,7 @@ func _on_extra_stats_toggle_pressed() -> void:
 		extra_stats_toggle_btn.texture_normal = text_moins
 		panel_argent.position = position_argent; 
 		panel_science.position = position_science; 
-		panel_population.position = position_population; 
+		#panel_population.position = position_population; 
 		bouton_home.visible = true;
 		bouton_info.visible = true;
 	
@@ -512,3 +517,7 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
+
+
+func _on_btn_inno_pressed() -> void:
+	fenetre_inno.visible = true;

@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://swvkua4e8j10" path="res://Assets/Ressources/fond_menu.png" id="18_ust72"]
 [ext_resource type="Texture2D" uid="uid://i4p06vikntgp" path="res://Assets/Ressources/menu_word.png" id="19_4fqm2"]
 [ext_resource type="Texture2D" uid="uid://djfkjx3xxf32c" path="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png" id="19_6cohq"]
+[ext_resource type="AudioStream" uid="uid://crwvcupdnms8q" path="res://Assets/Musique/ambient_music.mp3" id="25_6cohq"]
+[ext_resource type="AudioStream" uid="uid://cd2phsxjqtod2" path="res://Assets/SFX/place_building.mp3" id="26_0xbhd"]
+[ext_resource type="AudioStream" uid="uid://desf52vnsdu8o" path="res://Assets/SFX/destroy_building.mp3" id="27_bqfsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1930,13 +1933,18 @@ dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
 [node name="Musique" type="AudioStreamPlayer" parent="." unique_id=1969115265]
+stream = ExtResource("25_6cohq")
 autoplay = true
 bus = &"Musique"
+parameters/looping = true
 
 [node name="PlacementBuilding" type="AudioStreamPlayer" parent="." unique_id=170067785]
-bus = &"SFX"
+stream = ExtResource("26_0xbhd")
+bus = &"Regular_SFX"
 
 [node name="DestructionBuilding" type="AudioStreamPlayer" parent="." unique_id=181873631]
+stream = ExtResource("27_bqfsd")
+bus = &"Loud_SFX"
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

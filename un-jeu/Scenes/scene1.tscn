@@ -1929,6 +1929,15 @@ size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
+[node name="Musique" type="AudioStreamPlayer" parent="." unique_id=1969115265]
+autoplay = true
+bus = &"Musique"
+
+[node name="PlacementBuilding" type="AudioStreamPlayer" parent="." unique_id=170067785]
+bus = &"SFX"
+
+[node name="DestructionBuilding" type="AudioStreamPlayer" parent="." unique_id=181873631]
+
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Usine" to="." method="_on_usine_pressed"]

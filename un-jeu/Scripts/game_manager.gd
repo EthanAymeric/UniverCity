@@ -98,6 +98,11 @@ extends Node2D
 	universite_btn
 ]
 
+### Musique et Bruitages
+@onready var musique: AudioStreamPlayer = $Musique
+@onready var placement_building: AudioStreamPlayer = $PlacementBuilding
+@onready var destruction_building: AudioStreamPlayer = $DestructionBuilding
+
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
 var unlocked_building_count: int = 1
 
@@ -332,6 +337,10 @@ func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	var building: Building = current_scene_to_place.instantiate() as Building
 	buildings_container.add_child(building)
 	
+	# Lance le SFX de placement
+	if placement_building and placement_building.stream:
+		placement_building.play()
+	
 	# Positionnement au centre des cases
 	var bottom_right_cell = top_left + footprint - Vector2i(1, 1)
 	var center_pos = (sol.map_to_local(top_left) + sol.map_to_local(bottom_right_cell)) / 2.0
@@ -392,6 +401,10 @@ func delete_building(building: Building) -> void:
 	for cell in occupied_cells.keys():
 		if occupied_cells[cell] == building:
 			occupied_cells.erase(cell)
+		
+	# Lance le SFX de destruction	
+	if destruction_building and destruction_building.stream:
+		destruction_building.play()
 			
 	building.queue_free()
 

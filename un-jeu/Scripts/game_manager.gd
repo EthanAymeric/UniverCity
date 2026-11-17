@@ -102,6 +102,8 @@ extends Node2D
 @onready var musique: AudioStreamPlayer = $Musique
 @onready var placement_building: AudioStreamPlayer = $PlacementBuilding
 @onready var destruction_building: AudioStreamPlayer = $DestructionBuilding
+@onready var selection_objet: AudioStreamPlayer = $SelectionObjet
+
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
 var unlocked_building_count: int = 1
@@ -418,27 +420,51 @@ func _on_delete_pressed() -> void:
 ### Placement des bâtiments
 ## Par exemple, clic sur le bouton de la ferme dans l'interface
 func _on_ferme_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(farm_scene)
 	
 func _on_usine_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_gratteciel_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_tour_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_fusee_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_ecole_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_lycee_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_universite_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 

@@ -103,6 +103,7 @@ extends Node2D
 @onready var placement_building: AudioStreamPlayer = $PlacementBuilding
 @onready var destruction_building: AudioStreamPlayer = $DestructionBuilding
 @onready var selection_objet: AudioStreamPlayer = $SelectionObjet
+@onready var ouverture_menu: AudioStreamPlayer = $OuvertureMenu
 
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
@@ -585,6 +586,9 @@ func _on_extra_stats_toggle_pressed() -> void:
 	
 ## Home Menu
 func _on_home_btn_pressed() -> void:
+	# Lance le SFX
+	if ouverture_menu and ouverture_menu.stream:
+		ouverture_menu.play()
 	if fenetre_home.visible:
 		fenetre_home.hide()
 	else:

@@ -104,6 +104,7 @@ extends Node2D
 @onready var destruction_building: AudioStreamPlayer = $DestructionBuilding
 @onready var selection_objet: AudioStreamPlayer = $SelectionObjet
 @onready var ouverture_menu: AudioStreamPlayer = $OuvertureMenu
+@onready var menu_slide: AudioStreamPlayer = $MenuSlide
 
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
@@ -566,6 +567,8 @@ func _on_bouton_innovations_pressed():
 	
 # à modifier pour mon panneau lateral
 func _on_extra_stats_toggle_pressed() -> void:
+	if menu_slide and menu_slide.stream:
+		menu_slide.play()
 	if panneau_gauche.visible:
 		panneau_gauche.hide()
 		extra_stats_toggle_btn.texture_normal = text_plus

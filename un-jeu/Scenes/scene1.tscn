@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://desf52vnsdu8o" path="res://Assets/SFX/destroy_building.mp3" id="27_bqfsd"]
 [ext_resource type="AudioStream" uid="uid://dy0363to1pfjr" path="res://Assets/SFX/object_select.mp3" id="28_bqfsd"]
 [ext_resource type="AudioStream" uid="uid://bxe7vjnjc40s" path="res://Assets/SFX/open_menu.mp3" id="29_kfamv"]
+[ext_resource type="AudioStream" uid="uid://dniu3tgvdqdii" path="res://Assets/SFX/menu_slide.mp3" id="30_kxahm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1955,6 +1956,10 @@ bus = &"Regular_SFX"
 [node name="OuvertureMenu" type="AudioStreamPlayer" parent="." unique_id=1874028265]
 stream = ExtResource("29_kfamv")
 bus = &"Regular_SFX"
+
+[node name="MenuSlide" type="AudioStreamPlayer" parent="." unique_id=1885944553]
+stream = ExtResource("30_kxahm")
+bus = &"Loud_SFX"
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

@@ -50,6 +50,10 @@ extends Node2D
 @onready var bouton_home : TextureButton = $CanvasLayer/HomeBtn
 @onready var bouton_info: TextureButton = $CanvasLayer/InfosBtn
 
+# Boutons pour les paramètres
+@onready var slider_musique: HSlider = $FenetreParam/SliderMusique
+@onready var slider_sfx: HSlider = $FenetreParam/SliderSFX
+
 @onready var bouton_inno: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
 # Possitions des éléments du panneau latéral gauche
@@ -175,8 +179,16 @@ func _ready() -> void:
 	# Initialiser le verrouillage des bâtiments
 	update_building_unlocks()
 	
+	# Paramètres
+	if slider_musique:
+		slider_musique.value = 1.0 # Volume max par défaut
+		slider_musique.value_changed.connect(_on_slider_musique_value_changed)
+	
+	if slider_sfx:
+		slider_sfx.value = 1.0
+		slider_sfx.value_changed.connect(_on_slider_sfx_value_changed)
+	
 	# Affichage du score d'argent possédé
-	# TESTS
 	show_money()
 	
 	show_science()
@@ -634,6 +646,32 @@ func _on_credits_btn_pressed() -> void:
 	fenetre_credit.popup_centered()
 	fenetre_credit.visible = true
 	
+func _on_btn_inno_pressed() -> void:
+	fenetre_inno.visible = true;
+
+## Ajuste le volume de la musique en convertissant la valeur du curseur en décibels
+func _on_slider_musique_value_changed(value: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("Musique")
+	if value == 0.0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		# linear_to_db convertit une échelle de 0.0 à 1.0 en décibels
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
+
+## Ajuste le volume des effets sonores (*SFX*) pour tous les bus concernés
+func _on_slider_sfx_value_changed(value: float) -> void:
+	var buses = ["Regular_SFX", "Loud_SFX"]
+	
+	for bus_name in buses:
+		var bus_idx = AudioServer.get_bus_index(bus_name)
+		if value == 0.0:
+			AudioServer.set_bus_mute(bus_idx, true)
+		else:
+			AudioServer.set_bus_mute(bus_idx, false)
+			AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
+	
+	
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS
@@ -656,7 +694,3 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
-
-
-func _on_btn_inno_pressed() -> void:
-	fenetre_inno.visible = true;

@@ -1918,8 +1918,40 @@ stretch_mode = 0
 [node name="FenetreParam" type="Window" parent="." unique_id=776449122]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(1000, 500)
+size = Vector2i(750, 450)
 visible = false
+
+[node name="SliderMusique" type="HSlider" parent="FenetreParam" unique_id=130373228]
+offset_left = 113.0
+offset_top = 84.0
+offset_right = 363.0
+offset_bottom = 100.0
+max_value = 1.0
+step = 0.05
+
+[node name="SliderSFX" type="HSlider" parent="FenetreParam" unique_id=66436941]
+offset_left = 113.0
+offset_top = 126.0
+offset_right = 363.0
+offset_bottom = 142.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="TextMusique" type="Label" parent="FenetreParam" unique_id=749405995]
+offset_left = 20.0
+offset_top = 81.0
+offset_right = 87.0
+offset_bottom = 104.0
+text = "Musique"
+
+[node name="TextSFX" type="Label" parent="FenetreParam" unique_id=1446567235]
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 72.0
+offset_bottom = 143.0
+text = "SFX"
+horizontal_alignment = 1
 
 [node name="FenetreCredit" type="Window" parent="." unique_id=1227708469]
 oversampling_override = 1.0
@@ -1985,4 +2017,6 @@ bus = &"Loud_SFX"
 [connection signal="close_requested" from="FenetreInnovation" to="." method="_on_fenetre_home_close_requested"]
 [connection signal="pressed" from="FenetreInnovation/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="close_requested" from="FenetreParam" to="." method="_on_fenetre_param_close_requested"]
+[connection signal="value_changed" from="FenetreParam/SliderMusique" to="." method="_on_slider_musique_value_changed"]
+[connection signal="value_changed" from="FenetreParam/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
 [connection signal="close_requested" from="FenetreCredit" to="." method="_on_fenetre_credit_close_requested"]

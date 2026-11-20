@@ -195,6 +195,18 @@ func _ready() -> void:
 	if skip_palier_btn:
 		skip_palier_btn.pressed.connect(_on_fermer_palier)
 	
+	# Sous-fenêtres de type Window (Paramètres, Crédits)
+	if fenetre_param and not fenetre_param.close_requested.is_connected(_on_fenetre_param_close_requested):
+		fenetre_param.close_requested.connect(_on_fenetre_param_close_requested)
+	if fenetre_credit and not fenetre_credit.close_requested.is_connected(_on_fenetre_credit_close_requested):
+		fenetre_credit.close_requested.connect(_on_fenetre_credit_close_requested)
+
+	# Sous-fenêtres de type ConfirmationDialog (Quitter, Recommencer)
+	if fenetre_exit and not fenetre_exit.canceled.is_connected(_on_fenetre_exit_canceled):
+		fenetre_exit.canceled.connect(_on_fenetre_exit_canceled)
+	if fenetre_restart and not fenetre_restart.canceled.is_connected(_on_fenetre_restart_canceled):
+		fenetre_restart.canceled.connect(_on_fenetre_restart_canceled)
+	
 	# Affichage du score d'argent possédé
 	# TESTS
 	show_money()
@@ -623,9 +635,17 @@ func _on_fenetre_home_close_requested() -> void:
 	
 func _on_fenetre_param_close_requested() -> void:
 	fenetre_param.hide()
+	_retour_menu_principal(fenetre_param) # réaffiche le menu principal
 	
 func _on_fenetre_credit_close_requested() -> void:
 	fenetre_credit.hide()
+	_retour_menu_principal(fenetre_credit) # réaffiche le menu principal
+
+func _on_fenetre_exit_canceled() -> void:
+	_retour_menu_principal(fenetre_exit) # réaffiche le menu principal
+
+func _on_fenetre_restart_canceled() -> void:
+	_retour_menu_principal(fenetre_restart) # réaffiche le menu principal
 
 # Bouton Exit du Menu
 func _on_exit_btn_pressed() -> void:
@@ -654,7 +674,18 @@ func _on_credits_btn_pressed() -> void:
 	fenetre_home.hide()
 	fenetre_credit.popup_centered()
 	fenetre_credit.visible = true
-	
+
+## Ferme une sous-fenêtre du menu et réaffiche le menu principal
+func _retour_menu_principal(sous_fenetre: Node = null) -> void:
+	# si la sous-fenetre est là, on la ferme
+	if sous_fenetre and sous_fenetre.has_method("hide"):
+		sous_fenetre.hide()
+	# sinon on l'affiche
+	if fenetre_home:
+		fenetre_home.popup_centered()
+
+
+
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS

@@ -626,12 +626,12 @@ func _on_extra_stats_toggle_pressed() -> void:
 ## Home Menu
 func _on_home_btn_pressed() -> void:
 	if fenetre_home.visible:
-		fenetre_home.hide()
+		_fermer_fenetre_home()
 	else:
-		fenetre_home.show()
+		_ouvrir_fenetre_home()
 		
 func _on_fenetre_home_close_requested() -> void:
-	fenetre_home.hide()
+	_fermer_fenetre_home()
 	
 func _on_fenetre_param_close_requested() -> void:
 	fenetre_param.hide()
@@ -659,8 +659,8 @@ func _on_fenetre_exit_confirmed():
 	
 # Bouton X du Menu
 func _on_quit_btn_pressed() -> void:
-	fenetre_home.hide()
-
+	_fermer_fenetre_home()
+	
 func _on_restart_btn_pressed() -> void:
 	fenetre_home.hide()
 	fenetre_restart.popup_centered()
@@ -681,10 +681,24 @@ func _retour_menu_principal(sous_fenetre: Node = null) -> void:
 	if sous_fenetre and sous_fenetre.has_method("hide"):
 		sous_fenetre.hide()
 	# sinon on l'affiche
+	_ouvrir_fenetre_home()
+
+## Ouvre le menu principal et met le jeu en pause
+func _ouvrir_fenetre_home() -> void:
+	cancel_placement()
+	cancel_deletion()
+	get_tree().paused = true
 	if fenetre_home:
 		fenetre_home.popup_centered()
 
-
+## Ferme le menu principal et relance le jeu (sauf si une autre fenêtre de pause est ouverte)
+func _fermer_fenetre_home() -> void:
+	if fenetre_home:
+		fenetre_home.hide()
+	# Sécurité : ne relance le jeu que si la fenêtre de palier n'est pas ouverte
+	var palier_ouvert: bool = fenetre_palier_succes != null and fenetre_palier_succes.visible
+	if not palier_ouvert:
+		get_tree().paused = false
 
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche

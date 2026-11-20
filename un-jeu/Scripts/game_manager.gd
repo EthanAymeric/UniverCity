@@ -86,6 +86,14 @@ extends Node2D
 #Fenêtre Innovation
 @onready var fenetre_inno: Window = $InnovationsZoom
 
+# Fenetre Palier et bouton de fermeture
+@onready var fenetre_palier_succes: Window = $FenetrePalierSucces
+@onready var skip_palier_btn: TextureButton = $FenetrePalierSucces/SkipPalierBtn
+@onready var palier_succes: Label = $FenetrePalierSucces/PalierSucces
+@onready var palier_debloque: Label = $FenetrePalierSucces/PalierDebloque
+
+## Infos sur les bâtiments : ATTENTION A BIEN LES GARDER DANS LE MEME ORDRE 
+## ENTRE BUILDING_BUTTONS ET BUILDING_NAMES
 # Liste ordonnée de tous les boutons de bâtiments
 @onready var building_buttons: Array[TextureButton] = [
 	ferme_btn,
@@ -96,6 +104,19 @@ extends Node2D
 	ecole_btn,
 	lycee_btn,
 	universite_btn
+]
+
+# Noms affichés correspondant exactement à l'ordre de building_buttons
+# DEPEND DE L'INDEX CORRESPONDANT DANS BUILDING_BUTTONS
+var building_names: Array[String] = [
+	"Ferme",
+	"Usine",
+	"Gratte-ciel",
+	"Tour",
+	"Fusée",
+	"École",
+	"Lycée",
+	"Université"
 ]
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
@@ -165,6 +186,14 @@ func _ready() -> void:
 	
 	# Initialiser le verrouillage des bâtiments
 	update_building_unlocks()
+	
+	# Initialiser les liens pour ouvrir/fermer la fenetre
+	if fenetre_palier_succes:
+		fenetre_palier_succes.hide()
+		fenetre_palier_succes.close_requested.connect(_on_fermer_palier)
+		
+	if skip_palier_btn:
+		skip_palier_btn.pressed.connect(_on_fermer_palier)
 	
 	# Affichage du score d'argent possédé
 	# TESTS
@@ -452,17 +481,55 @@ func show_science():
 	science.text = "%d / %d" % [score_science, max_science]
 	
 func add_science(score):
+	# met à jour le score avec la valeur rajoutée
 	score_science += score
+	var palier_atteint: bool = false # pour savoir si on affiche la fenetre ou pas
+	var dernier_batiment_debloque: String = "" # pour stocker le nom du dernier bâtiment
 	
 	# Tant qu'on atteint le palier et qu'il reste des bâtiments à débloquer
 	while score_science >= max_science and unlocked_building_count < building_buttons.size():
 		score_science -= max_science # Réinitialise la jauge tout en reportant le surplus
+		
+		# L'index du bâtiment qui vient d'être débloqué correspond à l'ancien unlocked_building_count
+		var unlocked_index: int = unlocked_building_count
 		unlocked_building_count += 1
 		update_building_unlocks()
+		palier_atteint = true
+		
+		# Vérification de l'index
+		if unlocked_index < building_names.size():
+			dernier_batiment_debloque = building_names[unlocked_index] # Mise à jour de la variable avec le nom du batiment qu'on vient de debloquer
+		elif unlocked_index < building_buttons.size() and is_instance_valid(building_buttons[unlocked_index]):
+			dernier_batiment_debloque = building_buttons[unlocked_index].name
 	
 	# Si tous les bâtiments sont débloqués, on bloque la jauge au maximum
 	if unlocked_building_count >= building_buttons.size() and score_science > max_science:
 		score_science = max_science
+	
+	# Si le palier est atteint, on affiche la fenetre de succes
+	if dernier_batiment_debloque != "" and palier_atteint:
+		ouvrir_fenetre_palier(dernier_batiment_debloque)
+
+func ouvrir_fenetre_palier(nom_batiment: String):
+	# Annule tout mode placement/suppression en cours avant la pause
+	cancel_placement()
+	cancel_deletion()
+	
+	# Mise à jour du texte
+	if palier_debloque:
+		palier_debloque.text = "Vous avez débloqué :\n %s \n %d / %d % [nom_batiment, unlocked_building_count, building_buttons.size()]"
+		
+	
+	# Pause l'arbre : tous ce qui est lié aux noeuds
+	get_tree().paused = true
+	# Enfin, affiche la fenetre
+	if fenetre_palier_succes:
+		fenetre_palier_succes.popup_centered()
+
+func _on_fermer_palier():
+	if fenetre_palier_succes:
+		fenetre_palier_succes.hide()
+	get_tree().paused = false
 
 ## Active ou désactive l'intéractivité et l'affichage des boutons selon la progression
 func update_building_unlocks() -> void:

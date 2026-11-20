@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://swvkua4e8j10" path="res://Assets/Ressources/fond_menu.png" id="18_ust72"]
 [ext_resource type="Texture2D" uid="uid://i4p06vikntgp" path="res://Assets/Ressources/menu_word.png" id="19_4fqm2"]
 [ext_resource type="Texture2D" uid="uid://djfkjx3xxf32c" path="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png" id="19_6cohq"]
+[ext_resource type="Texture2D" uid="uid://dxbg7aafec2aj" path="res://Assets/Boutons/close_icon.png" id="25_6cohq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1929,6 +1930,35 @@ size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
+[node name="FenetrePalierSucces" type="Window" parent="." unique_id=563867457]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(800, 400)
+
+[node name="SkipPalierBtn" type="TextureButton" parent="FenetrePalierSucces" unique_id=1538765824]
+offset_left = 719.0
+offset_top = 320.0
+offset_right = 787.0
+offset_bottom = 383.0
+texture_normal = ExtResource("25_6cohq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PalierSucces" type="Label" parent="FenetrePalierSucces" unique_id=1191280407]
+offset_left = 174.0
+offset_top = 6.0
+offset_right = 610.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 50
+text = "NIVEAU SUIVANT !"
+
+[node name="PalierDebloque" type="Label" parent="FenetrePalierSucces" unique_id=1629026960]
+offset_left = 200.0
+offset_top = 126.0
+offset_right = 240.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 30
+
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Usine" to="." method="_on_usine_pressed"]
@@ -1954,3 +1984,5 @@ cancel_button_text = "Annuler"
 [connection signal="pressed" from="FenetreInnovation/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="close_requested" from="FenetreParam" to="." method="_on_fenetre_param_close_requested"]
 [connection signal="close_requested" from="FenetreCredit" to="." method="_on_fenetre_credit_close_requested"]
+[connection signal="close_requested" from="FenetrePalierSucces" to="." method="_on_fenetre_palier_succes_close_requested"]
+[connection signal="pressed" from="FenetrePalierSucces/SkipPalierBtn" to="." method="_on_skip_palier_btn_pressed"]

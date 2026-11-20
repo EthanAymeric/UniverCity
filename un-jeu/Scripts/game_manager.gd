@@ -517,7 +517,7 @@ func ouvrir_fenetre_palier(nom_batiment: String):
 	
 	# Mise à jour du texte
 	if palier_debloque:
-		palier_debloque.text = "Vous avez débloqué :\n %s \n %d / %d % [nom_batiment, unlocked_building_count, building_buttons.size()]"
+		palier_debloque.text = "Vous avez débloqué :\n %s \n %d / %d" % [nom_batiment, unlocked_building_count, building_buttons.size()]
 		
 	
 	# Pause l'arbre : tous ce qui est lié aux noeuds

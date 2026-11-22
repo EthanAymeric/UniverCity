@@ -91,6 +91,7 @@ extends Node2D
 @onready var skip_palier_btn: TextureButton = $FenetrePalierSucces/SkipPalierBtn
 @onready var palier_succes: Label = $FenetrePalierSucces/PalierSucces
 @onready var palier_debloque: Label = $FenetrePalierSucces/PalierDebloque
+@onready var palier_desc: Label = $FenetrePalierSucces/PalierDesc
 
 ## Infos sur les bâtiments : ATTENTION A BIEN LES GARDER DANS LE MEME ORDRE 
 ## ENTRE BUILDING_BUTTONS ET BUILDING_NAMES
@@ -123,45 +124,28 @@ var building_names: Array[String] = [
 # DEPEND DE L'INDEX CORRESPONDANT DANS BUILDING_BUTTONS
 var building_descriptions: Array[String] = [
 	# Description de la ferme
-	"Née avec la révolution néolithique il y a plus de 10 000 ans, 
-	l'agriculture a permis aux sociétés de se sédentariser et de créer des surplus alimentaires, $
-	premier moteur de la croissance économique. En libérant progressivement une partie de la population du travail des champs, 
-	elle a rendu possible l'essor des villes et, bien plus tard, la scolarisation d'un plus grand nombre.",
+	"Née avec la révolution néolithique il y a plus de 10 000 ans, l'agriculture a permis aux sociétés de se sédentariser et de créer des surplus alimentaires, premier moteur de la croissance économique. En libérant progressivement une partie de la population du travail des champs, elle a rendu possible l'essor des villes et, bien plus tard, la scolarisation d'un plus grand nombre.",
 	
 	# Description de l'usine
-	"Apparue à la fin du XVIIIe siècle avec la révolution industrielle, l'usine a concentré machines, 
-	énergie et main-d'œuvre pour produire en masse à moindre coût. Si le travail des enfants y fut longtemps fréquent, 
-	la complexité croissante des machines a peu à peu poussé à instruire davantage les travailleurs, 
-	alimentant à la fois la productivité et la montée de l'école.",
+	"Apparue à la fin du XVIIIe siècle avec la révolution industrielle, l'usine a concentré machines, énergie et main-d'œuvre pour produire en masse à moindre coût. Si le travail des enfants y fut longtemps fréquent, la complexité croissante des machines a peu à peu poussé à instruire davantage les travailleurs, alimentant à la fois la productivité et la montée de l'école.",
 	
 	# Description du gratte-ciel
-	"Émergeant à la fin du XIXe siècle grâce à l'acier, au béton et à l'ascenseur, le gratte-ciel a concentré bureaux, 
-	banques et services au cœur des métropoles. Il incarne l'économie tertiaire et urbaine, 
-	qui exige des employés mieux formés et stimule la diffusion de l'instruction secondaire et supérieure.",
+	"Émergeant à la fin du XIXe siècle grâce à l'acier, au béton et à l'ascenseur, le gratte-ciel a concentré bureaux, banques et services au cœur des métropoles. Il incarne l'économie tertiaire et urbaine, qui exige des employés mieux formés et stimule la diffusion de l'instruction secondaire et supérieure.",
 	
 	# Description de la tour (data center)
-	"Héritière des grandes infrastructures de communication et de calcul de l'ère numérique, 
-	le data center regroupe des milliers de serveurs qui stockent et traitent les données mondiales. Il soutient l'économie numérique, l'IA et les services à distance, 
-	tout en reposant sur une main-d'œuvre hautement qualifiée issue de la massification des études.",
+	"Héritière des grandes infrastructures de communication et de calcul de l'ère numérique, le data center regroupe des milliers de serveurs qui stockent et traitent les données mondiales. Il soutient l'économie numérique, l'IA et les services à distance, tout en reposant sur une main-d'œuvre hautement qualifiée issue de la massification des études.",
 	
 	# Description de la fusée
-	"Issue des avancées scientifiques et industrielles du XXe siècle, la fusée a ouvert l'accès à l'orbite et aux satellites. 
-	Ces technologies ont transformé l'économie mondiale (télécommunications, météo, GPS, observation) 
-	et illustré la valeur stratégique de la recherche et de l'enseignement scientifique de masse.",
+	"Issue des avancées scientifiques et industrielles du XXe siècle, la fusée a ouvert l'accès à l'orbite et aux satellites. Ces technologies ont transformé l'économie mondiale (télécommunications, météo, GPS, observation) et illustré la valeur stratégique de la recherche et de l'enseignement scientifique de masse.",
 	
 	# Description de l'école
-	"Longtemps réservée à une minorité, l'école s'est massifiée aux XIXe et XXe siècles avec l'instruction obligatoire. 
-	En élevant le niveau général de compétences et d'alphabétisation, 
-	elle a soutenu l'innovation, la mobilité sociale et la croissance économique de long terme.",
+	"Longtemps réservée à une minorité, l'école s'est massifiée aux XIXe et XXe siècles avec l'instruction obligatoire. En élevant le niveau général de compétences et d'alphabétisation, elle a soutenu l'innovation, la mobilité sociale et la croissance économique de long terme.",
 	
 	# Description du lycée
-	"Héritier des établissements secondaires réformés aux XIXe et XXe siècles, le lycée a accompagné la massification scolaire en formant des cohortes beaucoup plus larges aux savoirs généraux, techniques et scientifiques. 
-	Il prépare une main-d'œuvre qualifiée capable de s'adapter aux mutations économiques et industrielles.",
+	"Héritier des établissements secondaires réformés aux XIXe et XXe siècles, le lycée a accompagné la massification scolaire en formant des cohortes beaucoup plus larges aux savoirs généraux, techniques et scientifiques. Il prépare une main-d'œuvre qualifiée capable de s'adapter aux mutations économiques et industrielles.",
 	
 	# Description de l'université
-	"Née au Moyen Âge puis largement ouverte au grand public au XXe siècle, 
-	l'université réunit enseignement supérieur et recherche. Sa massification a élargi l'accès aux métiers qualifiés, 
-	accéléré l'innovation technologique et renforcé la compétitivité des économies modernes."
+	"Née au Moyen Âge puis largement ouverte au grand public au XXe siècle, l'université réunit enseignement supérieur et recherche. Sa massification a élargi l'accès aux métiers qualifiés, accéléré l'innovation technologique et renforcé la compétitivité des économies modernes."
 ]
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
@@ -542,6 +526,7 @@ func add_science(score):
 	score_science += score
 	var palier_atteint: bool = false # pour savoir si on affiche la fenetre ou pas
 	var dernier_batiment_debloque: String = "" # pour stocker le nom du dernier bâtiment
+	var dernier_index_debloque: int = -1 # pour avoir l'index et récupérer la description correspondante
 	
 	# Tant qu'on atteint le palier et qu'il reste des bâtiments à débloquer
 	while score_science >= max_science and unlocked_building_count < building_buttons.size():
@@ -552,8 +537,9 @@ func add_science(score):
 		unlocked_building_count += 1
 		update_building_unlocks()
 		palier_atteint = true
+		dernier_index_debloque = unlocked_index
 		
-		# Vérification de l'index
+		# Vérification de l'index		
 		if unlocked_index < building_names.size():
 			dernier_batiment_debloque = building_names[unlocked_index] # Mise à jour de la variable avec le nom du batiment qu'on vient de debloquer
 		elif unlocked_index < building_buttons.size() and is_instance_valid(building_buttons[unlocked_index]):
@@ -565,9 +551,9 @@ func add_science(score):
 	
 	# Si le palier est atteint, on affiche la fenetre de succes
 	if dernier_batiment_debloque != "" and palier_atteint:
-		ouvrir_fenetre_palier(dernier_batiment_debloque)
+		ouvrir_fenetre_palier(dernier_batiment_debloque, dernier_index_debloque)
 
-func ouvrir_fenetre_palier(nom_batiment: String):
+func ouvrir_fenetre_palier(nom_batiment: String, index_batiment: int = -1):
 	# Annule tout mode placement/suppression en cours avant la pause
 	cancel_placement()
 	cancel_deletion()
@@ -575,7 +561,10 @@ func ouvrir_fenetre_palier(nom_batiment: String):
 	# Mise à jour du texte
 	if palier_debloque:
 		palier_debloque.text = "Vous avez débloqué :\n %s \n %d / %d" % [nom_batiment, unlocked_building_count, building_buttons.size()]
-		
+		palier_desc.text = building_descriptions[index_batiment]
+	else:
+		palier_debloque.text = ""
+		palier_desc.text = ""
 	
 	# Pause l'arbre : tous ce qui est lié aux noeuds
 	get_tree().paused = true

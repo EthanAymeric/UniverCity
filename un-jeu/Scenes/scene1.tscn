@@ -1976,6 +1976,7 @@ offset_top = 238.0
 offset_right = 852.0
 offset_bottom = 372.0
 theme_override_font_sizes/font_size = 25
+autowrap_mode = 3
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

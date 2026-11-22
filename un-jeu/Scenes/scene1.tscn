@@ -1940,16 +1940,15 @@ cancel_button_text = "Annuler"
 process_mode = 3
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(1000, 450)
-visible = false
+size = Vector2i(1000, 650)
 
 [node name="SkipPalierBtn" type="TextureButton" parent="FenetrePalierSucces" unique_id=1538765824]
 process_mode = 3
 anchors_preset = -1
-offset_left = 917.0
-offset_top = 374.0
-offset_right = 985.0
-offset_bottom = 437.0
+offset_left = 918.0
+offset_top = 574.0
+offset_right = 986.0
+offset_bottom = 637.0
 texture_normal = ExtResource("25_6cohq")
 ignore_texture_size = true
 stretch_mode = 5

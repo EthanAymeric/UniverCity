@@ -1961,14 +1961,21 @@ offset_top = 9.0
 offset_right = 693.0
 offset_bottom = 78.0
 theme_override_font_sizes/font_size = 50
-text = "NIVEAU SUIVANT !"
+text = "!! NEWS FLASH !!"
 
 [node name="PalierDebloque" type="Label" parent="FenetrePalierSucces" unique_id=1629026960]
-offset_left = 200.0
-offset_top = 126.0
-offset_right = 240.0
-offset_bottom = 149.0
+offset_left = 163.0
+offset_top = 109.0
+offset_right = 770.0
+offset_bottom = 151.0
 theme_override_font_sizes/font_size = 30
+
+[node name="PalierDesc" type="Label" parent="FenetrePalierSucces" unique_id=663037188]
+offset_left = 155.0
+offset_top = 238.0
+offset_right = 852.0
+offset_bottom = 372.0
+theme_override_font_sizes/font_size = 25
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

@@ -111,7 +111,6 @@ extends Node2D
 	universite_btn
 ]
 
-<<<<<<< HEAD
 # Noms affichés correspondant exactement à l'ordre de building_buttons
 # DEPEND DE L'INDEX CORRESPONDANT DANS BUILDING_BUTTONS
 var building_names: Array[String] = [
@@ -152,7 +151,6 @@ var building_descriptions: Array[String] = [
 	# Description de l'université
 	"Née au Moyen Âge puis largement ouverte au grand public au XXe siècle, l'université réunit enseignement supérieur et recherche. Sa massification a élargi l'accès aux métiers qualifiés, accéléré l'innovation technologique et renforcé la compétitivité des économies modernes."
 ]
-=======
 ### Musique et Bruitages
 @onready var musique: AudioStreamPlayer = $Musique
 @onready var placement_building: AudioStreamPlayer = $PlacementBuilding
@@ -160,8 +158,6 @@ var building_descriptions: Array[String] = [
 @onready var selection_objet: AudioStreamPlayer = $SelectionObjet
 @onready var ouverture_menu: AudioStreamPlayer = $OuvertureMenu
 @onready var menu_slide: AudioStreamPlayer = $MenuSlide
-
->>>>>>> feature-MusicAndSFX
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
 var unlocked_building_count: int = 1

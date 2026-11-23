@@ -24,16 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://swvkua4e8j10" path="res://Assets/Ressources/fond_menu.png" id="18_ust72"]
 [ext_resource type="Texture2D" uid="uid://i4p06vikntgp" path="res://Assets/Ressources/menu_word.png" id="19_4fqm2"]
 [ext_resource type="Texture2D" uid="uid://djfkjx3xxf32c" path="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png" id="19_6cohq"]
-
-[ext_resource type="Texture2D" uid="uid://dxbg7aafec2aj" path="res://Assets/Boutons/close_icon.png" id="25_6cohq"]
-
 [ext_resource type="AudioStream" uid="uid://crwvcupdnms8q" path="res://Assets/Musique/ambient_music.mp3" id="25_6cohq"]
 [ext_resource type="AudioStream" uid="uid://cd2phsxjqtod2" path="res://Assets/SFX/place_building.mp3" id="26_0xbhd"]
 [ext_resource type="AudioStream" uid="uid://desf52vnsdu8o" path="res://Assets/SFX/destroy_building.mp3" id="27_bqfsd"]
 [ext_resource type="AudioStream" uid="uid://dy0363to1pfjr" path="res://Assets/SFX/object_select.mp3" id="28_bqfsd"]
 [ext_resource type="AudioStream" uid="uid://bxe7vjnjc40s" path="res://Assets/SFX/open_menu.mp3" id="29_kfamv"]
 [ext_resource type="AudioStream" uid="uid://dniu3tgvdqdii" path="res://Assets/SFX/menu_slide.mp3" id="30_kxahm"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1977,7 +1973,6 @@ size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
 
-
 [node name="FenetrePalierSucces" type="Window" parent="." unique_id=563867457]
 process_mode = 3
 oversampling_override = 1.0
@@ -1992,7 +1987,6 @@ offset_left = 918.0
 offset_top = 574.0
 offset_right = 986.0
 offset_bottom = 637.0
-texture_normal = ExtResource("25_6cohq")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -2039,7 +2033,6 @@ stream = ExtResource("29_kfamv")
 
 [node name="MenuSlide" type="AudioStreamPlayer" parent="." unique_id=1885944553]
 stream = ExtResource("30_kxahm")
-
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

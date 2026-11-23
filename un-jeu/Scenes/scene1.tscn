@@ -24,7 +24,16 @@
 [ext_resource type="Texture2D" uid="uid://swvkua4e8j10" path="res://Assets/Ressources/fond_menu.png" id="18_ust72"]
 [ext_resource type="Texture2D" uid="uid://i4p06vikntgp" path="res://Assets/Ressources/menu_word.png" id="19_4fqm2"]
 [ext_resource type="Texture2D" uid="uid://djfkjx3xxf32c" path="res://Assets/Boutons/spritesheet_boutons_lissee_transparente.png" id="19_6cohq"]
+
 [ext_resource type="Texture2D" uid="uid://dxbg7aafec2aj" path="res://Assets/Boutons/close_icon.png" id="25_6cohq"]
+
+[ext_resource type="AudioStream" uid="uid://crwvcupdnms8q" path="res://Assets/Musique/ambient_music.mp3" id="25_6cohq"]
+[ext_resource type="AudioStream" uid="uid://cd2phsxjqtod2" path="res://Assets/SFX/place_building.mp3" id="26_0xbhd"]
+[ext_resource type="AudioStream" uid="uid://desf52vnsdu8o" path="res://Assets/SFX/destroy_building.mp3" id="27_bqfsd"]
+[ext_resource type="AudioStream" uid="uid://dy0363to1pfjr" path="res://Assets/SFX/object_select.mp3" id="28_bqfsd"]
+[ext_resource type="AudioStream" uid="uid://bxe7vjnjc40s" path="res://Assets/SFX/open_menu.mp3" id="29_kfamv"]
+[ext_resource type="AudioStream" uid="uid://dniu3tgvdqdii" path="res://Assets/SFX/menu_slide.mp3" id="30_kxahm"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdcb8"]
 texture = ExtResource("2_1mf5u")
@@ -1917,8 +1926,40 @@ stretch_mode = 0
 process_mode = 3
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(1000, 500)
+size = Vector2i(750, 450)
 visible = false
+
+[node name="SliderMusique" type="HSlider" parent="FenetreParam" unique_id=130373228]
+offset_left = 113.0
+offset_top = 84.0
+offset_right = 363.0
+offset_bottom = 100.0
+max_value = 1.0
+step = 0.05
+
+[node name="SliderSFX" type="HSlider" parent="FenetreParam" unique_id=66436941]
+offset_left = 113.0
+offset_top = 126.0
+offset_right = 363.0
+offset_bottom = 142.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="TextMusique" type="Label" parent="FenetreParam" unique_id=749405995]
+offset_left = 20.0
+offset_top = 81.0
+offset_right = 87.0
+offset_bottom = 104.0
+text = "Musique"
+
+[node name="TextSFX" type="Label" parent="FenetreParam" unique_id=1446567235]
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 72.0
+offset_bottom = 143.0
+text = "SFX"
+horizontal_alignment = 1
 
 [node name="FenetreCredit" type="Window" parent="." unique_id=1227708469]
 process_mode = 3
@@ -1935,6 +1976,7 @@ initial_position = 1
 size = Vector2i(353, 100)
 dialog_text = "Voulez-vous vraiment recommencer le jeu ?"
 cancel_button_text = "Annuler"
+
 
 [node name="FenetrePalierSucces" type="Window" parent="." unique_id=563867457]
 process_mode = 3
@@ -1978,6 +2020,27 @@ offset_bottom = 372.0
 theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
 
+[node name="Musique" type="AudioStreamPlayer" parent="." unique_id=1969115265]
+stream = ExtResource("25_6cohq")
+autoplay = true
+parameters/looping = true
+
+[node name="PlacementBuilding" type="AudioStreamPlayer" parent="." unique_id=170067785]
+stream = ExtResource("26_0xbhd")
+
+[node name="DestructionBuilding" type="AudioStreamPlayer" parent="." unique_id=181873631]
+stream = ExtResource("27_bqfsd")
+
+[node name="SelectionObjet" type="AudioStreamPlayer" parent="." unique_id=192443408]
+stream = ExtResource("28_bqfsd")
+
+[node name="OuvertureMenu" type="AudioStreamPlayer" parent="." unique_id=1874028265]
+stream = ExtResource("29_kfamv")
+
+[node name="MenuSlide" type="AudioStreamPlayer" parent="." unique_id=1885944553]
+stream = ExtResource("30_kxahm")
+
+
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Usine" to="." method="_on_usine_pressed"]
@@ -2002,6 +2065,8 @@ autowrap_mode = 3
 [connection signal="close_requested" from="FenetreInnovation" to="." method="_on_fenetre_home_close_requested"]
 [connection signal="pressed" from="FenetreInnovation/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="close_requested" from="FenetreParam" to="." method="_on_fenetre_param_close_requested"]
+[connection signal="value_changed" from="FenetreParam/SliderMusique" to="." method="_on_slider_musique_value_changed"]
+[connection signal="value_changed" from="FenetreParam/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
 [connection signal="close_requested" from="FenetreCredit" to="." method="_on_fenetre_credit_close_requested"]
 [connection signal="close_requested" from="FenetrePalierSucces" to="." method="_on_fenetre_palier_succes_close_requested"]
 [connection signal="pressed" from="FenetrePalierSucces/SkipPalierBtn" to="." method="_on_skip_palier_btn_pressed"]

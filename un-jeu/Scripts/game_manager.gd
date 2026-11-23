@@ -50,6 +50,10 @@ extends Node2D
 @onready var bouton_home : TextureButton = $CanvasLayer/HomeBtn
 @onready var bouton_info: TextureButton = $CanvasLayer/InfosBtn
 
+# Boutons pour les paramètres
+@onready var slider_musique: HSlider = $FenetreParam/SliderMusique
+@onready var slider_sfx: HSlider = $FenetreParam/SliderSFX
+
 @onready var bouton_inno: TextureButton = $CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations
 
 # Possitions des éléments du panneau latéral gauche
@@ -107,6 +111,7 @@ extends Node2D
 	universite_btn
 ]
 
+<<<<<<< HEAD
 # Noms affichés correspondant exactement à l'ordre de building_buttons
 # DEPEND DE L'INDEX CORRESPONDANT DANS BUILDING_BUTTONS
 var building_names: Array[String] = [
@@ -147,6 +152,16 @@ var building_descriptions: Array[String] = [
 	# Description de l'université
 	"Née au Moyen Âge puis largement ouverte au grand public au XXe siècle, l'université réunit enseignement supérieur et recherche. Sa massification a élargi l'accès aux métiers qualifiés, accéléré l'innovation technologique et renforcé la compétitivité des économies modernes."
 ]
+=======
+### Musique et Bruitages
+@onready var musique: AudioStreamPlayer = $Musique
+@onready var placement_building: AudioStreamPlayer = $PlacementBuilding
+@onready var destruction_building: AudioStreamPlayer = $DestructionBuilding
+@onready var selection_objet: AudioStreamPlayer = $SelectionObjet
+@onready var ouverture_menu: AudioStreamPlayer = $OuvertureMenu
+@onready var menu_slide: AudioStreamPlayer = $MenuSlide
+
+>>>>>>> feature-MusicAndSFX
 
 # Nombre de bâtiments actuellement débloqués (1 au début : uniquement la ferme)
 var unlocked_building_count: int = 1
@@ -216,6 +231,7 @@ func _ready() -> void:
 	# Initialiser le verrouillage des bâtiments
 	update_building_unlocks()
 	
+
 	# Initialiser les liens pour ouvrir/fermer la fenetre
 	if fenetre_palier_succes:
 		fenetre_palier_succes.hide()
@@ -235,9 +251,18 @@ func _ready() -> void:
 		fenetre_exit.canceled.connect(_on_fenetre_exit_canceled)
 	if fenetre_restart and not fenetre_restart.canceled.is_connected(_on_fenetre_restart_canceled):
 		fenetre_restart.canceled.connect(_on_fenetre_restart_canceled)
+
+	# Paramètres
+	if slider_musique:
+		slider_musique.value = 1.0 # Volume max par défaut
+		slider_musique.value_changed.connect(_on_slider_musique_value_changed)
+	
+	if slider_sfx:
+		slider_sfx.value = 1.0
+		slider_sfx.value_changed.connect(_on_slider_sfx_value_changed)
+
 	
 	# Affichage du score d'argent possédé
-	# TESTS
 	show_money()
 	
 	show_science()
@@ -402,6 +427,10 @@ func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	var building: Building = current_scene_to_place.instantiate() as Building
 	buildings_container.add_child(building)
 	
+	# Lance le SFX de placement
+	if placement_building and placement_building.stream:
+		placement_building.play()
+	
 	# Positionnement au centre des cases
 	var bottom_right_cell = top_left + footprint - Vector2i(1, 1)
 	var center_pos = (sol.map_to_local(top_left) + sol.map_to_local(bottom_right_cell)) / 2.0
@@ -462,6 +491,10 @@ func delete_building(building: Building) -> void:
 	for cell in occupied_cells.keys():
 		if occupied_cells[cell] == building:
 			occupied_cells.erase(cell)
+		
+	# Lance le SFX de destruction	
+	if destruction_building and destruction_building.stream:
+		destruction_building.play()
 			
 	building.queue_free()
 
@@ -475,27 +508,51 @@ func _on_delete_pressed() -> void:
 ### Placement des bâtiments
 ## Par exemple, clic sur le bouton de la ferme dans l'interface
 func _on_ferme_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(farm_scene)
 	
 func _on_usine_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_gratteciel_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_tour_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_fusee_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_ecole_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_lycee_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 func _on_universite_pressed() -> void:
+	# Lance le SFX de placement
+	if selection_objet and selection_objet.stream:
+		selection_objet.play()
 	start_placement(building_scene)
 
 
@@ -639,6 +696,8 @@ func _on_bouton_innovations_pressed():
 	
 # à modifier pour mon panneau lateral
 func _on_extra_stats_toggle_pressed() -> void:
+	if menu_slide and menu_slide.stream:
+		menu_slide.play()
 	if panneau_gauche.visible:
 		panneau_gauche.hide()
 		extra_stats_toggle_btn.texture_normal = text_plus
@@ -659,6 +718,9 @@ func _on_extra_stats_toggle_pressed() -> void:
 	
 ## Home Menu
 func _on_home_btn_pressed() -> void:
+	# Lance le SFX
+	if ouverture_menu and ouverture_menu.stream:
+		ouverture_menu.play()
 	if fenetre_home.visible:
 		_fermer_fenetre_home()
 	else:
@@ -709,6 +771,7 @@ func _on_credits_btn_pressed() -> void:
 	fenetre_credit.popup_centered()
 	fenetre_credit.visible = true
 
+
 ## Ferme une sous-fenêtre du menu et réaffiche le menu principal
 func _retour_menu_principal(sous_fenetre: Node = null) -> void:
 	# si la sous-fenetre est là, on la ferme
@@ -734,6 +797,35 @@ func _fermer_fenetre_home() -> void:
 	if not palier_ouvert:
 		get_tree().paused = false
 
+
+	
+func _on_btn_inno_pressed() -> void:
+	fenetre_inno.visible = true;
+
+## Ajuste le volume de la musique en convertissant la valeur du curseur en décibels
+func _on_slider_musique_value_changed(value: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("Musique")
+	if value == 0.0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		# linear_to_db convertit une échelle de 0.0 à 1.0 en décibels
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
+
+## Ajuste le volume des effets sonores (*SFX*) pour tous les bus concernés
+func _on_slider_sfx_value_changed(value: float) -> void:
+	var buses = ["Regular_SFX", "Loud_SFX"]
+	
+	for bus_name in buses:
+		var bus_idx = AudioServer.get_bus_index(bus_name)
+		if value == 0.0:
+			AudioServer.set_bus_mute(bus_idx, true)
+		else:
+			AudioServer.set_bus_mute(bus_idx, false)
+			AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
+	
+	
+
 ## DEBUG TOOLS
 # Augmente l'argent gagné de 1 en appuyant sur la touche espace et l'affiche
 # TESTS
@@ -756,7 +848,3 @@ func d_lose_science():
 	if Input.is_key_pressed(KEY_D):
 		lose_science(1)
 		show_science()
-
-
-func _on_btn_inno_pressed() -> void:
-	fenetre_inno.visible = true;

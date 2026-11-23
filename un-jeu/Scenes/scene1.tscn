@@ -2015,24 +2015,31 @@ theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
 
 [node name="Musique" type="AudioStreamPlayer" parent="." unique_id=1969115265]
+process_mode = 3
 stream = ExtResource("25_6cohq")
 autoplay = true
+bus = &"Musique"
 parameters/looping = true
 
 [node name="PlacementBuilding" type="AudioStreamPlayer" parent="." unique_id=170067785]
 stream = ExtResource("26_0xbhd")
+bus = &"Regular_SFX"
 
 [node name="DestructionBuilding" type="AudioStreamPlayer" parent="." unique_id=181873631]
 stream = ExtResource("27_bqfsd")
+bus = &"Loud_SFX"
 
 [node name="SelectionObjet" type="AudioStreamPlayer" parent="." unique_id=192443408]
 stream = ExtResource("28_bqfsd")
+bus = &"Regular_SFX"
 
 [node name="OuvertureMenu" type="AudioStreamPlayer" parent="." unique_id=1874028265]
 stream = ExtResource("29_kfamv")
+bus = &"Regular_SFX"
 
 [node name="MenuSlide" type="AudioStreamPlayer" parent="." unique_id=1885944553]
 stream = ExtResource("30_kxahm")
+bus = &"Loud_SFX"
 
 [connection signal="pressed" from="CanvasLayer/PanneauGauche/VBoxContainer/BoutonInnovations" to="." method="_on_btn_inno_pressed"]
 [connection signal="pressed" from="CanvasLayer/BarreBatiment/HBoxContainer/Ferme" to="." method="_on_ferme_pressed"]

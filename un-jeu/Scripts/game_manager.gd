@@ -798,27 +798,26 @@ func _fermer_fenetre_home() -> void:
 func _on_btn_inno_pressed() -> void:
 	fenetre_inno.visible = true;
 
-## Ajuste le volume de la musique en convertissant la valeur du curseur en décibels
-func _on_slider_musique_value_changed(value: float) -> void:
-	var bus_idx = AudioServer.get_bus_index("Musique")
-	if value == 0.0:
+func _appliquer_volume_bus(nom_bus: String, value: float) -> void:
+	var bus_idx: int = AudioServer.get_bus_index(nom_bus)
+	if bus_idx == -1:
+		push_warning("Bus audio introuvable : " + nom_bus)
+		return
+
+	if value <= 0.001:
 		AudioServer.set_bus_mute(bus_idx, true)
 	else:
 		AudioServer.set_bus_mute(bus_idx, false)
-		# linear_to_db convertit une échelle de 0.0 à 1.0 en décibels
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
 
-## Ajuste le volume des effets sonores (*SFX*) pour tous les bus concernés
+
+func _on_slider_musique_value_changed(value: float) -> void:
+	_appliquer_volume_bus("Musique", value)
+
+
 func _on_slider_sfx_value_changed(value: float) -> void:
-	var buses = ["Regular_SFX", "Loud_SFX"]
-	
-	for bus_name in buses:
-		var bus_idx = AudioServer.get_bus_index(bus_name)
-		if value == 0.0:
-			AudioServer.set_bus_mute(bus_idx, true)
-		else:
-			AudioServer.set_bus_mute(bus_idx, false)
-			AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value))
+	for bus_name in ["Regular_SFX", "Loud_SFX"]:
+		_appliquer_volume_bus(bus_name, value)
 	
 	
 

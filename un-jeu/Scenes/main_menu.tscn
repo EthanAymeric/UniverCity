@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://dfcu8r5iagtot"]
+
+[ext_resource type="Script" uid="uid://dtpqn2ih5qip3" path="res://Scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://yfk5ubm7herh" path="res://Assets/menu_background.png" id="2_bg"]
+[ext_resource type="Shader" uid="uid://x7u4qaw8ybye" path="res://Shaders/frosted_glass.gdshader" id="3_shader"]
+[ext_resource type="Texture2D" uid="uid://jv0hiw1rdctq" path="res://Assets/univercity_logo.svg" id="4_logo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glass"]
+shader = ExtResource("3_shader")
+shader_parameter/blur_radius = 12.0
+shader_parameter/lod_level = 2.4
+shader_parameter/tint_color = Color(0.99, 0.975, 0.945, 0.44)
+shader_parameter/border_color = Color(1, 0.99, 0.96, 0.75)
+shader_parameter/corner_radius = 24.0
+shader_parameter/border_width = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_normal"]
+bg_color = Color(0.165, 0.1, 0.075, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.831, 0.71, 0.494, 0.92)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.11, 0.06, 0.04, 0.24)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
+bg_color = Color(0.12, 0.07, 0.05, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74, 0.6, 0.38, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
+bg_color = Color(0.245, 0.15, 0.11, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.935, 0.835, 0.635, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.11, 0.06, 0.04, 0.3)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sec_normal"]
+bg_color = Color(1, 0.988, 0.96, 0.78)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0.21, 0.14, 0.34)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.14, 0.09, 0.06, 0.1)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sec_pressed"]
+bg_color = Color(0.925, 0.886, 0.824, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.42, 0.24, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sec_hover"]
+bg_color = Color(1, 0.992, 0.972, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.77, 0.62, 0.38, 0.92)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.14, 0.09, 0.06, 0.16)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_pressed"]
+bg_color = Color(0.92, 0.82, 0.8, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.58, 0.19, 0.16, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_hover"]
+bg_color = Color(0.99, 0.925, 0.915, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.27, 0.23, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.35, 0.1, 0.08, 0.18)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[node name="MainMenu" type="Control" unique_id=1779863628]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1376122463]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=2057771398]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = 18.0
+offset_right = 215.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+
+[node name="BlurBackdrop" type="ColorRect" parent="MenuPanel" unique_id=1092277933]
+material = SubResource("ShaderMaterial_glass")
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="MenuPanel" unique_id=115465161]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 56
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 56
+
+[node name="VBox" type="VBoxContainer" parent="MenuPanel/ContentMargin" unique_id=2079387078]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Logo" type="TextureRect" parent="MenuPanel/ContentMargin/VBox" unique_id=1359860406]
+texture_filter = 2
+custom_minimum_size = Vector2(360, 88)
+layout_mode = 2
+texture = ExtResource("4_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TopSpacer" type="Control" parent="MenuPanel/ContentMargin/VBox" unique_id=220049630]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonsBox" type="VBoxContainer" parent="MenuPanel/ContentMargin/VBox" unique_id=1477803302]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 22
+
+[node name="JouerButton" type="Button" parent="MenuPanel/ContentMargin/VBox/ButtonsBox" unique_id=1457842558]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.98, 0.953, 0.902, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.94, 1)
+theme_override_colors/font_pressed_color = Color(0.92, 0.86, 0.74, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.94, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_play_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_play_hover")
+text = "Jouer"
+
+[node name="ParametresButton" type="Button" parent="MenuPanel/ContentMargin/VBox/ButtonsBox" unique_id=670850300]
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+tooltip_text = "Bientôt disponible"
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_focus_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_pressed_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_hover_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sec_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sec_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sec_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sec_hover")
+text = "Paramètres"
+
+[node name="CreditsButton" type="Button" parent="MenuPanel/ContentMargin/VBox/ButtonsBox" unique_id=849191861]
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+tooltip_text = "Bientôt disponible"
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_focus_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_pressed_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_hover_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sec_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sec_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sec_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sec_hover")
+text = "Crédits"
+
+[node name="QuitterButton" type="Button" parent="MenuPanel/ContentMargin/VBox/ButtonsBox" unique_id=1570146751]
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15, 0.086, 0.063, 1)
+theme_override_colors/font_focus_color = Color(0.48, 0.14, 0.11, 1)
+theme_override_colors/font_pressed_color = Color(0.42, 0.11, 0.09, 1)
+theme_override_colors/font_hover_color = Color(0.48, 0.14, 0.11, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sec_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_quit_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_quit_hover")
+text = "Quitter"
+
+[node name="BottomSpacer" type="Control" parent="MenuPanel/ContentMargin/VBox" unique_id=912348765]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=493375989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.06, 0.05, 0)

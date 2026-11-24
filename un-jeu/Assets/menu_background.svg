@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="2560" height="1440">
+  <title>UniverCity Main Menu Background</title>
+  <defs>
+    <!-- Bright luminous daytime sky gradient -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0094F5" />
+      <stop offset="38%" stop-color="#2FC0FA" />
+      <stop offset="72%" stop-color="#9BE8FF" />
+      <stop offset="100%" stop-color="#FFF7D9" />
+    </linearGradient>
+
+    <!-- Soft warm sunlit horizon glow in the center -->
+    <radialGradient id="sunGlow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#FFFBEA" stop-opacity="0.72" />
+      <stop offset="55%" stop-color="#E5F8FF" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Left countryside rolling hills -->
+    <linearGradient id="hillBack" x1="0" y1="420" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#48C97E" />
+      <stop offset="100%" stop-color="#2FA66A" />
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" y1="450" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9BE053" />
+      <stop offset="100%" stop-color="#60BA48" />
+    </linearGradient>
+
+    <!-- Sunlit meadow gradient -->
+    <linearGradient id="meadowGrad" x1="0" y1="640" x2="0" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A6E65C" />
+      <stop offset="45%" stop-color="#76D14D" />
+      <stop offset="100%" stop-color="#43B04E" />
+    </linearGradient>
+
+    <!-- Sparkling turquoise Kurzgesagt river -->
+    <linearGradient id="riverGrad" x1="1150" y1="650" x2="720" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B8F6FF" />
+      <stop offset="35%" stop-color="#6CE4FF" />
+      <stop offset="100%" stop-color="#35C4F7" />
+    </linearGradient>
+
+    <!-- Modern Kurzgesagt skyscraper gradients -->
+    <linearGradient id="towerCyan" x1="0" y1="80" x2="0" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3AE2FF" />
+      <stop offset="100%" stop-color="#19B2E6" />
+    </linearGradient>
+    <linearGradient id="towerBlue" x1="0" y1="220" x2="0" y2="610" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7BC9FF" />
+      <stop offset="100%" stop-color="#4D9CF5" />
+    </linearGradient>
+    <linearGradient id="towerTeal" x1="0" y1="230" x2="0" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#48ECCD" />
+      <stop offset="100%" stop-color="#1AB8BD" />
+    </linearGradient>
+    <linearGradient id="towerCoral" x1="0" y1="320" x2="0" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF8E6E" />
+      <stop offset="100%" stop-color="#F25C6E" />
+    </linearGradient>
+    <linearGradient id="towerIndigo" x1="0" y1="248" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6A65C9" />
+      <stop offset="100%" stop-color="#413B99" />
+    </linearGradient>
+
+    <!-- Modern glass wing of university -->
+    <linearGradient id="glassWing" x1="0" y1="570" x2="0" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7AF0E2" />
+      <stop offset="50%" stop-color="#3BC7C4" />
+      <stop offset="100%" stop-color="#1F94A0" />
+    </linearGradient>
+  </defs>
+
+  <g id="sky">
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#skyGrad)" />
+    <ellipse cx="940" cy="540" rx="540" ry="260" fill="url(#sunGlow)" />
+    <g fill="#E8F8FF" opacity="0.85">
+      <rect x="-30" y="106" width="410" height="42" rx="21" />
+      <rect x="5" y="74" width="150" height="48" rx="24" />
+      <rect x="130" y="88" width="95" height="36" rx="18" />
+      <rect x="402" y="106" width="66" height="42" rx="21" />
+    </g>
+    <g fill="#E8F8FF" opacity="0.72">
+      <rect x="440" y="186" width="145" height="22" rx="11" />
+    </g>
+    <g fill="#FFFFFF" opacity="0.88">
+      <rect x="1170" y="56" width="125" height="40" rx="20" />
+      <rect x="1110" y="82" width="44" height="18" rx="9" />
+    </g>
+    <g fill="#FFFFFF" opacity="0.82">
+      <rect x="975" y="310" width="210" height="24" rx="12" />
+      <rect x="1041" y="292" width="108" height="30" rx="15" />
+    </g>
+    <g fill="#E8F8FF" opacity="0.85">
+      <rect x="1745" y="108" width="230" height="40" rx="20" />
+      <rect x="1805" y="76" width="130" height="46" rx="23" />
+      <rect x="1689" y="112" width="42" height="30" rx="15" />
+    </g>
+    <path d="M -10,435 Q 90,340 220,370 Q 320,310 460,360 Q 590,335 710,425 Q 780,475 840,560 L -10,560 Z" fill="#FFFFFF" opacity="0.58" />
+    <path d="M 308.2,229.2 Q 316.6,217.7 325,227.1 Q 333.4,217.7 341.8,229.2" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" opacity="0.85" />
+    <path d="M 374.9,253.3 Q 381.4,244.3 388,251.6 Q 394.6,244.3 401.1,253.3" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.78" />
+    <path d="M 1340.5,154.9 Q 1346.2,147 1352,153.4 Q 1357.8,147 1363.5,154.9" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.82" />
+    <path d="M 1384.7,176.3 Q 1389.4,169.9 1394,175.2 Q 1398.6,169.9 1403.3,176.3" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" opacity="0.72" />
+  </g>
+  <g id="distant-landscape">
+    <!-- Far misty blue-teal hills across center horizon -->
+    <path d="M 650,625 Q 785,535 910,575 Q 1030,520 1185,585 Q 1300,565 1420,620 L 1420,700 L 650,700 Z" fill="#7AC8D6" opacity="0.65" />
+    <path d="M 730,645 Q 890,565 1045,605 Q 1165,575 1305,635 L 1305,710 L 730,710 Z" fill="#63BAC9" opacity="0.55" />
+
+    <!-- Mid-left emerald mountains/hills -->
+    <path d="M -20,635 Q 140,420 355,445 Q 485,460 580,535 Q 690,465 825,625 L 825,740 L -20,740 Z" fill="url(#hillBack)" />
+    <path d="M 270,585 Q 425,430 570,520 Q 675,470 810,635 L 810,740 L 270,740 Z" fill="url(#hillMid)" />
+
+    <!-- Terraced agricultural green fields in left-midground -->
+    <path d="M 410,618 Q 625,580 860,648 L 860,725 L 410,725 Z" fill="#7DD152" />
+    <path d="M 435,636 Q 635,605 835,658 L 835,672 Q 635,622 435,650 Z" fill="#68BC44" opacity="0.55" />
+    <path d="M 420,664 Q 625,636 820,680 L 820,694 Q 625,652 420,678 Z" fill="#5AAE3A" opacity="0.45" />
+
+    <!-- Tiny distant red barn on hillside -->
+    <g transform="translate(602, 578)">
+      <polygon points="0,24 22,2 44,24 44,52 0,52" fill="#E86252" />
+      <polygon points="22,2 64,2 82,22 44,24" fill="#C9453A" />
+      <rect x="44" y="22" width="38" height="30" fill="#D45044" />
+      <rect x="14" y="30" width="16" height="22" rx="2" fill="#6E2822" />
+      <rect x="54" y="30" width="12" height="12" rx="1.5" fill="#7D2E27" />
+    </g>
+  </g>
+  <g id="modern-city">
+    <path d="M 1555,155 C 1555,95 1618,74 1662,88 L 1662,560 L 1555,560 Z" fill="url(#towerCyan)" />
+    <path d="M 1635,84 L 1662,88 L 1662,560 L 1635,560 Z" fill="#1AA8D8" opacity="0.55" />
+    <rect x="1576" y="152" width="16" height="28" rx="8" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1576" y="204" width="16" height="28" rx="8" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1606" y="224" width="14" height="28" rx="7" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1576" y="286" width="16" height="28" rx="8" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1606" y="318" width="14" height="28" rx="7" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1576" y="368" width="16" height="28" rx="8" fill="#D6FAFF" opacity="0.9" />
+    <rect x="1680" y="248" width="76" height="290" rx="20" fill="url(#towerIndigo)" />
+    <rect x="1722" y="248" width="34" height="290" rx="10" fill="#3B368C" opacity="0.55" />
+    <rect x="1696" y="274" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="296" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="318" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="340" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="362" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="384" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1696" y="406" width="24" height="8" rx="4" fill="#8D9BFF" opacity="0.82" />
+    <rect x="1428" y="220" width="96" height="390" rx="28" fill="url(#towerBlue)" />
+    <rect x="1484" y="220" width="40" height="390" rx="16" fill="#4E95F0" opacity="0.55" />
+    <rect x="1450" y="255" width="26" height="10" rx="5" fill="#E3F7FF" opacity="0.92" />
+    <rect x="1450" y="290" width="26" height="10" rx="5" fill="#E3F7FF" opacity="0.92" />
+    <rect x="1450" y="325" width="26" height="10" rx="5" fill="#E3F7FF" opacity="0.92" />
+    <rect x="1450" y="375" width="26" height="10" rx="5" fill="#E3F7FF" opacity="0.92" />
+    <path d="M 1518,415 Q 1545,388 1568,412 L 1568,430 Q 1545,408 1518,432 Z" fill="#82D4FF" />
+    <path d="M 1304,295 C 1304,242 1350,224 1402,248 L 1402,660 L 1304,660 Z" fill="url(#towerTeal)" />
+    <path d="M 1368,236 L 1402,248 L 1402,660 L 1368,660 Z" fill="#149EB5" opacity="0.48" />
+    <rect x="1316" y="276" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="294" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="312" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="330" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="348" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="366" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="384" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="402" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="420" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="438" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="456" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="474" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="492" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="510" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="528" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <rect x="1316" y="546" width="54" height="7" rx="3.5" fill="#A6FFF0" opacity="0.72" />
+    <path d="M 1380,455 C 1380,370 1425,330 1466,322 L 1466,640 L 1380,640 Z" fill="url(#towerCoral)" />
+    <rect x="1400" y="375" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="399" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="423" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="447" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="471" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="495" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1400" y="519" width="42" height="8" rx="4" fill="#FFD3C2" opacity="0.86" />
+    <rect x="1276" y="478" width="38" height="170" rx="14" fill="#F29BC2" />
+    <g id="biodome-left" transform="translate(1235, 445)">
+      <!-- Tapered futuristic turquoise pedestal -->
+      <path d="M -52,-8 C -30,24 -18,75 -16,165 L 16,165 C 18,75 30,24 52,-8 Z" fill="url(#towerBlue)" />
+      <!-- Pink/coral foliage bed -->
+      <ellipse cx="0" cy="-6" rx="46" ry="12" fill="#FF6E8A" />
+      <circle cx="-18" cy="-12" r="14" fill="#FF8AA0" />
+      <circle cx="18" cy="-12" r="14" fill="#FF8AA0" />
+      <!-- Miniature tree inside dome -->
+      <path d="M -3,-8 L -3,-32 M -3,-24 L -12,-34 M -3,-26 L 10,-36" stroke="#6B3A4D" stroke-width="4.5" stroke-linecap="round" />
+      <circle cx="0" cy="-42" r="16" fill="#2CC77A" />
+      <circle cx="-12" cy="-36" r="11" fill="#3BE08E" />
+      <circle cx="12" cy="-35" r="11" fill="#1FA865" />
+      <!-- Glass dome bubble -->
+      <path d="M -46,-6 A 48,48 0 1,1 46,-6 Z" fill="#D9F8FF" opacity="0.34" stroke="#FFFFFF" stroke-width="3" />
+      <path d="M -30,-30 A 38,38 0 0,1 -6,-46" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.78" />
+    </g>
+    <g id="greenhouse-dome" transform="translate(1152, 622)">
+      <path d="M -98,0 A 98,92 0 0,1 98,0 Z" fill="#BCEEFF" opacity="0.58" />
+      <!-- Interior lush trees -->
+      <circle cx="-26" cy="-24" r="32" fill="#23AD75" opacity="0.78" />
+      <circle cx="18" cy="-30" r="36" fill="#32C783" opacity="0.82" />
+      <circle cx="52" cy="-16" r="24" fill="#1D9468" opacity="0.78" />
+      <!-- Geodesic glass ribs -->
+      <path d="M -98,0 A 98,92 0 0,1 98,0" fill="none" stroke="#FFFFFF" stroke-width="3.5" opacity="0.85" />
+      <path d="M -52,-78 Q -42,-35 -48,0 M 0,-92 L 0,0 M 52,-78 Q 42,-35 48,0" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.72" />
+      <path d="M -86,-42 Q 0,-56 86,-42 M -96,-14 Q 0,-24 96,-14" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.72" />
+    </g>
+    <g id="biodome-right" transform="translate(1845, 315)">
+      <path d="M -78,0 C -48,38 -30,90 -24,155 L 24,155 C 30,90 48,38 78,0 Z" fill="url(#towerCyan)" />
+      <ellipse cx="0" cy="0" rx="74" ry="18" fill="#FF6E8A" />
+      <circle cx="-30" cy="-10" r="22" fill="#FF899F" />
+      <circle cx="28" cy="-10" r="22" fill="#FF899F" />
+      <path d="M -4,-6 L -4,-44 M -4,-32 L -18,-48 M -4,-36 L 16,-50" stroke="#6B3A4D" stroke-width="6.5" stroke-linecap="round" />
+      <circle cx="0" cy="-62" r="25" fill="#2CC77A" />
+      <circle cx="-22" cy="-50" r="18" fill="#47E38C" />
+      <circle cx="22" cy="-50" r="18" fill="#1FA865" />
+      <path d="M -76,0 A 82,82 0 1,1 76,0 Z" fill="#D9F8FF" opacity="0.32" stroke="#FFFFFF" stroke-width="4" />
+      <path d="M -52,-42 A 62,62 0 0,1 -8,-68" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" opacity="0.78" />
+    </g>
+    <g id="arch-bridge">
+      <path d="M 1142,665 C 1185,535 1378,535 1425,665 L 1378,665 C 1340,582 1222,582 1192,665 Z" fill="#7D83D6" />
+      <path d="M 1142,665 C 1185,535 1378,535 1425,665 L 1408,665 C 1365,556 1200,556 1162,665 Z" fill="#9FA6F0" />
+      <path d="M 1184,665 C 1218,582 1344,582 1384,665 L 1368,665 C 1335,595 1226,595 1198,665 Z" fill="#5A5EA8" />
+    </g>
+  </g>
+  <g id="meadow-and-river">
+    <!-- Golden wheat field patch -->
+    <path d="M 415,675 Q 585,638 775,678 L 765,755 L 415,755 Z" fill="#FBE07D" />
+    <g id="wheat">
+      <line x1="470" y1="723" x2="470" y2="666" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="465" cy="670" rx="4" ry="8" transform="rotate(-25 465 670)" fill="#F5C94C" /><ellipse cx="475" cy="670" rx="4" ry="8" transform="rotate(25 475 670)" fill="#F5C94C" /><ellipse cx="465" cy="684" rx="3.8" ry="7" transform="rotate(-25 465 684)" fill="#F5C94C" /><ellipse cx="475" cy="684" rx="3.8" ry="7" transform="rotate(25 475 684)" fill="#F5C94C" />
+      <line x1="492" y1="727" x2="492" y2="670" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="487" cy="674" rx="4" ry="8" transform="rotate(-25 487 674)" fill="#F5C94C" /><ellipse cx="497" cy="674" rx="4" ry="8" transform="rotate(25 497 674)" fill="#F5C94C" /><ellipse cx="487" cy="688" rx="3.8" ry="7" transform="rotate(-25 487 688)" fill="#F5C94C" /><ellipse cx="497" cy="688" rx="3.8" ry="7" transform="rotate(25 497 688)" fill="#F5C94C" />
+      <line x1="514" y1="728" x2="514" y2="671" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="509" cy="675" rx="4" ry="8" transform="rotate(-25 509 675)" fill="#F5C94C" /><ellipse cx="519" cy="675" rx="4" ry="8" transform="rotate(25 519 675)" fill="#F5C94C" /><ellipse cx="509" cy="689" rx="3.8" ry="7" transform="rotate(-25 509 689)" fill="#F5C94C" /><ellipse cx="519" cy="689" rx="3.8" ry="7" transform="rotate(25 519 689)" fill="#F5C94C" />
+      <line x1="536" y1="726" x2="536" y2="669" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="531" cy="673" rx="4" ry="8" transform="rotate(-25 531 673)" fill="#F5C94C" /><ellipse cx="541" cy="673" rx="4" ry="8" transform="rotate(25 541 673)" fill="#F5C94C" /><ellipse cx="531" cy="687" rx="3.8" ry="7" transform="rotate(-25 531 687)" fill="#F5C94C" /><ellipse cx="541" cy="687" rx="3.8" ry="7" transform="rotate(25 541 687)" fill="#F5C94C" />
+      <line x1="558" y1="722" x2="558" y2="665" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="553" cy="669" rx="4" ry="8" transform="rotate(-25 553 669)" fill="#F5C94C" /><ellipse cx="563" cy="669" rx="4" ry="8" transform="rotate(25 563 669)" fill="#F5C94C" /><ellipse cx="553" cy="683" rx="3.8" ry="7" transform="rotate(-25 553 683)" fill="#F5C94C" /><ellipse cx="563" cy="683" rx="3.8" ry="7" transform="rotate(25 563 683)" fill="#F5C94C" />
+      <line x1="580" y1="718" x2="580" y2="661" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="575" cy="665" rx="4" ry="8" transform="rotate(-25 575 665)" fill="#F5C94C" /><ellipse cx="585" cy="665" rx="4" ry="8" transform="rotate(25 585 665)" fill="#F5C94C" /><ellipse cx="575" cy="679" rx="3.8" ry="7" transform="rotate(-25 575 679)" fill="#F5C94C" /><ellipse cx="585" cy="679" rx="3.8" ry="7" transform="rotate(25 585 679)" fill="#F5C94C" />
+      <line x1="602" y1="718" x2="602" y2="661" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="597" cy="665" rx="4" ry="8" transform="rotate(-25 597 665)" fill="#F5C94C" /><ellipse cx="607" cy="665" rx="4" ry="8" transform="rotate(25 607 665)" fill="#F5C94C" /><ellipse cx="597" cy="679" rx="3.8" ry="7" transform="rotate(-25 597 679)" fill="#F5C94C" /><ellipse cx="607" cy="679" rx="3.8" ry="7" transform="rotate(25 607 679)" fill="#F5C94C" />
+      <line x1="624" y1="722" x2="624" y2="665" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="619" cy="669" rx="4" ry="8" transform="rotate(-25 619 669)" fill="#F5C94C" /><ellipse cx="629" cy="669" rx="4" ry="8" transform="rotate(25 629 669)" fill="#F5C94C" /><ellipse cx="619" cy="683" rx="3.8" ry="7" transform="rotate(-25 619 683)" fill="#F5C94C" /><ellipse cx="629" cy="683" rx="3.8" ry="7" transform="rotate(25 629 683)" fill="#F5C94C" />
+      <line x1="646" y1="726" x2="646" y2="669" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="641" cy="673" rx="4" ry="8" transform="rotate(-25 641 673)" fill="#F5C94C" /><ellipse cx="651" cy="673" rx="4" ry="8" transform="rotate(25 651 673)" fill="#F5C94C" /><ellipse cx="641" cy="687" rx="3.8" ry="7" transform="rotate(-25 641 687)" fill="#F5C94C" /><ellipse cx="651" cy="687" rx="3.8" ry="7" transform="rotate(25 651 687)" fill="#F5C94C" />
+      <line x1="668" y1="728" x2="668" y2="671" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="663" cy="675" rx="4" ry="8" transform="rotate(-25 663 675)" fill="#F5C94C" /><ellipse cx="673" cy="675" rx="4" ry="8" transform="rotate(25 673 675)" fill="#F5C94C" /><ellipse cx="663" cy="689" rx="3.8" ry="7" transform="rotate(-25 663 689)" fill="#F5C94C" /><ellipse cx="673" cy="689" rx="3.8" ry="7" transform="rotate(25 673 689)" fill="#F5C94C" />
+      <line x1="690" y1="726" x2="690" y2="669" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="685" cy="673" rx="4" ry="8" transform="rotate(-25 685 673)" fill="#F5C94C" /><ellipse cx="695" cy="673" rx="4" ry="8" transform="rotate(25 695 673)" fill="#F5C94C" /><ellipse cx="685" cy="687" rx="3.8" ry="7" transform="rotate(-25 685 687)" fill="#F5C94C" /><ellipse cx="695" cy="687" rx="3.8" ry="7" transform="rotate(25 695 687)" fill="#F5C94C" />
+      <line x1="712" y1="722" x2="712" y2="665" stroke="#E3A529" stroke-width="3.2" stroke-linecap="round" /><ellipse cx="707" cy="669" rx="4" ry="8" transform="rotate(-25 707 669)" fill="#F5C94C" /><ellipse cx="717" cy="669" rx="4" ry="8" transform="rotate(25 717 669)" fill="#F5C94C" /><ellipse cx="707" cy="683" rx="3.8" ry="7" transform="rotate(-25 707 683)" fill="#F5C94C" /><ellipse cx="717" cy="683" rx="3.8" ry="7" transform="rotate(25 717 683)" fill="#F5C94C" />
+    </g>
+
+    <!-- Main sunlit green meadow spanning left to right -->
+    <path d="M -20,735 Q 240,700 465,735 Q 720,700 970,665 Q 1185,642 1420,645 L 1420,1100 L -20,1100 Z" fill="url(#meadowGrad)" />
+
+    <!-- Subtle meadow contour depth bands -->
+    <path d="M 740,685 Q 980,645 1290,648 L 1360,720 Q 1030,715 740,745 Z" fill="#8AE058" opacity="0.55" />
+    <path d="M 960,656 Q 1030,618 1105,638 Q 1155,622 1210,656 Z" fill="#32AE68" />
+
+    <!-- Rustic wooden fences -->
+    <g id="fences">
+      <rect x="512" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="538" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="564" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="590" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="616" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="642" y="704" width="8" height="44" rx="3" fill="#B5753C" />
+      <rect x="506" y="715" width="156" height="7" rx="3" fill="#CC8848" />
+      <rect x="506" y="732" width="156" height="7" rx="3" fill="#CC8848" />
+      <rect x="675" y="708" width="7" height="36" rx="2.5" fill="#B5753C" />
+      <rect x="699" y="702" width="7" height="36" rx="2.5" fill="#B5753C" />
+      <rect x="723" y="696" width="7" height="36" rx="2.5" fill="#B5753C" />
+      <rect x="747" y="690" width="7" height="36" rx="2.5" fill="#B5753C" />
+      <rect x="771" y="684" width="7" height="36" rx="2.5" fill="#B5753C" />
+      <path d="M 672,718 L 778,690" stroke="#CC8848" stroke-width="6.5" stroke-linecap="round" />
+      <path d="M 672,732 L 778,704" stroke="#CC8848" stroke-width="6.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Winding country dirt road connecting countryside cleanly into the schoolyard path -->
+    <path d="M 848,705 C 765,712 686,736 675,772 C 664,804 756,826 742,870 C 728,912 605,942 356,942"
+          fill="none" stroke="#D9A05B" stroke-width="26" stroke-linecap="round" />
+    <path d="M 848,705 C 765,712 686,736 675,772 C 664,804 756,826 742,870 C 728,912 605,942 356,942"
+          fill="none" stroke="#EBC07E" stroke-width="18" stroke-linecap="round" />
+
+    <!-- Winding sunlit Kurzgesagt river (center transition!) -->
+    <!-- Soft sandy/ochre bank edge -->
+    <path d="M 1390,652 C 1220,672 1005,688 860,738 C 762,772 785,805 905,832 C 1025,858 1068,900 940,948 C 805,1000 660,1035 510,1095
+             L 895,1095 C 1055,1022 1245,952 1248,872 C 1252,804 1038,794 1026,758 C 1015,726 1215,692 1405,668 Z"
+          fill="#C9965E" />
+    <!-- Bright sky-turquoise river water -->
+    <path d="M 1392,655 C 1225,675 1012,692 872,742 C 778,775 802,804 920,830 C 1044,858 1088,902 958,954 C 824,1006 680,1040 538,1095
+             L 882,1095 C 1042,1022 1236,954 1240,874 C 1244,808 1024,798 1012,758 C 1000,722 1208,690 1405,666 Z"
+          fill="url(#riverGrad)" />
+
+    <!-- Crisp Kurzgesagt white pill water ripples -->
+    <g fill="#FFFFFF" opacity="0.82">
+      <rect x="945" y="734" width="46" height="8" rx="4" transform="rotate(-14 945 734)" />
+      <rect x="892" y="766" width="54" height="9" rx="4.5" transform="rotate(8 892 766)" />
+      <rect x="1038" y="805" width="42" height="8" rx="4" transform="rotate(14 1038 805)" />
+      <rect x="1078" y="846" width="76" height="10" rx="5" transform="rotate(8 1078 846)" />
+      <rect x="1125" y="902" width="66" height="10" rx="5" transform="rotate(-18 1125 902)" />
+      <rect x="972" y="958" width="90" height="12" rx="6" transform="rotate(-22 972 958)" />
+      <rect x="895" y="1008" width="58" height="10" rx="5" transform="rotate(-24 895 1008)" />
+      <rect x="772" y="1016" width="74" height="12" rx="6" transform="rotate(-22 772 1016)" />
+      <rect x="654" y="1055" width="62" height="11" rx="5.5" transform="rotate(-20 654 1055)" />
+    </g>
+
+    <!-- Foreground path from schoolhouse door -->
+    <path d="M 272,882 C 345,905 405,935 375,976 C 348,1012 255,1035 235,1095 L 118,1095 C 145,1022 258,988 278,956 C 296,928 245,910 218,895 Z" fill="#D49A55" />
+    <path d="M 268,885 C 336,906 392,934 366,972 C 340,1006 248,1032 225,1095 L 132,1095 C 158,1026 266,990 286,956 C 304,926 250,906 226,892 Z" fill="#E9BD7A" />
+
+    <!-- Foreground dark emerald bush bed at bottom-left -->
+    <path d="M -20,860 Q 75,835 165,882 Q 245,895 270,965 Q 200,1045 128,1095 L -20,1095 Z" fill="#1FA368" />
+    <circle cx="48" cy="918" r="56" fill="#2BB874" />
+    <circle cx="132" cy="942" r="52" fill="#24AA6C" />
+
+    <!-- Wildflowers -->
+    <g id="flowers">
+      <g transform="translate(40,915)"><circle cx="0" cy="-7.2" r="5.3" fill="#FF5E7E" /><circle cx="6.8" cy="0" r="5.3" fill="#FF5E7E" /><circle cx="0" cy="7.2" r="5.3" fill="#FF5E7E" /><circle cx="-6.8" cy="0" r="5.3" fill="#FF5E7E" /><circle cx="0" cy="0" r="4.2" fill="#FFD54F" /></g>
+      <g transform="translate(118,975)"><circle cx="0" cy="-8.5" r="6.2" fill="#FF7896" /><circle cx="8.1" cy="0" r="6.2" fill="#FF7896" /><circle cx="0" cy="8.5" r="6.2" fill="#FF7896" /><circle cx="-8.1" cy="0" r="6.2" fill="#FF7896" /><circle cx="0" cy="0" r="4.9" fill="#FFD54F" /></g>
+      <g transform="translate(156,985)"><circle cx="0" cy="-9.1" r="6.7" fill="#FFFFFF" /><circle cx="8.7" cy="0" r="6.7" fill="#FFFFFF" /><circle cx="0" cy="9.1" r="6.7" fill="#FFFFFF" /><circle cx="-8.7" cy="0" r="6.7" fill="#FFFFFF" /><circle cx="0" cy="0" r="5.3" fill="#FFD54F" /></g>
+      <g transform="translate(228,1020)"><circle cx="0" cy="-7.8" r="5.8" fill="#FFE054" /><circle cx="7.4" cy="0" r="5.8" fill="#FFE054" /><circle cx="0" cy="7.8" r="5.8" fill="#FFE054" /><circle cx="-7.4" cy="0" r="5.8" fill="#FFE054" /><circle cx="0" cy="0" r="4.6" fill="#FFD54F" /></g>
+      <g transform="translate(382,1018)"><circle cx="0" cy="-8.5" r="6.2" fill="#FFE054" /><circle cx="8.1" cy="0" r="6.2" fill="#FFE054" /><circle cx="0" cy="8.5" r="6.2" fill="#FFE054" /><circle cx="-8.1" cy="0" r="6.2" fill="#FFE054" /><circle cx="0" cy="0" r="4.9" fill="#FFD54F" /></g>
+      <g transform="translate(446,988)"><circle cx="0" cy="-7.8" r="5.8" fill="#FF6688" /><circle cx="7.4" cy="0" r="5.8" fill="#FF6688" /><circle cx="0" cy="7.8" r="5.8" fill="#FF6688" /><circle cx="-7.4" cy="0" r="5.8" fill="#FF6688" /><circle cx="0" cy="0" r="4.6" fill="#FFD54F" /></g>
+      <g transform="translate(468,1042)"><circle cx="0" cy="-7.2" r="5.3" fill="#9B74F5" /><circle cx="6.8" cy="0" r="5.3" fill="#9B74F5" /><circle cx="0" cy="7.2" r="5.3" fill="#9B74F5" /><circle cx="-6.8" cy="0" r="5.3" fill="#9B74F5" /><circle cx="0" cy="0" r="4.2" fill="#FFD54F" /></g>
+      <g transform="translate(535,965)"><circle cx="0" cy="-6.5" r="4.8" fill="#FF6E8A" /><circle cx="6.2" cy="0" r="4.8" fill="#FF6E8A" /><circle cx="0" cy="6.5" r="4.8" fill="#FF6E8A" /><circle cx="-6.2" cy="0" r="4.8" fill="#FF6E8A" /><circle cx="0" cy="0" r="3.8" fill="#FFD54F" /></g>
+      <g transform="translate(795,902)"><circle cx="0" cy="-5.9" r="4.3" fill="#FF6E8A" /><circle cx="5.6" cy="0" r="4.3" fill="#FF6E8A" /><circle cx="0" cy="5.9" r="4.3" fill="#FF6E8A" /><circle cx="-5.6" cy="0" r="4.3" fill="#FF6E8A" /><circle cx="0" cy="0" r="3.4" fill="#FFD54F" /></g>
+      <g transform="translate(820,886)"><circle cx="0" cy="-5.2" r="3.8" fill="#FFE054" /><circle cx="5.0" cy="0" r="3.8" fill="#FFE054" /><circle cx="0" cy="5.2" r="3.8" fill="#FFE054" /><circle cx="-5.0" cy="0" r="3.8" fill="#FFE054" /><circle cx="0" cy="0" r="3.0" fill="#FFD54F" /></g>
+      <g transform="translate(1168,724)"><circle cx="0" cy="-4.5" r="3.4" fill="#FFE054" /><circle cx="4.3" cy="0" r="3.4" fill="#FFE054" /><circle cx="0" cy="4.5" r="3.4" fill="#FFE054" /><circle cx="-4.3" cy="0" r="3.4" fill="#FFE054" /><circle cx="0" cy="0" r="2.7" fill="#FFD54F" /></g>
+      <g transform="translate(1248,764)"><circle cx="0" cy="-4.5" r="3.4" fill="#FFFFFF" /><circle cx="4.3" cy="0" r="3.4" fill="#FFFFFF" /><circle cx="0" cy="4.5" r="3.4" fill="#FFFFFF" /><circle cx="-4.3" cy="0" r="3.4" fill="#FFFFFF" /><circle cx="0" cy="0" r="2.7" fill="#FFD54F" /></g>
+    </g>
+  </g>
+  <g id="left-countryside">
+    <!-- Lush fluffy layered Kurzgesagt trees behind schoolhouse -->
+    <g id="trees-left">
+      <!-- Tall left canopy -->
+      <circle cx="62" cy="348" r="108" fill="#8EDB53" />
+      <circle cx="152" cy="396" r="88" fill="#77CC49" />
+      <circle cx="38" cy="462" r="112" fill="#63BD46" />
+      <circle cx="155" cy="488" r="95" fill="#4BA844" />
+      <circle cx="22" cy="545" r="98" fill="#3B9642" />
+      <!-- Mid tree right of schoolhouse -->
+      <rect x="378" y="650" width="24" height="120" rx="10" fill="#8F5738" />
+      <circle cx="390" cy="492" r="72" fill="#8AD651" />
+      <circle cx="350" cy="555" r="64" fill="#6CC248" />
+      <circle cx="428" cy="572" r="74" fill="#5CB646" />
+      <circle cx="386" cy="635" r="76" fill="#3F9B48" />
+      <circle cx="445" cy="645" r="58" fill="#2E8A48" />
+    </g>
+
+    <!-- Charming Rural Village Schoolhouse -->
+    <g id="schoolhouse">
+      <!-- Ground contact shadow -->
+      <ellipse cx="188" cy="872" rx="198" ry="26" fill="#267A45" opacity="0.38" />
+
+      <!-- Side wall (left shaded warm tan) -->
+      <polygon points="0,668 164,668 164,892 0,852" fill="#DFBE9B" />
+      <!-- Stone plinth along side -->
+      <polygon points="0,828 164,864 164,892 0,856" fill="#B89578" />
+
+      <!-- Two arched side windows -->
+      <g>
+        <path d="M 10,795 L 10,750 A 21,21 0 0,1 52,750 L 52,803 Z" fill="#6B4431" />
+        <path d="M 14,791 L 14,752 A 17,17 0 0,1 48,752 L 48,798 Z" fill="#58637A" />
+        <line x1="31" y1="735" x2="31" y2="795" stroke="#6B4431" stroke-width="4" />
+        <line x1="12" y1="766" x2="50" y2="774" stroke="#6B4431" stroke-width="4" />
+
+        <path d="M 76,810 L 76,764 A 22,22 0 0,1 120,764 L 120,819 Z" fill="#6B4431" />
+        <path d="M 80,806 L 80,766 A 18,18 0 0,1 116,766 L 116,814 Z" fill="#58637A" />
+        <line x1="98" y1="748" x2="98" y2="810" stroke="#6B4431" stroke-width="4" />
+        <line x1="78" y1="780" x2="118" y2="788" stroke="#6B4431" stroke-width="4" />
+      </g>
+
+      <!-- Front gable wall (sunlit warm cream) -->
+      <polygon points="164,668 265,556 368,668 368,856 164,892" fill="#FFF3DC" />
+      <!-- Subtle roof shadow cast on front wall -->
+      <polygon points="164,668 265,556 368,668 368,688 265,578 164,690" fill="#E8CFB0" />
+
+      <!-- Round 4-pane attic window -->
+      <circle cx="268" cy="656" r="24" fill="#6B4431" />
+      <circle cx="268" cy="656" r="19" fill="#52627A" />
+      <line x1="268" y1="636" x2="268" y2="676" stroke="#6B4431" stroke-width="4.5" />
+      <line x1="248" y1="656" x2="288" y2="656" stroke="#6B4431" stroke-width="4.5" />
+
+      <!-- Grand Arched Wooden Schoolhouse Door -->
+      <path d="M 222,882 L 222,768 A 46,48 0 0,1 314,768 L 314,866 Z" fill="#8C4E2B" />
+      <path d="M 232,880 L 232,772 A 36,38 0 0,1 304,772 L 304,868 Z" fill="#B56A3B" />
+      <line x1="268" y1="734" x2="268" y2="874" stroke="#99562E" stroke-width="3" />
+      <circle cx="290" cy="818" r="5" fill="#F7C948" />
+
+      <!-- Terracotta pitched main roof -->
+      <polygon points="-14,672 86,542 265,542 152,690" fill="#B84231" />
+      <!-- Front gable roof fascia (thick sunlit cream + warm red edge) -->
+      <path d="M 142,684 L 265,542 L 392,682 L 374,698 L 265,574 L 160,698 Z" fill="#FFF3DC" />
+      <path d="M 136,678 L 265,530 L 398,676 L 384,689 L 265,552 L 150,690 Z" fill="#D1523E" />
+
+      <!-- Rooftop Bell Tower (Belfry) -->
+      <g id="belfry">
+        <!-- Side wall of belfry -->
+        <polygon points="154,484 218,484 218,576 154,576" fill="#E3C4A3" />
+        <!-- Front wall of belfry -->
+        <polygon points="218,484 252,448 286,484 286,568 218,576" fill="#FFF3DC" />
+        <!-- Dark arch opening for bell -->
+        <path d="M 233,544 L 233,502 A 19,19 0 0,1 271,502 L 271,544 Z" fill="#592F24" />
+        <!-- Golden school bell -->
+        <path d="M 244,504 C 244,494 260,494 260,504 L 265,524 L 239,524 Z" fill="#F7C948" />
+        <circle cx="252" cy="526" r="4.2" fill="#D99B26" />
+        <!-- Belfry pitched roof -->
+        <polygon points="134,492 184,424 252,424 212,492" fill="#B84231" />
+        <path d="M 206,492 L 252,424 L 302,492 L 288,498 L 252,448 L 218,498 Z" fill="#D1523E" />
+      </g>
+    </g>
+
+    <!-- Cute Kurzgesagt Student waving next to schoolhouse -->
+    <g id="student-left" transform="translate(464, 795)">
+      <ellipse cx="0" cy="108" rx="28" ry="8" fill="#2A8044" opacity="0.4" />
+      <!-- Backpack -->
+      <rect x="-32" y="20" width="24" height="44" rx="10" fill="#2D7DD2" />
+      <rect x="-28" y="30" width="14" height="16" rx="5" fill="#5BA4F2" />
+      <!-- Legs -->
+      <rect x="-13" y="66" width="12" height="36" rx="5" fill="#6B3F2E" />
+      <rect x="2" y="66" width="12" height="36" rx="5" fill="#573123" />
+      <rect x="-15" y="96" width="16" height="9" rx="4" fill="#3D2218" />
+      <rect x="1" y="96" width="16" height="9" rx="4" fill="#3D2218" />
+      <!-- Shirt / torso -->
+      <rect x="-18" y="20" width="36" height="50" rx="14" fill="#F5B841" />
+      <path d="M -8,20 L 0,32 L 8,20 Z" fill="#FFFFFF" />
+      <!-- Waving arm -->
+      <path d="M 14,34 L 34,18" stroke="#F5B841" stroke-width="11" stroke-linecap="round" />
+      <circle cx="38" cy="14" r="7" fill="#F2B89B" />
+      <!-- Left arm -->
+      <path d="M -14,34 L -20,56" stroke="#E0A12E" stroke-width="10" stroke-linecap="round" />
+      <!-- Head -->
+      <circle cx="0" cy="-2" r="23" fill="#F5BEA0" />
+      <!-- Warm cheeks -->
+      <circle cx="-13" cy="4" r="4" fill="#FF8C8C" opacity="0.42" />
+      <circle cx="13" cy="4" r="4" fill="#FF8C8C" opacity="0.42" />
+      <!-- Stylized Kurzgesagt hair with soft tuft -->
+      <path d="M -23,-5 C -24,-29 22,-31 23,-5 C 15,-14 -4,-16 -23,-5 Z" fill="#6E3F2B" />
+      <ellipse cx="4" cy="-22" rx="11" ry="6" transform="rotate(-12 4 -22)" fill="#7D4933" />
+      <!-- Cute eyes & warm smile -->
+      <circle cx="-8" cy="-2" r="3" fill="#2B1B15" />
+      <circle cx="8" cy="-2" r="3" fill="#2B1B15" />
+      <path d="M -6,6 Q 0,12 6,6" fill="none" stroke="#8C4B38" stroke-width="2.8" stroke-linecap="round" />
+    </g>
+
+    <!-- Adorable Kurzgesagt Spotted Cow -->
+    <g id="cow-left" transform="translate(596, 822)">
+      <ellipse cx="0" cy="82" rx="56" ry="11" fill="#2A8044" opacity="0.38" />
+      <!-- Tail -->
+      <path d="M 54,-8 Q 74,4 68,36" fill="none" stroke="#FFF6EA" stroke-width="5" stroke-linecap="round" />
+      <ellipse cx="68" cy="40" rx="5" ry="8" fill="#7D4933" />
+      <!-- Legs -->
+      <rect x="-40" y="34" width="13" height="44" rx="5" fill="#EEDCC8" />
+      <rect x="-22" y="36" width="13" height="42" rx="5" fill="#FFF6EA" />
+      <rect x="20" y="34" width="13" height="44" rx="5" fill="#EEDCC8" />
+      <rect x="38" y="34" width="13" height="44" rx="5" fill="#FFF6EA" />
+      <!-- Hooves -->
+      <rect x="-40" y="70" width="13" height="8" rx="3" fill="#593224" />
+      <rect x="-22" y="70" width="13" height="8" rx="3" fill="#593224" />
+      <rect x="20" y="70" width="13" height="8" rx="3" fill="#593224" />
+      <rect x="38" y="70" width="13" height="8" rx="3" fill="#593224" />
+      <!-- Udder -->
+      <ellipse cx="22" cy="46" rx="15" ry="10" fill="#FFB2BD" />
+      <!-- Body -->
+      <rect x="-52" y="-22" width="112" height="66" rx="30" fill="#FFF8EE" />
+      <!-- Brown cow spots -->
+      <circle cx="-12" cy="2" r="18" fill="#8C5138" />
+      <ellipse cx="26" cy="-6" rx="16" ry="13" fill="#7D462F" />
+      <circle cx="42" cy="22" r="11" fill="#8C5138" />
+      <!-- Head -->
+      <g transform="translate(-58, -12)">
+        <!-- Ears & little horns -->
+        <ellipse cx="-16" cy="-16" rx="12" ry="6" transform="rotate(-25 -16 -16)" fill="#FFF8EE" />
+        <ellipse cx="16" cy="-16" rx="12" ry="6" transform="rotate(25 16 -16)" fill="#FFF8EE" />
+        <path d="M -10,-22 Q -14,-34 -6,-32" fill="none" stroke="#E5C89E" stroke-width="5" stroke-linecap="round" />
+        <path d="M 10,-22 Q 14,-34 6,-32" fill="none" stroke="#E5C89E" stroke-width="5" stroke-linecap="round" />
+        <rect x="-22" y="-22" width="44" height="44" rx="18" fill="#FFF8EE" />
+        <path d="M 2,-22 Q 22,-22 22,0 L 2,0 Z" fill="#8C5138" />
+        <!-- Pink snout -->
+        <rect x="-20" y="4" width="40" height="24" rx="12" fill="#FFB8C2" />
+        <circle cx="-8" cy="14" r="2.8" fill="#9E5260" />
+        <circle cx="8" cy="14" r="2.8" fill="#9E5260" />
+        <!-- Eyes -->
+        <circle cx="-9" cy="-6" r="3.2" fill="#2B1B15" />
+        <circle cx="9" cy="-6" r="3.2" fill="#2B1B15" />
+      </g>
+    </g>
+  </g>
+  <g id="right-university">
+    <!-- Campus hillside bushes left of university -->
+    <circle cx="1378" cy="692" r="56" fill="#2BB874" />
+    <circle cx="1430" cy="672" r="64" fill="#1F9E65" />
+
+    <!-- Elevated warm-stone campus plaza & lower grand steps -->
+    <path d="M 1272,835 C 1272,772 1345,745 1445,745 L 1920,745 L 1920,1080 L 1255,1080 Z" fill="#F9EFE0" />
+    <polygon points="1272,892 1920,994 1920,1080 1255,1080" fill="#E8D8C3" />
+    <g id="lower-steps">
+      <polygon points="1272,900 1920,1002 1920,1013 1272,911" fill="#C7B29B" />
+      <polygon points="1272,921 1920,1023 1920,1034 1272,932" fill="#C7B29B" />
+      <polygon points="1272,942 1920,1044 1920,1055 1272,953" fill="#C7B29B" />
+      <polygon points="1272,963 1920,1065 1920,1076 1272,974" fill="#C7B29B" />
+      <polygon points="1272,984 1920,1086 1920,1097 1272,995" fill="#C7B29B" />
+      <polygon points="1272,1005 1920,1107 1920,1118 1272,1016" fill="#C7B29B" />
+      <polygon points="1272,1026 1920,1128 1920,1139 1272,1037" fill="#C7B29B" />
+      <polygon points="1272,1047 1920,1149 1920,1160 1272,1058" fill="#C7B29B" />
+      <polygon points="1272,1068 1920,1170 1920,1181 1272,1079" fill="#C7B29B" />
+    </g>
+
+    <!-- Left modern glass-and-stone university wing -->
+    <polygon points="1410,565 1510,515 1510,775 1410,775" fill="#0F8B8D" />
+    <!-- Crisp glowing turquoise glass atrium facade -->
+    <polygon points="1418,582 1506,582 1506,762 1418,762" fill="url(#glassWing)" />
+    <line x1="1446" y1="582" x2="1446" y2="762" stroke="#F5E8D5" stroke-width="5" />
+    <line x1="1478" y1="582" x2="1478" y2="762" stroke="#F5E8D5" stroke-width="5" />
+    <line x1="1418" y1="670" x2="1506" y2="670" stroke="#F5E8D5" stroke-width="4" />
+    <!-- Teal modern sloped roof on left wing -->
+    <polygon points="1398,568 1512,510 1512,535 1412,582" fill="#1AB5A3" />
+
+    <!-- Right modern glass wing extending off-screen -->
+    <rect x="1835" y="572" width="90" height="240" fill="url(#glassWing)" />
+    <line x1="1878" y1="572" x2="1878" y2="812" stroke="#F5E8D5" stroke-width="5" />
+    <line x1="1835" y1="684" x2="1925" y2="684" stroke="#F5E8D5" stroke-width="4" />
+
+    <!-- Sloped teal-emerald main roof behind classical pediment -->
+    <polygon points="1658,360 1925,432 1925,542 1865,542" fill="#179E8E" />
+    <polygon points="1658,360 1925,432 1925,462 1658,382" fill="#26BFA8" />
+
+    <!-- Deep shaded classical portico behind columns -->
+    <rect x="1502" y="534" width="335" height="254" fill="#9E8978" />
+    <!-- Grand arched university portal centered between middle columns -->
+    <path d="M 1644,786 L 1644,662 A 26,28 0 0,1 1696,662 L 1696,786 Z" fill="#52413B" />
+    <path d="M 1650,786 L 1650,666 A 20,22 0 0,1 1690,666 L 1690,786 Z" fill="#6B554D" />
+
+    <!-- 6 Monumental Neoclassical Columns -->
+    <g id="columns">
+      <g>
+        <!-- Column shadow -->
+        <rect x="1524" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1508" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1507" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1512" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1526" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1519" y1="554" x2="1519" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1531" y1="554" x2="1531" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+      <g>
+        <!-- Column shadow -->
+        <rect x="1576" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1560" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1559" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1564" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1578" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1571" y1="554" x2="1571" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1583" y1="554" x2="1583" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+      <g>
+        <!-- Column shadow -->
+        <rect x="1628" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1612" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1611" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1616" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1630" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1623" y1="554" x2="1623" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1635" y1="554" x2="1635" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+      <g>
+        <!-- Column shadow -->
+        <rect x="1710" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1694" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1693" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1698" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1712" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1705" y1="554" x2="1705" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1717" y1="554" x2="1717" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+      <g>
+        <!-- Column shadow -->
+        <rect x="1762" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1746" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1745" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1750" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1764" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1757" y1="554" x2="1757" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1769" y1="554" x2="1769" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+      <g>
+        <!-- Column shadow -->
+        <rect x="1814" y="542" width="20" height="240" fill="#8A7668" opacity="0.35" />
+        <!-- Column base & capital -->
+        <rect x="1798" y="772" width="34" height="14" rx="2" fill="#E3D2BE" />
+        <rect x="1797" y="534" width="36" height="14" rx="2" fill="#FFF4E4" />
+        <!-- Column shaft (sunlit left, warm taupe right) -->
+        <rect x="1802" y="548" width="26" height="224" fill="#F7EAD8" />
+        <rect x="1816" y="548" width="12" height="224" fill="#DEC8B0" />
+        <!-- Crisp vertical fluting lines -->
+        <line x1="1809" y1="554" x2="1809" y2="766" stroke="#E3CEB8" stroke-width="2" />
+        <line x1="1821" y1="554" x2="1821" y2="766" stroke="#CBB298" stroke-width="2" />
+      </g>
+    </g>
+
+    <!-- Upper portico steps -->
+    <g id="upper-steps">
+      <rect x="1482" y="788" width="353" height="9" fill="#FFF3E0" />
+      <rect x="1482" y="797" width="353" height="6" fill="#C4AE96" />
+      <rect x="1468" y="803" width="377" height="9" fill="#FFF3E0" />
+      <rect x="1468" y="812" width="377" height="6" fill="#C4AE96" />
+      <rect x="1454" y="818" width="401" height="9" fill="#FFF3E0" />
+      <rect x="1454" y="827" width="401" height="6" fill="#C4AE96" />
+      <rect x="1440" y="833" width="425" height="9" fill="#FFF3E0" />
+      <rect x="1440" y="842" width="425" height="6" fill="#C4AE96" />
+      <rect x="1426" y="848" width="449" height="9" fill="#FFF3E0" />
+      <rect x="1426" y="857" width="449" height="6" fill="#C4AE96" />
+      <rect x="1412" y="863" width="473" height="9" fill="#FFF3E0" />
+      <rect x="1412" y="872" width="473" height="6" fill="#C4AE96" />
+    </g>
+
+    <!-- Grand Entablature & Triangular Classical Pediment -->
+    <g id="pediment">
+      <!-- Architrave / frieze beam -->
+      <rect x="1486" y="492" width="368" height="44" fill="#F2E2CC" />
+      <rect x="1486" y="524" width="368" height="12" fill="#D4BEA6" />
+      <rect x="1474" y="484" width="392" height="14" rx="2" fill="#FFF7EB" />
+      <!-- Outer triangular pediment -->
+      <polygon points="1464,486 1670,356 1876,486" fill="#FFF5E4" />
+      <!-- Shaded recessed tympanum -->
+      <polygon points="1506,476 1670,378 1834,476" fill="#D5BFA8" />
+      <polygon points="1520,476 1670,388 1820,476" fill="#E3CEB8" />
+      <!-- Crisp underside shadow along pediment cornice -->
+      <polygon points="1464,486 1670,356 1670,368 1484,486" fill="#FFFFFF" opacity="0.65" />
+    </g>
+
+    <!-- Manicured modern campus cypress & rounded trees -->
+    <g id="campus-trees">
+      <rect x="1352" y="790" width="8" height="32" rx="3" fill="#6E4735" />
+      <rect x="1338" y="715" width="36" height="84" rx="18" fill="#1FA368" />
+      <rect x="1356" y="715" width="18" height="84" rx="9" fill="#158555" opacity="0.45" />
+
+      <rect x="1396" y="772" width="9" height="42" rx="3" fill="#6E4735" />
+      <rect x="1378" y="684" width="44" height="102" rx="22" fill="#2BC278" />
+      <rect x="1400" y="684" width="22" height="102" rx="11" fill="#1A9960" opacity="0.4" />
+
+      <rect x="1830" y="852" width="10" height="42" rx="3" fill="#6E4735" />
+      <rect x="1808" y="748" width="54" height="118" rx="27" fill="#1E9E66" />
+      <rect x="1836" y="748" width="26" height="118" rx="13" fill="#137C4E" opacity="0.45" />
+
+      <!-- Campus hedge tucked cleanly on right upper terrace -->
+      <path d="M 1838,835 Q 1878,810 1925,832 L 1925,882 L 1838,868 Z" fill="#2BB874" />
+    </g>
+
+    <!-- Stylized Kurzgesagt university students walking on campus -->
+    <g id="students">
+    <g transform="translate(1322,822) scale(0.9)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#3B9BF2" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#3A4F7A" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#3A4F7A" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#FF6E7F" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#5C3729" />
+    </g>
+    <g transform="translate(1354,830) scale(0.9)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#FF7896" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#486581" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#486581" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#F5B841" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#8C5230" />
+    </g>
+    <g transform="translate(1542,912) scale(1.1)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#F7C948" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#3A4F7A" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#3A4F7A" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#FF6B6B" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#4A2C22" />
+    </g>
+    <g transform="translate(1576,902) scale(1.1)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#3AC2D6" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#4A3A6E" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#4A3A6E" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#24B57E" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#6E3F2B" />
+    </g>
+    <g transform="translate(1720,934) scale(1.1)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#FF8C5A" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#313B66" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#313B66" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#4A5ED6" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#3B2219" />
+    </g>
+    <g transform="translate(1752,926) scale(1)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#32C783" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#2B6E8C" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#2B6E8C" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#F7C948" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#5C3729" />
+    </g>
+    <g transform="translate(1826,962) scale(1.1)">
+      <ellipse cx="0" cy="48" rx="14" ry="4.5" fill="#8C7A68" opacity="0.32" />
+      <rect x="-12" y="8" width="10" height="18" rx="4" fill="#3B9BF2" />
+      <rect x="-6" y="28" width="5" height="18" rx="2.5" fill="#3B5284" />
+      <rect x="2" y="28" width="5" height="18" rx="2.5" fill="#3B5284" />
+      <rect x="-8" y="8" width="16" height="23" rx="6" fill="#2BB874" />
+      <circle cx="0" cy="-2" r="9.5" fill="#F2B99C" />
+      <path d="M -9.5,-3 C -9.5,-13 9.5,-13 9.5,-3 Z" fill="#4A2C22" />
+    </g>
+    </g>
+  </g>
+</svg>

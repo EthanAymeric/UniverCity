@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="unJeu"
-run/main_scene="uid://bepl8qpavhtk1"
+config/name="UniverCity"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

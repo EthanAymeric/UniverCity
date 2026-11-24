@@ -1,13 +1,28 @@
 [gd_scene format=3 uid="uid://bqseky35h703n"]
 
 [ext_resource type="Script" uid="uid://cr6b2ufxk6vcw" path="res://Scripts/tutoriel_manager.gd" id="1_6vxvx"]
+[ext_resource type="Texture2D" uid="uid://b3qgo0u13d2fb" path="res://Assets/Tuto/perso_temp.webp" id="2_ressd"]
+[ext_resource type="Texture2D" uid="uid://d4cf5840gpr4x" path="res://Assets/Tuto/fleche.jpg" id="3_clteo"]
 
 [node name="TutorielOverlay" type="CanvasLayer" unique_id=69279774]
 script = ExtResource("1_6vxvx")
 
+[node name="BloqueurClics" type="Control" parent="." unique_id=600314022]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 983.0
+offset_top = 344.0
+offset_right = 1023.0
+offset_bottom = 384.0
+
 [node name="PersonnageTuto" type="TextureRect" parent="." unique_id=76928978]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 983.0
+offset_top = 344.0
+offset_right = 1087.0
+offset_bottom = 522.0
+texture = ExtResource("2_ressd")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Bulle" type="PanelContainer" parent="." unique_id=161711291]
 offset_right = 40.0
@@ -19,6 +34,14 @@ layout_mode = 2
 [node name="TexteBulle" type="Label" parent="Bulle/VBoxContainer" unique_id=1741544986]
 layout_mode = 2
 
+[node name="BoutonSuivant" type="TextureButton" parent="Bulle/VBoxContainer" unique_id=1517354253]
+layout_mode = 2
+
 [node name="Fleche" type="TextureRect" parent="." unique_id=1250573439]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 216.0
+offset_top = 235.0
+offset_right = 343.0
+offset_bottom = 391.0
+texture = ExtResource("3_clteo")
+expand_mode = 1
+stretch_mode = 5

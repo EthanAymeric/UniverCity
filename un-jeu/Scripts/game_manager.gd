@@ -124,6 +124,9 @@ var building_names: Array[String] = [
 	"Université"
 ]
 
+### TUTORIEL
+@onready var tutoriel_manager: TutorielManager = $TutorielOverlay
+
 # Descriptions affichés correspondant exactement à l'ordre de building_buttons
 # DEPEND DE L'INDEX CORRESPONDANT DANS BUILDING_BUTTONS
 var building_descriptions: Array[String] = [
@@ -445,9 +448,17 @@ func place_building(top_left: Vector2i, footprint: Vector2i) -> void:
 	# Si Shift n'est pas enfoncé, on quitte le mode placement
 	if not Input.is_key_pressed(KEY_SHIFT):
 		cancel_placement()
+		
+	## Gestion du tutoriel
+	if tutoriel_manager:
+		tutoriel_manager.notifier_batiment_place()
 
 ## Annule le mode placement
 func cancel_placement() -> void:
+	# Eviter l'annulation de placement durant le tuto
+	if tutoriel_manager and tutoriel_manager.placement_force_en_cours():
+		return
+		
 	is_placing = false
 	current_scene_to_place = null
 	preview_sprite.visible = false
@@ -508,7 +519,10 @@ func _on_ferme_pressed() -> void:
 	if selection_objet and selection_objet.stream:
 		selection_objet.play()
 	start_placement(farm_scene)
-	
+	# Gestion du tutoriel : placement obligatoire d'une ferme
+	if tutoriel_manager:
+		tutoriel_manager.notifier_bouton_batiment_clique(ferme_btn)	
+		
 func _on_usine_pressed() -> void:
 	# Lance le SFX de placement
 	if selection_objet and selection_objet.stream:

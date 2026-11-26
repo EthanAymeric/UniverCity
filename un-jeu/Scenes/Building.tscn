@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jki4h"]
 atlas = ExtResource("2_1q4et")
-region = Rect2(0, 0, 305, 186)
+region = Rect2(0, 0, 576, 352)
 
 [node name="Building" type="Node2D" unique_id=1001849790]
 script = ExtResource("1_bld_script")
@@ -13,4 +13,4 @@ script = ExtResource("1_bld_script")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=107816283]
 texture = SubResource("AtlasTexture_jki4h")
 region_enabled = true
-region_rect = Rect2(170, 0, 16, 16)
+region_rect = Rect2(320, 0, 32, 32)

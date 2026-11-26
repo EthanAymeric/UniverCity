@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://opuy1wmt368y" path="res://Assets/Ressources/panneau_gauche.png" id="6_wo1nm"]
 [ext_resource type="Texture2D" uid="uid://c055iyvynhath" path="res://Assets/Ressources/spritesheet_innovations.png" id="7_a66ic"]
 [ext_resource type="Script" uid="uid://cyc7iwfg8iwp6" path="res://Scripts/world_timer.gd" id="7_cx2iu"]
+[ext_resource type="PackedScene" uid="uid://bqseky35h703n" path="res://Scenes/tutoriel_overlay.tscn" id="7_gvcd7"]
 [ext_resource type="Script" uid="uid://ditmhr1q5h52t" path="res://Scripts/camera.gd" id="8_o5784"]
 [ext_resource type="Texture2D" uid="uid://dngyaeyevjm0g" path="res://Assets/Ressources/fond_batiment.png" id="8_wo1nm"]
 [ext_resource type="Texture2D" uid="uid://ccairb7gx62qf" path="res://Assets/Ressources/Icônes métiers et économie colorées.png" id="9_chwmy"]
@@ -1374,6 +1375,11 @@ visible = false
 texture = SubResource("AtlasTexture_1yvdp")
 hframes = 4
 vframes = 8
+
+[node name="TutorielOverlay" parent="." unique_id=69279774 node_paths=PackedStringArray("game_manager", "camera") instance=ExtResource("7_gvcd7")]
+visible = false
+game_manager = NodePath("..")
+camera = NodePath("../Camera2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2094931427]
 

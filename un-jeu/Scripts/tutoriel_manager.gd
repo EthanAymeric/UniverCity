@@ -13,6 +13,7 @@ signal tutoriel_termine
 @onready var texte_bulle: Label = $Bulle/VBoxContainer/TexteBulle
 @onready var bouton_suivant: BaseButton = $Bulle/VBoxContainer/BoutonSuivant
 @onready var fleche: TextureRect = $Fleche
+@export var auto_start: bool = true
 
 ## Types d'actions autorisées pour une étape
 enum TypeEtape {
@@ -35,6 +36,10 @@ func _ready() -> void:
 	if personnage_tuto:
 		personnage_tuto.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	arreter_tutoriel()
+	
+	if auto_start:
+		await get_tree().process_frame
+		demarrer_tutoriel()
 
 ## Point d'entrée principal pour démarrer le tutoriel
 func demarrer_tutoriel() -> void:
@@ -134,7 +139,6 @@ func _appliquer_restrictions_etape(etape: Dictionary, type_etape: int) -> void:
 			bloqueur_clics.visible = true
 			bouton_suivant.visible = true
 			bouton_suivant.disabled = false
-			bouton_suivant.text = etape.get("texte_bouton", "Suivant")
 			_pointer_fleche_sur(etape.get("cible_ui", null))
 
 		TypeEtape.PLACER_BATIMENT:

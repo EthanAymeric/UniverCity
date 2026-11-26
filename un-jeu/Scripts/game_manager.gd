@@ -283,6 +283,7 @@ func _ready() -> void:
 	timer_live.text = world_timer.get_formatted_date()
 	world_timer.second_tick.connect(_on_timer_tick)
 
+
 func _process(_delta: float) -> void:
 	if is_placing:
 		_process_placement()

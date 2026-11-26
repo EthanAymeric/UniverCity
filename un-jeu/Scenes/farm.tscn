@@ -5,4 +5,4 @@
 [node name="Building" unique_id=1001849790 instance=ExtResource("1_1bveb")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=107816283]
-region_rect = Rect2(320, 32, 32, 32)
+region_rect = Rect2(0, 224, 32, 32)

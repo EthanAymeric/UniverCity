@@ -5,7 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jki4h"]
 atlas = ExtResource("2_1q4et")
+<<<<<<< HEAD
 region = Rect2(0, 0, 996.52075, 1859.4406)
+=======
+region = Rect2(0, 0, 32, 256)
+>>>>>>> test-32x32
 
 [node name="Building" type="Node2D" unique_id=1001849790]
 script = ExtResource("1_bld_script")
@@ -15,4 +19,4 @@ position = Vector2(100.5, 69.5)
 scale = Vector2(13.5625, 9.6875)
 texture = SubResource("AtlasTexture_jki4h")
 region_enabled = true
-region_rect = Rect2(170, 0, 16, 16)
+region_rect = Rect2(0, 0, 32, 32)

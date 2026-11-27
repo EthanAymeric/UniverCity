@@ -65,6 +65,7 @@ extends Node2D
 @export var building_scene: PackedScene = preload("res://Scenes/Building.tscn")
 @export var farm_scene: PackedScene = preload("res://Scenes/farm.tscn")
 
+
 ## Fenêtre Quitter
 @onready var fenetre_exit: ConfirmationDialog = $FenetreExit
 

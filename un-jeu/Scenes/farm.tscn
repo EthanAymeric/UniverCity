@@ -9,11 +9,8 @@ atlas = ExtResource("2_1yvdp")
 [node name="Building" unique_id=1001849790 instance=ExtResource("1_1bveb")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=107816283]
-<<<<<<< HEAD
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.07217078, 0.06962768)
 texture = SubResource("AtlasTexture_30eac")
 region_rect = Rect2(0.8338089, 0.40776062, 243.4266, 233.55797)
-=======
 region_rect = Rect2(0, 224, 32, 32)
->>>>>>> test-32x32

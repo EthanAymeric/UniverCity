@@ -5,11 +5,8 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jki4h"]
 atlas = ExtResource("2_1q4et")
-<<<<<<< HEAD
 region = Rect2(0, 0, 996.52075, 1859.4406)
-=======
 region = Rect2(0, 0, 32, 256)
->>>>>>> test-32x32
 
 [node name="Building" type="Node2D" unique_id=1001849790]
 script = ExtResource("1_bld_script")

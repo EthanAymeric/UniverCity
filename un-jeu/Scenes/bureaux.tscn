@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnupu1jwufp6e"]
 
 [ext_resource type="Script" uid="uid://dvl48uy3p3ple" path="res://Scripts/building.gd" id="1_v72md"]
-[ext_resource type="Texture2D" path="res://Assets/spritesheet_batiments.png" id="2_dom8t"]
+[ext_resource type="Texture2D" uid="uid://bt2xi6vnsbhit" path="res://Assets/spritesheet_batiments.png" id="2_dom8t"]
 
 [node name="bureaux" type="Node2D" unique_id=213782184]
 position = Vector2(-2, 2)

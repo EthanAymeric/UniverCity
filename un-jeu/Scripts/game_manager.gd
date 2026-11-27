@@ -282,6 +282,9 @@ func _ready() -> void:
 	# Affichage de la date initiale (1900/01/01) et lancement du Timer
 	timer_live.text = world_timer.get_formatted_date()
 	world_timer.second_tick.connect(_on_timer_tick)
+	
+	if bouton_info and tutoriel_manager:
+		bouton_info.pressed.connect(tutoriel_manager.demarrer_tutoriel)
 
 
 func _process(_delta: float) -> void:

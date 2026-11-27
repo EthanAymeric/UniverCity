@@ -13,7 +13,7 @@ signal tutoriel_termine
 @onready var texte_bulle: Label = $Bulle/VBoxContainer/TexteBulle
 @onready var bouton_suivant: BaseButton = $Bulle/VBoxContainer/BoutonSuivant
 @onready var fleche: TextureRect = $Fleche
-@export var auto_start: bool = true
+@export var auto_start: bool = false
 
 ## Types d'actions autorisées pour une étape
 enum TypeEtape {

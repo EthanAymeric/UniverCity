@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dede21vyljalj"]
+
+[ext_resource type="Texture2D" path="res://Assets/spritesheet_batiments.png" id="1_siyr3"]
+[ext_resource type="Script" uid="uid://dvl48uy3p3ple" path="res://Scripts/building.gd" id="1_wixy7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy1gf"]
+atlas = ExtResource("1_siyr3")
+region = Rect2(0, 213.625, 245.5, 243)
+
+[node name="usine" type="Node2D" unique_id=1910255084]
+script = ExtResource("1_wixy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1893007367]
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_jy1gf")
+region_enabled = true
+region_rect = Rect2(0.815, 0.455, 243, 233)
+script = ExtResource("1_wixy7")
